@@ -164,6 +164,7 @@ page{
     position: absolute;
     top: 30rpx;
     border-radius: 50%;
+    overflow: hidden;
 }
 .user_name{
     padding-left: 130rpx;
