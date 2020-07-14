@@ -1,0 +1,16 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/menu/menu",
+    "pages/detail/detail",
+    "pages/success/success",
+    "pages/orderConfirm/orderConfirm",
+    "pages/test/test"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#EDEDED",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "点菜宝"
+  },
+  "sitemapLocation": "sitemap.json"
+}

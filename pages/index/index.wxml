@@ -1,0 +1,23 @@
+<view class="main">
+  <!-- 上部 -->
+  <view class="choose_wrap">
+    <!-- 提示 -->
+    <view class="choose_info_before"></view>
+    <view class="choose_info">
+      <text class="choose_info_content">请选择就餐人数</text>
+    </view>
+    <!-- 选择器 -->
+    <view class="choose">
+      <navigator wx:for="{{16}}" wx:key="index" class="choose_item {{index+1==touch?'choosed_item':''}}">
+        <view class="choose_item_content {{index+1==touch?'choosed_item_content':''}}" id="{{index+1}}" catchtap="searchPeopleNum">{{index+1}}</view>
+      </navigator>
+    </view>
+  </view>
+  <!-- 下部 -->
+  <view class="choose_button_wrap">
+    <navigator class="choose_button {{touch>0?'choosed':''}}"
+      catchtap="startOrdering">
+      开始点菜
+    </navigator>
+  </view>
+</view>

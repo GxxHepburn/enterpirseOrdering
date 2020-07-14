@@ -1,0 +1,125 @@
+page {
+    background-color: #000000;
+}
+.commodity_attr_box {
+    width: 94%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 2000;
+    background: #fff;
+    padding:20rpx 5%;
+}
+.modal_name{
+    line-height: 50rpx;
+    font-size: 40rpx;
+    padding-left: 30rpx;
+    padding-top: 20rpx;
+    padding-bottom: 30rpx;
+    border-bottom: dashed 2rpx #eeeeee;
+    font-weight: bold;
+}
+.modal_prop_name{
+    padding-left: 30rpx;
+    font-size: 30rpx;
+    color: #7a7a7a;
+    margin-top: 20rpx;
+}
+.modal_prop_values{
+    margin-top: 20rpx;
+    padding-left: 30rpx;
+    
+    padding-bottom: 50rpx;
+    border-bottom: dotted 1rpx #eeeeee;
+}
+.modal_prop_value{
+    display: inline-block;
+    font-size: 30rpx;
+    color: #000000;
+    border: solid 1rpx #eeeeee;
+    border-radius: 10rpx;
+    width: 25%;
+    text-align: center;
+    height: 60rpx;
+    line-height: 60rpx;
+    margin-right: 5%;
+}
+.modal_prop_value_hover{
+    border: solid 1rpx #F34B40;
+    color: #F34B40;
+}
+.modal_change_wrap{
+    margin-top: 70rpx;
+    display: flex;
+    padding-top: 5rpx;
+}
+.modal_price_one{
+    font-size: 31.3rpx;
+    margin-left: 32rpx;
+    color: #B8726A;
+}
+.modal_price_numberal_measure{
+    font-size: 24.3rpx;
+}
+.modal_plus{
+    position: relative;
+    right: -220rpx;
+    bottom: 5rpx;
+    font-size: 50.8rpx;
+    font-weight: bold;
+    color: #F34B40;
+    /* border: solid 6rpx #F34B40; */
+    border-radius: 50%;
+    width: 45.63rpx;
+    height: 45.63rpx;
+    line-height: 45.63rpx;
+    text-align: center;
+}
+
+.modal_reduce{
+    position: relative;
+    right: -150rpx;
+    bottom: 5rpx;
+    font-size: 50.8rpx;
+    font-weight: bold;
+    color: #F34B40;
+    /* border: solid 6rpx #F34B40; */
+    border-radius: 50%;
+    width: 45.63rpx;
+    height: 45.63rpx;
+    line-height: 45.63rpx;
+    text-align: center;
+}
+.modal_number{
+    font-size: 26.3rpx;
+    position: relative;
+    right: -185rpx;
+    bottom: -5rpx;
+}
+.noAndOk_wrap{
+    display: flex;
+    margin-top: 70rpx;
+    padding-left: 30rpx;
+    margin-bottom: 50rpx;
+}
+.no{
+    font-size: 30rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    border: solid 1rpx #eeeeee;
+    width: 30%;
+    text-align: center;
+    border-radius: 30rpx;
+    margin-right: 10%;
+}
+.ok{
+    font-size: 30rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    border: solid 1rpx #F34B40;
+    width: 30%;
+    text-align: center;
+    border-radius: 30rpx;
+    background-color: #F34B40;
+    color: #fff;
+}

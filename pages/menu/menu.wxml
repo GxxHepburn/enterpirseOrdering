@@ -1,0 +1,191 @@
+<view class="main">
+    <view class="menu_wrap">
+        <view class="menu_item_wrap">
+                <view wx:for="{{menu}}" wx:key="index" class="menu_item {{(menuInto==index&&scrollInto==-1)||(scrollInto==index&&menuInto==-1)||(menuInto==index&&scrollInto==index)?'menuItemSelected':''}}" catchtap="touchType" data-index="{{index}}">
+                    {{item.name}}
+                    <text class="menu_item_number {{typeForNum[index]>0?'showNumber':''}}">{{typeForNum[index]}}</text>
+                </view>
+        </view>
+        <scroll-view class="menu_item_food_wrap" scroll-y="{{true}}" scroll-into-view="menu{{menuInto}}" 
+            scroll-with-animation="{{true}}"  bindscroll="scrollToUpper" data-id="menu{{index}}">
+            <view class="menu_type" wx:for="{{menu}}" wx:for-item="outItem" wx:for-index="outIndex" wx:key="index" id="menu{{outIndex}}">
+                <view class="menu_title">
+                    {{outItem.name}}
+                </view>
+                <view class="menu_item_food" wx:for="{{outItem.foods}}" wx:key="index">
+                    <view class="menu_item_food_nav">
+                        <image class="menu_item_food_img" mode="scaleToFill" src="{{item.image}}"></image>
+                    </view>
+                    <view class="menu_item_food_content">
+                        <view class="menu_item_food_name_wrap">
+                            <navigator class="menu_item_food_name">
+                                {{item.name}}
+                            </navigator>
+                            <view class="tag" wx:if="{{item.tag}}">
+                                {{item.tag}}
+                            </view>
+                        </view>
+                        <text class="leftNumber">库存{{item.stock<0?999:item.stock}}</text>
+                        <text class="saleNumber"> 销量{{item.salesVolume}}</text>
+                        <view class="food_change_wrap">
+                            <view class="price_wrap">
+                                <text class="price_one">￥{{item.price}}</text>
+                                <text class="price_numberal_measure"> /{{item.unit}}</text>
+                            </view>
+                            <view class="rebate">
+                                <text class="price_last_reason">原价</text>
+                                <text class="price_last">￥133.00</text>
+                                <view class="line"></view>
+                            </view>
+                            <view hover-class="reduceHover" class="reduce" bindtap="touchReduce"
+                                data-outIndex="{{outIndex}}" data-index="{{index}}">
+                                -
+                            </view>
+                            <text class="number">{{menuForNum[outIndex][index][0].num}}</text>
+                            <view hover-class="plusHover" class="plus" bindtap="touchPlus"
+                                data-outIndex="{{outIndex}}" data-index="{{index}}">
+                                +
+                            </view>
+                        </view>
+                    </view>
+
+                    <!--屏幕背景变暗的背景  -->
+                    <view class="commodity_screen" bindtap="hideModal" wx:if="{{showModalStatus}}"></view>
+                    <!--弹出框 加菜  -->
+                    <view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">
+                        <view class="modal_name">{{touchFood.name}}</view>
+                        <view  wx:for="{{touchFood.property}}" wx:for-item="inItem" wx:for-index="inIndex" wx:key="index">
+                            <view  class="modal_prop_name">{{inItem.name}}</view>
+                            <view class="modal_prop_values">
+                                <view class="modal_prop_value {{modalFood.property[inIndex]==0?'modal_prop_value_hover':''}}" 
+                                    data-index="{{0}}" bindtap="clickModalProp" wx:if="{{inItem.valueOne!=null}}" data-inIndex="{{inIndex}}">
+                                    {{inItem.valueOne}}
+                                </view>
+                                <view class="modal_prop_value {{modalFood.property[inIndex]==1?'modal_prop_value_hover':''}}" 
+                                    data-index="{{1}}" bindtap="clickModalProp" wx:if="{{inItem.valueTwo!=null}}" data-inIndex="{{inIndex}}">
+                                    {{inItem.valueTwo}}
+                                </view>
+                                <view class="modal_prop_value {{modalFood.property[inIndex]==2?'modal_prop_value_hover':''}}" 
+                                    data-index="{{2}}" bindtap="clickModalProp" wx:if="{{inItem.valueThree!=null}}" data-inIndex="{{inIndex}}">
+                                    {{inItem.valueThree}}
+                                </view>
+                                <view class="modal_prop_value {{modalFood.property[inIndex]==3?'modal_prop_value_hover':''}}" 
+                                    data-index="{{3}}" bindtap="clickModalProp" wx:if="{{inItem.valueFour!=null}}" data-inIndex="{{inIndex}}">
+                                    {{inItem.valueFour}}
+                                </view>
+                                <view class="modal_prop_value {{modalFood.property[inIndex]==4?'modal_prop_value_hover':''}}" 
+                                    data-index="{{4}}" bindtap="clickModalProp" wx:if="{{inItem.valueFive!=null}}" data-inIndex="{{inIndex}}">
+                                    {{inItem.valueFive}}
+                                </view>
+                            </view>
+                        </view>
+                        <view  class="modal_prop_name" wx:if="{{touchFood.specs[0]}}">规格</view>
+                        <view class="modal_prop_values"  wx:if="{{touchFood.specs[0]}}">
+                            <text  class="modal_prop_value {{modalFood.specs==inIndex?'modal_prop_value_hover':''}}" wx:for="{{touchFood.specs}}" 
+                                wx:for-item="inItem" wx:for-index="inIndex" wx:key="index" data-index="{{inIndex}}" bindtap="clickModalSpec" 
+                                wx:if="{{inItem.name!=null}}">{{inItem.name}}</text>
+                        </view>
+                        <view class="modal_change_wrap">
+                            <view class="modal_price_wrap">
+                                <text class="modal_price_one">￥{{touchFood.specs[0]==null?touchFood.price:touchFood.price+touchFood.specs[modalFood.specs].value}}</text>
+                                <text class="modal_numberal_measure"> /{{touchFood.unit}}</text>
+                            </view>
+                            <view hover-class="reduceHover" class="modal_reduce" bindtap="touchModalReduce">
+                                -
+                            </view>
+                            <text class="modal_number">{{modalFood.num}}</text>
+                            <view hover-class="plusHover" class="modal_plus" bindtap="touchModalPlus">
+                                +
+                            </view>
+                        </view>
+                        <view class="noAndOk_wrap">
+                            <view class="no" bindtap="hideModal" hover-class="no_hover">取消</view>
+                            <view class="ok" hover-class="ok_hover" bindtap="touchok">确定</view>
+                        </view>
+                    </view>
+                    <!--屏幕背景变暗的背景 减菜  -->
+                    <view class="commodity_screen" bindtap="reduceHideModal" wx:if="{{showReduceModalStatus}}"></view>
+                    <!--弹出框 减菜 -->
+                    <view animation="{{reduceAnimationData}}" class="commodity_attr_box" wx:if="{{showReduceModalStatus}}">
+                        <view class="modal_name">{{touchFood.name}}</view>
+                        <view class="reduce_modal_foods_wrap_wrap">
+                            <view wx:for="{{exceptOneFoods}}" wx:key="index" class="reduce_modal_foods_wrap" wx:for-item="inItem" wx:for-index="inIndex">
+                                <view class="reduce_modal_food">
+                                    <view class="reduce_modal_food_value" wx:if="{{inItem.property[0]}}">{{inItem.property[0]}}</view>
+                                    <view class="reduce_modal_food_value" wx:if="{{inItem.property[1]}}">{{inItem.property[1]}}</view>
+                                    <view class="reduce_modal_food_value" wx:if="{{inItem.specs}}">{{inItem.specs}}</view>
+                                </view>
+                                <view class="reduce_modal_change_wrap">
+                                    <view class="reduce_modal_price_one_wrap">
+                                        <text class="reduce_modal_price_one">￥{{inItem.price}}</text>
+                                        <text class="reduce_modal_numberal_measure"> /{{touchFood.unit}}</text>
+                                    </view>
+                                    <view hover-class="reduceHover" class="reduce_modal_reduce" bindtap="reduceTouchModalReduce" data-index="{{inIndex}}">
+                                        -
+                                    </view>
+                                    <text class="reduce_modal_number">{{inItem.num}}</text>
+                                    <view hover-class="plusHover" class="reduce_modal_plus" bindtap="reduceTouchModalPlus" data-index="{{inIndex}}">
+                                        +
+                                    </view>
+                                </view>
+                                <!-- //对于数目为0的也要去掉 -->
+                            </view>
+                        </view>
+                        <view class="noAndOk_wrap">
+                            <view class="no" bindtap="reduceHideModal" hover-class="no_hover">取消</view>
+                            <view class="ok" hover-class="ok_hover" bindtap="reduceTouchOk">确定</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+    <view class="cart_wrap">
+        <text class="icon_before">*</text>
+        <text class="icon {{totalPrice>0?'iconSelected':''}}" bindtap="cartShowModal">购</text>
+        <text class="price" selectable="false" space="false" decode="false">
+            ￥{{totalPrice}}
+            <!-- 要做保留小数处理 -->
+        </text>
+        <view class="confirm" hover-class="confirm-hover" bindtap="touchConfirm">
+            选好了
+        </view>
+    </view>
+    <!-- 购物车 屏幕变暗的背景 -->
+    <view class="cart_commodity_screen" bindtap="cartHideModal" wx:if="{{cartModalStatus}}"></view>
+    <!-- 购物车 弹出框 -->
+    <view animation="{{cartAnimationData}}" class="cart_commodity_attr_box" wx:if="{{cartModalStatus}}">
+        <view class="cart_title_wrap">
+            <view class="cart_title_left"></view>
+            <view class="cart_title_in_wrap">
+                <view class="cart_title_selected">已选商品</view>
+                <view class="cart_title_reset" bindtap="reset" hover-class="resetHover">清空</view>
+            </view>
+        </view>
+        <view class="cart_content_wrap">
+            <view class="cart_content_zero" wx:if="{{totalPrice==0}}">购物车空空如也</view>
+            <view class="cart_content_foodItem" wx:for="{{orders}}" wx:key="index">
+                <view class="cart_content_foodItem_name">{{item.name}}</view>
+                <view wx:if="{{item.property[0]||item.specs!=''}}" class="cart_property_before">(</view>
+                <text class="cart_content_foodItem_property" wx:for="{{item.property}}" 
+                    wx:for-item="inItem" wx:key="inIndex" wx:for-index="inIndex"
+                    decode="{{true}}" space="{{true}}">{{inItem}}<text wx:if="{{inIndex!=item.property.length-1||item.specs!=''}}" decode="{{true}}" space="{{true}}">&ensp;</text>
+                </text>
+                <view class="cart_content_foodItem_spec">{{item.specs}}</view>
+                <view wx:if="{{item.property[0]||item.specs!=''}}" class="cart_property_before">)</view>
+                <view class="cart_modal_change_wrap">
+                    <view class="cart_modal_price_one_wrap">
+                        <text class="cart_modal_price_one">￥{{item.price*item.num}}</text>
+                    </view>
+                    <view hover-class="reduceHover" class="cart_modal_reduce" bindtap="cartReduce" data-index="{{cartReduce}}" data-cartTouchFood="{{item}}">
+                        -
+                    </view>
+                    <text class="cart_modal_number">{{item.num}}</text>
+                    <view hover-class="plusHover" class="cart_modal_plus" bindtap="cartPlus" data-index="{{cartPlus}}" data-cartTouchFood="{{item}}">
+                        +
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

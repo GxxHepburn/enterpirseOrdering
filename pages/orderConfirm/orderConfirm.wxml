@@ -1,0 +1,56 @@
+<view class="main">
+    <view class="top_wrap">
+        <view class="table_wrap">
+            <view class="table">
+                <text class="table_lable">桌台</text>
+                <text class="table_number">{{tabTypeName}}-{{tableName}}</text>
+            </view>
+            <view class="people_number_wrap">
+                <text class="people_lable">人数</text>
+                <navigator class="people_change">
+                    <text class="people_number">2</text>
+                    <text class="people_number_tag fa fa-angle-right"></text>
+                </navigator>
+            </view>
+        </view>
+        <view class="remark">
+            <label class="remark_label">
+                备注
+            </label>
+            <input class="remark_content" placeholder="口味、偏好等要求"></input>
+        </view>
+        <view class="total">
+            <text class="total_label">总计</text>
+            <text class="total_price">￥5.10,</text>
+            <text class="total_number">共4个商品</text>
+        </view>
+        <view class="foods_wrap">
+            <view class="user">
+                <image src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1589977977607&di=bce429ad4d090a03347c789ff7e0ed7f&imgtype=0&src=http%3A%2F%2Fa3.att.hudong.com%2F14%2F75%2F01300000164186121366756803686.jpg" class="user_img"></image>
+                <text class="user_name">The xin</text>
+            </view>
+            <view wx:for="{{foodList}}" wx:key="index" class="food_item">
+                <text class="food_name">{{item}}</text>
+                <text class="food_price">￥0.10</text>
+                <navigator class="reduce_nav">
+                    <text class="reduce">-</text>
+                </navigator>
+                <text class="food_number">111</text>
+                <navigator class="plus_nav">
+                    <text class="plus">+</text>
+                </navigator>
+            </view>
+        </view>
+    </view>
+    <view class="cart_wrap">
+        <text class="icon_before">*</text>
+        <text class="icon">刷</text>
+        <text class="price" selectable="false" space="false" decode="false">
+            ￥{{0.00}}
+            <!-- 要做保留小数处理 -->
+        </text>
+        <navigator class="confirm" target="" url="" hover-class="navigator-hover" open-type="navigate">
+            下单
+        </navigator>
+    </view>
+</view>

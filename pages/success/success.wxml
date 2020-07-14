@@ -1,0 +1,15 @@
+<view class="main">
+    <view class="tag_warp">
+        <text class="tag fa fa-check"></text>
+    </view>
+    <view class="ok_text">下单成功</view>
+    <view class="ok_text_little_one">商家已接收到您的订单</view>
+    <view class="ok_text_little_two">请耐心等待厨房制作</view>
+    <view class="button_add_wrap">
+        <navigator class="button_add">继续加菜</navigator>
+    </view>
+    <view class="button_order_detail_wrap">
+        <navigator class="button_order_detail">订单详情</navigator>
+    </view>
+    <view class="message">五秒后跳转至订单详情</view>
+</view>

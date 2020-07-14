@@ -1,0 +1,74 @@
+<view class="main">
+    <view class="top_wrap">
+        <view class="progress_wrap">
+            <view class="progress_top_wrap">
+                <text class="progress_wait_img fa fa-check"></text>
+                <text class="progress_first_line"></text>
+                <text class="progress_confirm_img fa fa-check"></text>
+                <view class="progress_second_line"></view>
+                <view class="progress_third_line"></view>
+                <text class="progress_ok_img fa fa-check"></text>
+            </view>
+            <view class="progress_down_wrap">
+                <text class="progress_wait_text">等待处理</text>
+                <text class="progress_confirm_text">已确认</text>
+                <text class="progress_ok_text">已完成</text>
+            </view>
+        </view>
+        <view class="order_wrap">
+            <view class="order_numer">
+                <label class="order_number_label">订单号</label>
+                <label class="order_number_content">B1202005190005</label>
+            </view>
+            <view class="order_item" wx:for="{{orderList}}" wx:key="index">
+                <label class="order_item_name">{{item.name}}</label>
+                <label class="order_item_number">{{item.number}}{{item.operator}}</label>
+                <label class="order_item_price">￥{{item.price}}</label>
+            </view>
+            <view class="total">
+                <label class="total_label">合计</label>
+                <label class="total_number">{{orderTotal.number}}份</label>
+                <label class="total_price">￥{{orderTotal.price}}</label>
+            </view>
+        </view>
+        <view class="info_wrap">
+            <view class="time_wrap">
+                <label class="time_label">点单时间</label>
+                <label class="time">2020-05-19 02:51</label>
+            </view>
+            <view class="table_wrap">
+                <label class="table_label">桌台</label>
+                <label class="table">大厅-701-1</label>
+            </view>
+            <view class="pay_wrap">
+                <label class="pay_label">支付方式</label>
+                <label class="pay">无</label>
+            </view>
+            <view class="state_wrap">
+                <label class="state_label">支付状态</label>
+                <label class="state">未支付</label>
+            </view>
+            <view class="remark_wrap">
+                <label class="remark_label">备注</label>
+                <label class="remark">无无无无无无无无无无无无无无
+                    中国静安寺覅来评价阿斯利康房价ask两地分居啊
+                    撒法罗斯放假啊凯撒警方打赏
+                </label>
+            </view>
+        </view>
+    </view>
+    <view class="cart_wrap">
+        <text class="icon_before">*</text>
+        <text class="icon">服</text>
+        <text class="price" selectable="false" space="false" decode="false">
+            ￥{{0.00}}
+            <!-- 要做保留小数处理 -->
+        </text>
+        <navigator class="cart_add">
+            加菜
+        </navigator>
+        <navigator class="cart_pay">
+            支付
+        </navigator>
+    </view>
+</view>

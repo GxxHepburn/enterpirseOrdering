@@ -1,0 +1,61 @@
+@import "../../styles/fontAwesome.wxss";
+
+page{
+    height: 100%;
+}
+.main{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+.tag{
+    width: 200rpx;
+    height: 200rpx;
+    line-height: 200rpx;
+    background-color: #ff5140;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 100rpx;
+    margin-top: 86.46rpx;
+    margin-bottom: 86.46rpx;
+}
+.ok_text{
+    color: #3c3c3c;
+    font-size: 39.59rpx;
+    margin-bottom: 33.33rpx;
+}
+.ok_text_little_one, .ok_text_little_two{
+    color: #888888;
+    font-size: 35rpx;
+    line-height: 50rpx;
+}
+.ok_text_little_two{
+    margin-bottom: 67.71rpx;
+}
+.button_order_detail, .button_add{
+    height: 87.5rpx;
+    line-height: 87.5rpx;
+    width: 687.5rpx;
+    margin: 0 auto;
+    margin-bottom: 31.25rpx;
+    border-radius: 17rpx;
+}
+.button_add
+{
+    color: #fff;
+    background-color: #ff5140;
+}
+.button_order_detail{
+    border: solid 1rpx #c6c6c6;
+}
+.message{
+    position: fixed;
+    bottom: 44.79rpx;
+    margin: 0 auto;
+    text-align: center;
+    width: 100%;
+    color: #8c8c8c;
+    font-size: 27rpx;
+}
