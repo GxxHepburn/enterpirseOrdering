@@ -35,6 +35,7 @@ Page({
         });
       }
     });
+    console.log("test git");
   },
 
   /**
