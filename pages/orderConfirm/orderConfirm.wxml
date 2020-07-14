@@ -7,10 +7,22 @@
             </view>
             <view class="people_number_wrap">
                 <text class="people_lable">人数</text>
-                <navigator class="people_change">
-                    <text class="people_number">2</text>
+                <view class="people_change" bindtap="confirmShowModal">
+                    <text class="people_number">{{numberOfDiners}}</text>
                     <text class="people_number_tag fa fa-angle-right"></text>
-                </navigator>
+                </view>
+                <!-- 屏幕背景变暗 -->
+                <view class="confirm_commodity-screen" bindtap="confirmHideModal" wx:if="{{confirmModalStatus}}"></view>
+                <!-- 弹窗选择人数 -->
+                <view animation="{{confirmAnimationData}}"
+                     class="confirm_choose_num_wrap" wx:if="{{confirmModalStatus}}">
+                     <radio-group class="confirm_radio_group" bindchange="radioChange"   wx:for="{{items}}" wx:key="index">
+                         <view>
+                             <radio value="{{item}}" checked="{{index+1==numberOfDiners?true:false}}"/>
+                         </view>
+                         <view class="confirm_choose_item_num">{{item}} 人</view>
+                     </radio-group>
+                </view>
             </view>
         </view>
         <view class="remark">
@@ -21,13 +33,15 @@
         </view>
         <view class="total">
             <text class="total_label">总计</text>
-            <text class="total_price">￥5.10,</text>
-            <text class="total_number">共4个商品</text>
+            <text class="total_price">￥{{totalPrice}},</text>
+            <text class="total_number">共{{totalNum}}个商品</text>
         </view>
         <view class="foods_wrap">
             <view class="user">
-                <image src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1589977977607&di=bce429ad4d090a03347c789ff7e0ed7f&imgtype=0&src=http%3A%2F%2Fa3.att.hudong.com%2F14%2F75%2F01300000164186121366756803686.jpg" class="user_img"></image>
-                <text class="user_name">The xin</text>
+                <!-- <image src="" class="user_img"></image> -->
+                <open-data type="userAvatarUrl"  class="user_img" default-avatar=""></open-data>
+                <open-data type="userNickName"  class="user_name" defualt-text=""></open-data>
+                <!-- <text class="user_name">The xin</text> -->
             </view>
             <view wx:for="{{foodList}}" wx:key="index" class="food_item">
                 <text class="food_name">{{item}}</text>
@@ -46,7 +60,7 @@
         <text class="icon_before">*</text>
         <text class="icon">刷</text>
         <text class="price" selectable="false" space="false" decode="false">
-            ￥{{0.00}}
+            ￥{{totalPrice}}
             <!-- 要做保留小数处理 -->
         </text>
         <navigator class="confirm" target="" url="" hover-class="navigator-hover" open-type="navigate">
