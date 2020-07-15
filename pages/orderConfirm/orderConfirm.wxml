@@ -43,16 +43,30 @@
                 <open-data type="userNickName"  class="user_name" defualt-text=""></open-data>
                 <!-- <text class="user_name">The xin</text> -->
             </view>
-            <view wx:for="{{foodList}}" wx:key="index" class="food_item">
-                <text class="food_name">{{item}}</text>
-                <text class="food_price">￥0.10</text>
-                <navigator class="reduce_nav">
-                    <text class="reduce">-</text>
-                </navigator>
-                <text class="food_number">111</text>
-                <navigator class="plus_nav">
-                    <text class="plus">+</text>
-                </navigator>
+            <view class="content_wrap">
+                <view class="cart_content_zero" wx:if="{{totalPrice==0}}">购物车空空如也</view>
+                <view class="cart_content_foodItem" wx:for="{{orders}}" wx:key="index">
+                    <view class="cart_content_foodItem_name">{{item.name}}</view>
+                    <view wx:if="{{item.property[0]||item.specs!=''}}" class="cart_property_before">(</view>
+                    <text class="cart_content_foodItem_property" wx:for="{{item.property}}" 
+                        wx:for-item="inItem" wx:key="inIndex" wx:for-index="inIndex"
+                        decode="{{true}}" space="{{true}}">{{inItem}}<text wx:if="{{inIndex!=item.property.length-1||item.specs!=''}}" decode="{{true}}" space="{{true}}">&ensp;</text>
+                    </text>
+                    <view class="cart_content_foodItem_spec">{{item.specs}}</view>
+                    <view wx:if="{{item.property[0]||item.specs!=''}}" class="cart_property_before">)</view>
+                    <view class="cart_modal_change_wrap">
+                        <view class="cart_modal_price_one_wrap">
+                            <text class="cart_modal_price_one">￥{{item.price*item.num}}</text>
+                        </view>
+                        <view hover-class="reduceHover" class="cart_modal_reduce" bindtap="cartReduce" data-cartTouchFood="{{item}}">
+                            -
+                        </view>
+                        <text class="cart_modal_number">{{item.num}}</text>
+                        <view hover-class="plusHover" class="cart_modal_plus" bindtap="cartPlus" data-cartTouchFood="{{item}}">
+                            +
+                        </view>
+                    </view>
+                </view>
             </view>
         </view>
     </view>

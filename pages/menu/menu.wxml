@@ -177,11 +177,11 @@
                     <view class="cart_modal_price_one_wrap">
                         <text class="cart_modal_price_one">￥{{item.price*item.num}}</text>
                     </view>
-                    <view hover-class="reduceHover" class="cart_modal_reduce" bindtap="cartReduce" data-index="{{cartReduce}}" data-cartTouchFood="{{item}}">
+                    <view hover-class="reduceHover" class="cart_modal_reduce" bindtap="cartReduce" data-cartTouchFood="{{item}}">
                         -
                     </view>
                     <text class="cart_modal_number">{{item.num}}</text>
-                    <view hover-class="plusHover" class="cart_modal_plus" bindtap="cartPlus" data-index="{{cartPlus}}" data-cartTouchFood="{{item}}">
+                    <view hover-class="plusHover" class="cart_modal_plus" bindtap="cartPlus" data-cartTouchFood="{{item}}">
                         +
                     </view>
                 </view>
