@@ -285,22 +285,26 @@ Page({
     this.countTotalPrice();
     this.countTotalNum();
     //请求要携带openid
-    wx.request({
-      url: app.data.realUrl + '/wechat/loggedIn/getTabNameAndTabTypeName',
-      data: {
-        openid: app.data.openid,
-        table: app.data.table
-      },
-      method: 'POST',
-      success(resMy) {
-        var tableName2 = resMy.data.tableName;
-        var tabTypeName2 = resMy.data.tabTypeName;
-        that.setData({
-          tableName: tableName2,
-          tabTypeName: tabTypeName2
-        });
-      }
-    });
+    if(app.data.tableName==''||app.data.tabTypeName=='') {
+      wx.request({
+        url: app.data.realUrl + '/wechat/loggedIn/getTabNameAndTabTypeName',
+        data: {
+          openid: app.data.openid,
+          table: app.data.table
+        },
+        method: 'POST',
+        success(resMy) {
+          var tableName2 = resMy.data.tableName;
+          var tabTypeName2 = resMy.data.tabTypeName;
+          that.setData({
+            tableName: tableName2,
+            tabTypeName: tabTypeName2
+          });
+          app.data.tableName = tableName2;
+          app.data.tabTypeName = tabTypeName2;
+        }
+      });
+    }
   },
 
   /**

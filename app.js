@@ -16,7 +16,10 @@ App({
     menuForNum: [],
     typeForNum: [],
     orders: [],
-    totalPrice: 0
+    totalPrice: 0,
+
+    tableName: '',
+    tabTypeName: ''
   },
   
   /**
