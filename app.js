@@ -19,7 +19,8 @@ App({
     totalPrice: 0,
 
     tableName: '',
-    tabTypeName: ''
+    tabTypeName: '',
+    remark: ''
   },
   
   /**

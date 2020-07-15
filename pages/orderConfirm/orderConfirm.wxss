@@ -338,3 +338,7 @@ page{
 .reduceHover{
     color: #B8726A;
 }
+.confirm-hover{
+    background-color: #eeeeee;
+    color: #FF5140;
+}

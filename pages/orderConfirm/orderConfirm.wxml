@@ -29,7 +29,7 @@
             <label class="remark_label">
                 备注
             </label>
-            <input class="remark_content" placeholder="口味、偏好等要求"></input>
+            <input class="remark_content" placeholder="口味、偏好等要求" bindinput="getInputValue" value="{{remark}}"></input>
         </view>
         <view class="total">
             <text class="total_label">总计</text>
@@ -77,8 +77,8 @@
             ￥{{totalPrice}}
             <!-- 要做保留小数处理 -->
         </text>
-        <navigator class="confirm" target="" url="" hover-class="navigator-hover" open-type="navigate">
+        <view class="confirm" hover-class="confirm-hover" bindtap="touchConfirm">
             下单
-        </navigator>
+        </view>
     </view>
 </view>

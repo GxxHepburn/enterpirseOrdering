@@ -18,7 +18,41 @@ Page({
 
     orders: [],
     userImage: '',
-    userNickName: ''
+    userNickName: '',
+    remark: ''
+  },
+  //下单-下单后要更新menu（销量）
+  touchConfim: function() {
+    //发送请求，下单。
+    //如果正常下单
+      //传递给已下单order
+      //原来的order，menufornum全部清空
+      //更新menu（销量）
+    var app = getApp();
+    wx.request({
+      url: app.data.realUrl + "/wechat/order",
+      method: 'POST',
+      data: {
+        openid: app.data.openid,
+        orders: this.data.orders,
+        totalNum: this.data.totalNum,
+        totalPrice: this.data.totalPrice,
+        mid: app.data.res,
+        tid: app.data.table,
+        remark: this.data.remark
+      },
+      success(resMy) {
+        console.log(resMy);
+      }
+    });
+  },
+  //获取备注
+  getInputValue: function(e) {
+    this.setData({
+      remark: e.detail.value
+    });
+    var app = getApp();
+    app.data.remark = this.data.remark;
   },
   //转化成购物车中的食品结构
   menuForNumFood2realFood: function(outIndex, index, inIndex) {
@@ -280,7 +314,8 @@ Page({
     this.setData({
       numberOfDiners: app.data.numberOfDiners,
       menuForNum: app.data.menuForNum,
-      orders: app.data.orders
+      orders: app.data.orders,
+      remark: app.data.remark
     });
     this.countTotalPrice();
     this.countTotalNum();
