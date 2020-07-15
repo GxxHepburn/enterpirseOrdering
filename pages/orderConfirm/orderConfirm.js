@@ -304,6 +304,11 @@ Page({
           app.data.tabTypeName = tabTypeName2;
         }
       });
+    } else {
+      this.setData({
+        tabTypeName: app.data.tabTypeName,
+        tableName: app.data.tableName
+      })
     }
   },
 
