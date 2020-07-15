@@ -22,7 +22,7 @@ Page({
     remark: ''
   },
   //下单-下单后要更新menu（销量）
-  touchConfim: function() {
+  touchConfirm: function() {
     //发送请求，下单。
     //如果正常下单
       //传递给已下单order
@@ -30,7 +30,7 @@ Page({
       //更新menu（销量）
     var app = getApp();
     wx.request({
-      url: app.data.realUrl + "/wechat/order",
+      url: app.data.realUrl + "/wechat/loggedIn/order",
       method: 'POST',
       data: {
         openid: app.data.openid,
