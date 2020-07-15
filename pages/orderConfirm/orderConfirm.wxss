@@ -271,10 +271,12 @@ page{
 }
 
 .cart_content_zero{
-    padding-left: 120rpx;
+    margin-left: 30rpx;
+    padding-left: 90rpx;
     height: 80rpx;
     line-height: 70rpx;
     font-size: 35rpx;
+    border-top: solid 1rpx #eeeeee;
 }
 .cart_content_foodItem{
     display: flex;
