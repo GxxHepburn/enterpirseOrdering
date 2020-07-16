@@ -29,7 +29,7 @@
             <label class="remark_label">
                 备注
             </label>
-            <input class="remark_content" placeholder="口味、偏好等要求" bindinput="getInputValue" value="{{remark}}"></input>
+            <input class="remark_content" placeholder="口味、偏好等要求" bindinput="getInputValue" value="{{remark}}" maxlength="255"></input>
         </view>
         <view class="total">
             <text class="total_label">总计</text>
