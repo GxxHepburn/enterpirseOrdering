@@ -55,10 +55,16 @@ Page({
           for(var i=0; i<that.data.orders.length; i++) {
             app.data.alreadyOrders.push(that.data.orders[i]);
           }
+          app.data.totalPrice = 0;
+          app.data.remark = '';
           that.setData({
-            orders: []
+            orders: [],
+            totalNum: 0,
+            totalPrice: 0,
+            remark: ''
           });
           app.data.menuForNum = [];
+          //跳转到下单成功界面
         }
       }
     });
