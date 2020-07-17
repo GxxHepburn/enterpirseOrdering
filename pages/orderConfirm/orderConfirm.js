@@ -27,8 +27,9 @@ Page({
     //如果正常下单
       //传递给已下单order
       //原来的order，menufornum全部清空
-      //更新menu（销量）
+      //更新menu（销量,库存）---------------------------------要不要在下单service中返回menu
     var app = getApp();
+    let that = this;
     wx.request({
       url: app.data.realUrl + "/wechat/loggedIn/order",
       method: 'POST',
@@ -42,7 +43,23 @@ Page({
         remark: this.data.remark
       },
       success(resMy) {
-        console.log(resMy);
+        if(resMy.data==0) {
+          //错误,报错，提示联系管理员
+          wx.showToast({
+            title: '未知错误，请联系管理员',
+            icon: 'none',
+            duration: 3500
+          });
+        } else {
+          app.data.menu = resMy.data.menu;
+          for(var i=0; i<that.data.orders.length; i++) {
+            app.data.alreadyOrders.push(that.data.orders[i]);
+          }
+          that.setData({
+            orders: []
+          });
+          app.data.menuForNum = [];
+        }
       }
     });
   },

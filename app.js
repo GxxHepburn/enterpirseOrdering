@@ -20,7 +20,9 @@ App({
 
     tableName: '',
     tabTypeName: '',
-    remark: ''
+    remark: '',
+
+    alreadyOrders: [],
   },
   
   /**

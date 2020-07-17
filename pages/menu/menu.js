@@ -763,16 +763,19 @@ Page({
   onShow: function () {
     //先判断app中是否已经有订单详情
     var app = getApp();
+    this.setData({
+      menu: app.data.menu
+    });
     if(app.data.menuForNum.length==0) {
       //初始化点菜数组和菜单类总点菜数目数组
       this.resetMenuAndTypeFormNum();
     } else {
       this.setData({
         menuForNum: app.data.menuForNum,
-        typeForNum: app.data.typeForNum
+        typeForNum: app.data.typeForNum,
       });
-      this.countTotalPrice();
     }
+    this.countTotalPrice();
   },
 
   /**
