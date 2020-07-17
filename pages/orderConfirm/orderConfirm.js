@@ -51,6 +51,10 @@ Page({
             duration: 3500
           });
         } else {
+          //跳转到下单成功界面
+          wx.reLaunch({
+            url: '../../pages/success/success'
+          });
           app.data.menu = resMy.data.menu;
           for(var i=0; i<that.data.orders.length; i++) {
             app.data.alreadyOrders.push(that.data.orders[i]);
@@ -64,7 +68,6 @@ Page({
             remark: ''
           });
           app.data.menuForNum = [];
-          //跳转到下单成功界面
         }
       }
     });
