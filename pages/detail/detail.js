@@ -17,10 +17,14 @@ Page({
     payStatus: '未支付',
     remark: ''
   },
+  touchAdd: function() {
+    wx.navigateTo({
+      url: '../../pages/menu/menu',
+    });
+  },
   //计算总价
   countTotalPrice: function() {
     var totalPrice2 = 0;
-    console.log(this.data.alreadyOrders);
     for(var i=0; i<this.data.alreadyOrders.length; i++) {
       totalPrice2 += this.data.alreadyOrders[i].num * this.data.alreadyOrders[i].price;
     }
@@ -33,6 +37,8 @@ Page({
    */
   onLoad: function (options) {
     var app = getApp();
+    console.log("detail.js: ");
+    console.log(app.data.menuForNum);
     this.setData({
       alreadyOrders: app.data.alreadyOrders,
       orderSearchId: app.data.orderSearchId,

@@ -209,3 +209,11 @@
     font-size: 25rpx;
     color: #7a7a7a;
 }
+.cart_pay_hover{
+    background-color: #eeeeee;
+    color: #FF5140;
+}
+.cart_add_hover{
+    background-color: #eeeeee;
+    color: #FF8041;
+}

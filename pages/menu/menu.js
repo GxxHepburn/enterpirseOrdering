@@ -735,7 +735,9 @@ Page({
       top: top2
     });
 
-    
+    console.log("menu.js: ");
+    console.log(app.data.menuForNum);
+    console.log("咋回事");
     //先判断app中是否已经有订单详情
     if(app.data.menuForNum.length==0) {
       //初始化点菜数组和菜单类总点菜数目数组
@@ -791,9 +793,12 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
+    
     var app = getApp();
-    app.data.menuForNum = this.data.menuForNum;
-    app.data.typeForNum = this.data.typeForNum;
+    if(app.data.menuForNum.length!=0) {
+      app.data.menuForNum = this.data.menuForNum;
+      app.data.typeForNum = this.data.typeForNum;
+    }
   },
 
   /**

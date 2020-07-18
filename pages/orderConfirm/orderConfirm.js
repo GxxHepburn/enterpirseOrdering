@@ -51,10 +51,7 @@ Page({
             duration: 3500
           });
         } else {
-          //跳转到下单成功界面
-          wx.reLaunch({
-            url: '../../pages/success/success'
-          });
+          
           var orderTime2 = new Date();
           app.data.menu = resMy.data.menu;
           app.data.orderSearchId = resMy.data.orderSearchId;
@@ -62,13 +59,14 @@ Page({
           for(var i=0; i<that.data.orders.length; i++) {
             app.data.alreadyOrders.push(that.data.orders[i]);
           }
-          app.data.totalPrice = 0;
-          that.setData({
-            orders: [],
-            totalNum: 0,
-            totalPrice: 0,
+          app.data.totalPrice=0;
+          app.data.menuForNum=[];
+          console.log("orderConfirm.js: ");
+          console.log(app.data.menuForNum);
+          //跳转到下单成功界面
+          wx.reLaunch({
+            url: '../../pages/success/success'
           });
-          app.data.menuForNum = [];
         }
       }
     });

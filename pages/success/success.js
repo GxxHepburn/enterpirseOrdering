@@ -23,6 +23,9 @@ Page({
    */
   onLoad: function (options) {
     let that = this;
+    var app = getApp();
+    console.log("success.js: ");
+    console.log(app.data.menuForNum);
     var timeName = setInterval(() => {
       var openTime2 = that.data.openTime - 1;
       that.setData({

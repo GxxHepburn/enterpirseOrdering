@@ -15,9 +15,9 @@
   </view>
   <!-- 下部 -->
   <view class="choose_button_wrap">
-    <navigator class="choose_button {{touch>0?'choosed':''}}"
+    <view class="choose_button {{touch>0?'choosed':''}}"
       catchtap="startOrdering">
       开始点菜
-    </navigator>
+    </view>
   </view>
 </view>

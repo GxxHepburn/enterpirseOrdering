@@ -69,11 +69,11 @@
             ￥{{totalPrice}}
             <!-- 要做保留小数处理 -->
         </text>
-        <navigator class="cart_add">
+        <view class="cart_add" hover-class="cart_add_hover" bindtap="touchAdd">
             加菜
-        </navigator>
-        <navigator class="cart_pay">
+        </view>
+        <view class="cart_pay" hover-class="cart_pay_hover">
             支付
-        </navigator>
+        </view>
     </view>
 </view>
