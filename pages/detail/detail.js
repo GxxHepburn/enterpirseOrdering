@@ -8,7 +8,14 @@ Page({
     orderTotal:{number:10, price: 10.1},
     alreadyOrders: [],
     totalPrice: 0,
-    orderSearchId: ''
+    orderSearchId: '',
+    orderTime: '',
+    tableName: '',
+    tabTypeName: '',
+
+    payMethod: '无',
+    payStatus: '未支付',
+    remark: ''
   },
   //计算总价
   countTotalPrice: function() {
@@ -28,7 +35,11 @@ Page({
     var app = getApp();
     this.setData({
       alreadyOrders: app.data.alreadyOrders,
-      orderSearchId: app.data.orderSearchId
+      orderSearchId: app.data.orderSearchId,
+      orderTime: app.data.orderTime,
+      tableName: app.data.tableName,
+      tabTypeName: app.data.tabTypeName,
+      remark: app.data.remark
     });
     this.countTotalPrice();
   },

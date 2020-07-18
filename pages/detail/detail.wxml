@@ -23,7 +23,14 @@
             <view class="order_item" wx:for="{{alreadyOrders}}" wx:key="index">
                 <label class="order_item_name">{{item.name}}</label>
                 <label class="order_item_number">×{{item.num}}</label>
-                <label class="order_item_price">￥{{item.price}}</label>
+                <label wx:if="{{item.property[0]||item.specs!=''}}" class="cart_property_before">(</label>
+                <text class="cart_content_foodItem_property" wx:for="{{item.property}}" 
+                    wx:for-item="inItem" wx:key="inIndex" wx:for-index="inIndex"
+                    decode="{{true}}" space="{{true}}">{{inItem}}<text wx:if="{{inIndex!=item.property.length-1||item.specs!=''}}" decode="{{true}}" space="{{true}}">&ensp;</text>
+                </text>
+                <label class="cart_content_foodItem_spec">{{item.specs}}</label>
+                <label wx:if="{{item.property[0]||item.specs!=''}}" class="cart_property_before">)</label>
+                <label class="order_item_price">￥{{item.price*item.num}}</label>
             </view>
             <view class="total">
                 <label class="total_label">合计</label>
@@ -33,25 +40,24 @@
         <view class="info_wrap">
             <view class="time_wrap">
                 <label class="time_label">点单时间</label>
-                <label class="time">2020-05-19 02:51</label>
+                <label class="time">{{orderTime}}</label>
             </view>
             <view class="table_wrap">
                 <label class="table_label">桌台</label>
-                <label class="table">大厅-701-1</label>
+                <label class="table">{{tabTypeName}}-{{tableName}}</label>
             </view>
             <view class="pay_wrap">
                 <label class="pay_label">支付方式</label>
-                <label class="pay">无</label>
+                <label class="pay">{{payMethod}}</label>
             </view>
             <view class="state_wrap">
                 <label class="state_label">支付状态</label>
-                <label class="state">未支付</label>
+                <label class="state">{{payStatus}}</label>
             </view>
             <view class="remark_wrap">
                 <label class="remark_label">备注</label>
-                <label class="remark">无无无无无无无无无无无无无无
-                    中国静安寺覅来评价阿斯利康房价ask两地分居啊
-                    撒法罗斯放假啊凯撒警方打赏
+                <label class="remark">
+                    {{remark}}
                 </label>
             </view>
         </view>

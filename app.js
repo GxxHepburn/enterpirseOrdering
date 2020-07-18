@@ -23,7 +23,8 @@ App({
     remark: '',
 
     alreadyOrders: [],
-    orderSearchId: ''
+    orderSearchId: '',
+    orderTime: ''
   },
   
   /**

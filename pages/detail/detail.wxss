@@ -90,8 +90,6 @@
     position: relative;
 }
 .order_number_label, .order_item_name, .total_label{
-    position: absolute;
-    left: 0;
     color: #3c3c3c;
 }
 .order_number_content, .order_item_price, .total_price{
@@ -183,7 +181,7 @@
     bottom: 11.5rpx;
     left: 29.2rpx;
     font-size: 40.6rpx;
-    color: #ffffff;
+    color: #777777;
 }
 .icon_before{
     position: fixed;
@@ -201,6 +199,13 @@
     left: 150rpx;
     color: #ffffff;
     bottom: 0;
-    font-size: 43.3rpx;
-    font-weight: lighter;
+    font-size: 41.3rpx;
+}
+.cart_property_before{
+    color: #7a7a7a;
+    font-size: 25rpx;
+}
+.cart_content_foodItem_property, .cart_content_foodItem_spec{
+    font-size: 25rpx;
+    color: #7a7a7a;
 }

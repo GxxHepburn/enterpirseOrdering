@@ -55,18 +55,18 @@ Page({
           wx.reLaunch({
             url: '../../pages/success/success'
           });
+          var orderTime2 = new Date();
           app.data.menu = resMy.data.menu;
           app.data.orderSearchId = resMy.data.orderSearchId;
+          app.data.orderTime = orderTime2.toLocaleString();
           for(var i=0; i<that.data.orders.length; i++) {
             app.data.alreadyOrders.push(that.data.orders[i]);
           }
           app.data.totalPrice = 0;
-          app.data.remark = '';
           that.setData({
             orders: [],
             totalNum: 0,
             totalPrice: 0,
-            remark: ''
           });
           app.data.menuForNum = [];
         }
