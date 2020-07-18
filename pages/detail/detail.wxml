@@ -18,17 +18,16 @@
         <view class="order_wrap">
             <view class="order_numer">
                 <label class="order_number_label">订单号</label>
-                <label class="order_number_content">B1202005190005</label>
+                <label class="order_number_content">{{orderSearchId}}</label>
             </view>
-            <view class="order_item" wx:for="{{orderList}}" wx:key="index">
+            <view class="order_item" wx:for="{{alreadyOrders}}" wx:key="index">
                 <label class="order_item_name">{{item.name}}</label>
-                <label class="order_item_number">{{item.number}}{{item.operator}}</label>
+                <label class="order_item_number">×{{item.num}}</label>
                 <label class="order_item_price">￥{{item.price}}</label>
             </view>
             <view class="total">
                 <label class="total_label">合计</label>
-                <label class="total_number">{{orderTotal.number}}份</label>
-                <label class="total_price">￥{{orderTotal.price}}</label>
+                <label class="total_price">￥{{totalPrice}}</label>
             </view>
         </view>
         <view class="info_wrap">
@@ -61,7 +60,7 @@
         <text class="icon_before">*</text>
         <text class="icon">服</text>
         <text class="price" selectable="false" space="false" decode="false">
-            ￥{{0.00}}
+            ￥{{totalPrice}}
             <!-- 要做保留小数处理 -->
         </text>
         <navigator class="cart_add">

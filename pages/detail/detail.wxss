@@ -104,6 +104,9 @@
     right: 200rpx;
     color: #888888;
 }
+.order_number_content{
+    font-size: 25rpx;
+}
 .top_wrap{
     margin-bottom: 90.7rpx;
 }

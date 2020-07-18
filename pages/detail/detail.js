@@ -5,18 +5,32 @@ Page({
    * 页面的初始数据
    */
   data: {
-    orderList:[{name:"脉动", number:1, operator:"瓶", price: 0.10},{name:"脉动", number:1, operator:"瓶", price: 0.10},
-    {name:"脉动", number:1, operator:"瓶", price: 11110.10},{name:"脉动", number:1, operator:"瓶", price: 0.10},
-    {name:"脉动", number:1, operator:"瓶", price: 0.10},{name:"脉动", number:1, operator:"瓶", price: 0.10},
-    {name:"脉动", number:1, operator:"瓶", price: 0.10},{name:"脉动", number:1, operator:"瓶", price: 0.10}],
-    orderTotal:{number:10, price: 10.1}
+    orderTotal:{number:10, price: 10.1},
+    alreadyOrders: [],
+    totalPrice: 0,
+    orderSearchId: ''
   },
-
+  //计算总价
+  countTotalPrice: function() {
+    var totalPrice2 = 0;
+    console.log(this.data.alreadyOrders);
+    for(var i=0; i<this.data.alreadyOrders.length; i++) {
+      totalPrice2 += this.data.alreadyOrders[i].num * this.data.alreadyOrders[i].price;
+    }
+    this.setData({
+      totalPrice: totalPrice2
+    });
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    var app = getApp();
+    this.setData({
+      alreadyOrders: app.data.alreadyOrders,
+      orderSearchId: app.data.orderSearchId
+    });
+    this.countTotalPrice();
   },
 
   /**

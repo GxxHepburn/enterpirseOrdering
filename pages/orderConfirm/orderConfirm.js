@@ -56,6 +56,7 @@ Page({
             url: '../../pages/success/success'
           });
           app.data.menu = resMy.data.menu;
+          app.data.orderSearchId = resMy.data.orderSearchId;
           for(var i=0; i<that.data.orders.length; i++) {
             app.data.alreadyOrders.push(that.data.orders[i]);
           }

@@ -46,6 +46,7 @@ page{
 {
     color: #fff;
     background-color: #ff5140;
+    border: solid 1rpx #ff5140;
 }
 .button_order_detail{
     border: solid 1rpx #c6c6c6;
@@ -58,4 +59,14 @@ page{
     width: 100%;
     color: #8c8c8c;
     font-size: 27rpx;
+}
+.button_add_hover{
+    border: solid 1rpx #eeeeee;
+    background-color: #ffffff;
+    color: #ff5140;
+}
+.button_order_detail_hover{
+    color: #fff;
+    background-color: #ff5140;
+    border: solid 1rpx #ff5140;
 }
