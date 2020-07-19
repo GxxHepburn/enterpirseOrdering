@@ -26,7 +26,7 @@ Page({
 
     cartModalStatus: false,
 
-    orders: []
+    orders: [],
   },
   //选好了按钮
   touchConfirm: function() {
@@ -39,12 +39,18 @@ Page({
       });
       return;
     }
-    this.createOrders();
     var app = getApp();
+    this.createOrders();
     app.data.orders = this.data.orders;
-    wx.navigateTo({
-      url: '../../pages/orderConfirm/orderConfirm'
-    });
+    if(app.data.isAdd) {
+      wx.navigateTo({
+        url: '../../pages/add/add',
+      })
+    } else {
+      wx.navigateTo({
+        url: '../../pages/orderConfirm/orderConfirm'
+      });
+    }
   },
   //购物车 加菜
   cartPlus: function(item) {

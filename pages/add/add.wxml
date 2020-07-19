@@ -1,0 +1,73 @@
+<view class="main">
+    <view class="top_wrap">
+        <view class="caution_wrap">
+            <view class="caution_top">加菜确认</view>
+            <view class="caution_bottom">该桌台已有人下单，您点的菜品将作为加菜请</view>
+            <view class="caution_bottom">求至厨房，请确认是否提交？</view>
+        </view>
+        <view class="foods_wrap">
+            <view class="user">
+                <!-- <image src="" class="user_img"></image> -->
+                <open-data type="userAvatarUrl"  class="user_img" default-avatar=""></open-data>
+                <open-data type="userNickName"  class="user_name" defualt-text=""></open-data>
+                <!-- <text class="user_name">The xin</text> -->
+            </view>
+            <view class="content_wrap">
+                <view class="cart_content_zero" wx:if="{{totalPrice==0}}">购物车空空如也</view>
+                <view class="cart_content_foodItem" wx:for="{{orders}}" wx:key="index">
+                    <view class="cart_content_foodItem_name">{{item.name}}</view>
+                    <view wx:if="{{item.property[0]||item.specs!=''}}" class="cart_property_before">(</view>
+                    <text class="cart_content_foodItem_property" wx:for="{{item.property}}" 
+                        wx:for-item="inItem" wx:key="inIndex" wx:for-index="inIndex"
+                        decode="{{true}}" space="{{true}}">{{inItem}}<text wx:if="{{inIndex!=item.property.length-1||item.specs!=''}}" decode="{{true}}" space="{{true}}">&ensp;</text>
+                    </text>
+                    <view class="cart_content_foodItem_spec">{{item.specs}}</view>
+                    <view wx:if="{{item.property[0]||item.specs!=''}}" class="cart_property_before">)</view>
+                    <view class="cart_modal_change_wrap">
+                        <view class="cart_modal_price_one_wrap">
+                            <text class="cart_modal_price_one">￥{{item.price*item.num}}</text>
+                        </view>
+                        <view hover-class="reduceHover" class="cart_modal_reduce" bindtap="cartReduce" data-cartTouchFood="{{item}}">
+                            -
+                        </view>
+                        <text class="cart_modal_number">{{item.num}}</text>
+                        <view hover-class="plusHover" class="cart_modal_plus" bindtap="cartPlus" data-cartTouchFood="{{item}}">
+                            +
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="order_wrap">
+            <view class="total">
+                <text class="total_label">已点菜清单</text>
+                <text class="total_number"> 共{{alreadyTotleNum}}份 </text>
+                <text class="total_small">总计</text>
+                <text class="total_price"> ￥{{alreadyTotalPrice}}</text>
+            </view>
+            <view class="order_item" wx:for="{{alreadyOrders}}" wx:key="index">
+                <label class="order_item_name">{{item.name}}</label>
+                <label class="order_item_number">×{{item.num}}</label>
+                <label wx:if="{{item.property[0]||item.specs!=''}}" class="cart_property_before">(</label>
+                <text class="cart_content_foodItem_property" wx:for="{{item.property}}" 
+                    wx:for-item="inItem" wx:key="inIndex" wx:for-index="inIndex"
+                    decode="{{true}}" space="{{true}}">{{inItem}}<text wx:if="{{inIndex!=item.property.length-1||item.specs!=''}}" decode="{{true}}" space="{{true}}">&ensp;</text>
+                </text>
+                <label class="cart_content_foodItem_spec">{{item.specs}}</label>
+                <label wx:if="{{item.property[0]||item.specs!=''}}" class="cart_property_before">)</label>
+                <label class="order_item_price">￥{{item.price*item.num}}</label>
+            </view>
+        </view>
+    </view>
+    <view class="cart_wrap">
+        <text class="icon_before">*</text>
+        <text class="icon">刷</text>
+        <text class="price" selectable="false" space="false" decode="false">
+            ￥{{totalPrice}}
+            <!-- 要做保留小数处理 -->
+        </text>
+        <view class="confirm" hover-class="confirm-hover" bindtap="touchConfirm">
+            下单
+        </view>
+    </view>
+</view>

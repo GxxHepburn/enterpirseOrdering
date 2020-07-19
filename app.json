@@ -6,6 +6,7 @@
     "pages/detail/detail",
     "pages/success/success",
     "pages/orderConfirm/orderConfirm",
+    "pages/add/add",
     "pages/test/test"
   ],
   "window": {

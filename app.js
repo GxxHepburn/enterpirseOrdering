@@ -24,7 +24,8 @@ App({
 
     alreadyOrders: [],
     orderSearchId: '',
-    orderTime: ''
+    orderTime: '',
+    isAdd: false
   },
   
   /**

@@ -18,6 +18,8 @@ Page({
     remark: ''
   },
   touchAdd: function() {
+    var app = getApp();
+    app.data.isAdd = true;
     wx.navigateTo({
       url: '../../pages/menu/menu',
     });

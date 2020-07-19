@@ -5,7 +5,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    foodList:["脉动","脉动","脉动","脉动","脉动","脉动","脉动","脉动","脉动","脉动","脉动","脉动"],
     numberOfDiners: -1,
     tabTypeName: "",
     tableName: "",
@@ -17,8 +16,6 @@ Page({
     menuForNum: [],
 
     orders: [],
-    userImage: '',
-    userNickName: '',
     remark: ''
   },
   //下单-下单后要更新menu（销量）
@@ -53,9 +50,16 @@ Page({
         } else {
           
           var orderTime2 = new Date();
+          var year = orderTime2.getFullYear();
+          var month = orderTime2.getMonth() + 1;
+          var day = orderTime2.getDate();
+          var hour = orderTime2.getHours();
+          var minute = orderTime2.getMinutes();
+          var second = orderTime2.getSeconds();
+
           app.data.menu = resMy.data.menu;
           app.data.orderSearchId = resMy.data.orderSearchId;
-          app.data.orderTime = orderTime2.toLocaleString();
+          app.data.orderTime = '' + year + '-' + month + '-' + day + ' ' + hour + ':' + minute + ':' + second;
           for(var i=0; i<that.data.orders.length; i++) {
             app.data.alreadyOrders.push(that.data.orders[i]);
           }
@@ -245,7 +249,7 @@ Page({
       return false;
     }
   },
-  //计算总数量
+  //计算总价
   countTotalPrice: function () {
     var totalPrice2 = 0;
     for(var i=0; i<this.data.menuForNum.length; i++) {
@@ -265,7 +269,7 @@ Page({
       totalPrice: totalPrice2
     });
   },
-  //计算总价
+  //计算总数量
   countTotalNum: function() {
     var totalNum2 = 0;
     for(var i=0; i<this.data.menuForNum.length; i++) {
