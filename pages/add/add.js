@@ -14,7 +14,44 @@ Page({
     alreadyOrders: [],
     alreadyTotalPrice: 0
   },
-
+  //下单
+  touchConfirm: function() {
+    var app = getApp();
+    let that = this;
+    wx.request({
+      url: app.data.realUrl + "/wechat/loggedIn/add",
+      method: 'POST',
+      data: {
+        openid: app.data.openid,
+        orders: this.data.orders,
+        totalNum: this.data.totalNum,
+        totalPrice: this.data.totalPrice,
+        mid: app.data.res,
+        tid: app.data.table,
+        orderSearchId: app.data.orderSearchId
+      },
+      success(resMy) {
+        if(resMy.data==0) {
+          //错误,报错，提示联系管理员
+          wx.showToast({
+            title: '未知错误，请联系管理员',
+            icon: 'none',
+            duration: 3500
+          });
+        } else {
+          app.data.menu = resMy.data.menu;
+          for(var i=0; i<that.data.orders.length; i++) {
+            app.data.alreadyOrders.push(that.data.orders[i]);
+          }
+          app.data.totalPrice=0;
+          app.data.menuForNum=[];
+          wx.reLaunch({
+            url: '../../pages/success/success'
+          });
+        }
+      }
+    });
+  },
   //购物车 加菜
   cartPlus: function(item) {
     var cartTouchFood2 = item.currentTarget.dataset.carttouchfood;
