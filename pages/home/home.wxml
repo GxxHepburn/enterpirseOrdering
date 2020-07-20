@@ -1,2 +1,14 @@
-<!--pages/home/home.wxml-->
-<text>pages/home/home.wxml</text>
+<view class="main">
+    <view class="top">
+        <view class="nowOrder">当前</view>
+        <view class="finishied">已完成</view>
+        <view class="returnSome">退款</view>
+        <view class="top_all">全部</view>
+    </view>
+    <view class="order_wrap" wx:for="{{ordersList}}">
+        <view class="orderTime">{{item.orderTime}}</view>
+        <view class="orderSearchId">{{item.orderSearchId}}</view>
+        <view class="orderResName">{{item.orderResName}}</view>
+        <view class="orderInfo">{{item.orderInfo}}</view>
+    </view>
+</view>
