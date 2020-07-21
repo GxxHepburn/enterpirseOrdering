@@ -25,7 +25,9 @@ App({
     alreadyOrders: [],
     orderSearchId: '',
     orderTime: '',
-    isAdd: false
+    isAdd: false,
+
+    appPayStatus: false
   },
   
   /**

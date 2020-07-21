@@ -17,6 +17,43 @@ Page({
     payStatus: '未支付',
     remark: ''
   },
+  //付款按钮
+  pay: function() {
+    //检查支付状态如果未支付，
+    // var app = getApp();
+    // var appPayStatus2 = app.data.appPayStatus;
+    // if(!appPayStatus2) {
+    //   //那么进行支付,将payStatus设置为结束状态，relunch到home界面，清空所有数据。
+    //   app.data.appPayStatus = true;
+    //   wx.reLaunch({
+    //     url: '../../pages/home/home',
+    //   });
+    // } else {
+    //   //否则，提示订单完结，跳转到home界面，清空所有数据。
+    //   wx.reLaunch({
+    //     url: '../../pages/home/home',
+    //   });
+    // }
+    this.initApp();
+  },
+  //初始化app.js数据
+  initApp: function() {
+    var app = getApp();
+    // app.data.numberOfDiners = -1;
+    // app.data.res = "";
+    // app.data.table = "";
+    // app.data.inited = 0;
+    // app.data.menu = [];
+    // app.data.menuForNum = [];
+    // app.data.typeForNum = [];
+    // app.data.orders = [];
+    // app.data.totalPrice = [];
+    // app.data.tableName = [];
+    // app.data.tabTypeName = '';
+    // app.data.remark = '';
+    // app.data.alreadyOrders = [];
+    app.onLaunch();
+  },
   touchAdd: function() {
     var app = getApp();
     app.data.isAdd = true;

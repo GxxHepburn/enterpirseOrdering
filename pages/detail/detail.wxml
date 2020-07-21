@@ -72,7 +72,7 @@
         <view class="cart_add" hover-class="cart_add_hover" bindtap="touchAdd">
             加菜
         </view>
-        <view class="cart_pay" hover-class="cart_pay_hover">
+        <view class="cart_pay" hover-class="cart_pay_hover" bindtap="pay">
             支付
         </view>
     </view>
