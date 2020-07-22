@@ -71,8 +71,6 @@ App({
               if (resMy.statusCode == 200) {
                 that.data.loadStatus = true;
                 that.data.openid = resMy.data;
-                console.log("app.js_loadByTxServer: ");
-                console.log(that.data);
               }
             }
           })

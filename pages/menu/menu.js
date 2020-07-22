@@ -740,10 +740,6 @@ Page({
     this.setData({
       top: top2
     });
-
-    console.log("menu.js: ");
-    console.log(app.data.menuForNum);
-    console.log("咋回事");
     //先判断app中是否已经有订单详情
     if(app.data.menuForNum.length==0) {
       //初始化点菜数组和菜单类总点菜数目数组

@@ -34,7 +34,30 @@ Page({
     //     url: '../../pages/home/home',
     //   });
     // }
-    this.initApp();
+    // this.initApp();
+
+    //测试支付
+    var app = getApp();
+    var openId2 = app.data.openid;
+    wx.request({
+      url: app.data.realUrl + "/wxpay/" + openId2,
+      method: 'POST',
+      success: function (resMy) {
+        wx.requestPayment({
+          'timeStamp': resMy.data.timeStamp,
+          'nonceStr': resMy.data.nonceStr,
+          'package': resMy.data.package,
+          'signType': resMy.data.signType,
+          'paySign': resMy.data.paySign,
+          'success': function(payRes) {
+            console.log('success: ' + payRes.errMsg);
+          },
+          'fail': function(payRes) {
+            console.log('fail: ' + payRes.errMsg);
+          }
+        });
+      }
+    })
   },
   //初始化app.js数据
   initApp: function() {
