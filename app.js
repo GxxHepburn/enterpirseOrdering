@@ -27,7 +27,7 @@ App({
     orderTime: '',
     isAdd: false,
 
-    appPayStatus: false
+    appPayStatus: false,
   },
   
   /**

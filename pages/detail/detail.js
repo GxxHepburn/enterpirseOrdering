@@ -17,26 +17,34 @@ Page({
     payStatus: '未支付',
     remark: ''
   },
-  //付款按钮
+
+  //商户付款付款按钮
   pay: function() {
     //检查支付状态如果未支付，
-    // var app = getApp();
-    // var appPayStatus2 = app.data.appPayStatus;
-    // if(!appPayStatus2) {
-    //   //那么进行支付,将payStatus设置为结束状态，relunch到home界面，清空所有数据。
-    //   app.data.appPayStatus = true;
-    //   wx.reLaunch({
-    //     url: '../../pages/home/home',
-    //   });
-    // } else {
-    //   //否则，提示订单完结，跳转到home界面，清空所有数据。
-    //   wx.reLaunch({
-    //     url: '../../pages/home/home',
-    //   });
-    // }
-    // this.initApp();
+    var app = getApp();
+    var appPayStatus2 = app.data.appPayStatus;
+    if(!appPayStatus2) {
+      //那么进行支付,将payStatus设置为结束状态.
+      this.realServicePay();
+      app.data.appPayStatus = true;
+    } else {
+      //否则，提示订单完结.
+      wx.showModal({
+        title: '提示',
+        content: '订单已经完结，请重新扫码下单',
+        showCancel: false,
+      })
+    }
+    //relunch到home界面，
+    wx.reLaunch({
+      url: '../../pages/home/home',
+    });
+    //清空所有数据。
+    this.initApp();   
+  },
 
-    //测试支付
+  //普通商户支付
+  realPay: function() {
     var app = getApp();
     var openId2 = app.data.openid;
     wx.request({
@@ -57,26 +65,63 @@ Page({
           }
         });
       }
-    })
+    });
   },
+
+  //服务商支付
+  realServicePay: function() {
+     var app = getApp();
+     var openId2 = app.data.openid;
+     console.log("serviceOpenID: ");
+     console.log(openId2);
+     wx.request({
+       url: app.data.realUrl + "/wxpay/pay/" + openId2,
+       method: 'POST',
+       data: {
+         searchId: "",
+         total_fee: this.data.totalPrice,
+       },
+       success: function (resMy) {
+         console.log(resMy);
+         wx.requestPayment({
+           'timeStamp': resMy.data.timeStamp,
+           'nonceStr': resMy.data.nonceStr,
+           'package': resMy.data.package,
+           'signType': resMy.data.signType,
+           'paySign': resMy.data.paySign,
+           'success': function(payRes) {
+             console.log('success: ' + payRes.errMsg);
+           },
+           'fail': function(payRes) {
+             console.log('fail: ' + payRes.errMsg);
+           }
+         });
+       }
+     });
+  },
+
   //初始化app.js数据
   initApp: function() {
     var app = getApp();
-    // app.data.numberOfDiners = -1;
-    // app.data.res = "";
-    // app.data.table = "";
-    // app.data.inited = 0;
-    // app.data.menu = [];
-    // app.data.menuForNum = [];
-    // app.data.typeForNum = [];
-    // app.data.orders = [];
-    // app.data.totalPrice = [];
-    // app.data.tableName = [];
-    // app.data.tabTypeName = '';
-    // app.data.remark = '';
-    // app.data.alreadyOrders = [];
-    app.onLaunch();
+    app.data.numberOfDiners = -1;
+    app.data.res = "";
+    app.data.table = "";
+    app.data.inited = 0;
+    app.data.menu = [];
+    app.data.menuForNum = [];
+    app.data.typeForNum = [];
+    app.data.orders = [];
+    app.data.totalPrice = [];
+    app.data.tableName = [];
+    app.data.tabTypeName = '';
+    app.data.remark = '';
+    app.data.alreadyOrders = [];
+    app.data.orderSearchId = '';
+    app.data.orderTime = '';
+    app.data.isAdd = false;
   },
+
+
   touchAdd: function() {
     var app = getApp();
     app.data.isAdd = true;
@@ -98,9 +143,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
     var app = getApp();
-    console.log("detail.js: ");
-    console.log(app.data.menuForNum);
     this.setData({
       alreadyOrders: app.data.alreadyOrders,
       orderSearchId: app.data.orderSearchId,
