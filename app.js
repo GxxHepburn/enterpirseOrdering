@@ -26,8 +26,6 @@ App({
     orderSearchId: '',
     orderTime: '',
     isAdd: false,
-
-    appPayStatus: false,
   },
   
   /**
