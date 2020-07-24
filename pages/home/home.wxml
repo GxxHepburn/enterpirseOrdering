@@ -1,14 +1,16 @@
 <view class="main">
     <view class="top">
-        <view class="nowOrder">当前</view>
-        <view class="finishied">已完成</view>
-        <view class="returnSome">退款</view>
-        <view class="top_all">全部</view>
+        <view class="nowOrder {{touchedOrderNum==1?'top_hover':''}}" bindtap="topTouch" data-index="1">未完成</view>
+        <view class="finishied {{touchedOrderNum==2?'top_hover':''}}" bindtap="topTouch" data-index="2">已完成</view>
+        <view class="returnSome {{touchedOrderNum==3?'top_hover':''}}" bindtap="topTouch" data-index="3">退款</view>
+        <view class="top_all {{touchedOrderNum==4?'top_hover':''}}" bindtap="topTouch" data-index="4">全部</view>
     </view>
-    <view class="order_wrap" wx:for="{{ordersList}}">
-        <view class="orderTime">{{item.orderTime}}</view>
-        <view class="orderSearchId">{{item.orderSearchId}}</view>
-        <view class="orderResName">{{item.orderResName}}</view>
-        <view class="orderInfo">{{item.orderInfo}}</view>
+    <view class="down_wrap">
+        <view class="order_wrap" wx:for="{{ordersList}}" wx:key="index">
+            <view class="orderTime">{{item.orderTime}}</view>
+            <view class="orderSearchId">{{item.orderSearchId}}</view>
+            <view class="orderResName">{{item.orderResName}}</view>
+            <view class="orderInfo">{{item.orderInfo}}</view>
+        </view>
     </view>
 </view>

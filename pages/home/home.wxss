@@ -1,1 +1,22 @@
-/* pages/home/home.wxss */
+page{
+  background: #EDEDED;
+}
+.main{
+  position: relative;
+  height: 100%;
+}
+.top{
+  display: flex;
+  background-color: #fff;
+  border-bottom: solid 1rpx #D7D7D7;
+  height: 85rpx;
+  line-height: 85rpx;
+  font-size: 26rpx;
+}
+.top view {
+  width: 25%;
+  text-align: center;
+}
+.top_hover{
+  color: #FF5140;
+}

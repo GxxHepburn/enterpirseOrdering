@@ -5,14 +5,48 @@ Page({
    * 页面的初始数据
    */
   data: {
+    ordersList: [],
+    nowOrder: [],
+    finishedOrder: [],
+    allOrder: [],
+    returnOrder: [],
 
+    touchedOrderNum: 1
   },
+  //头部选择时间
+  topTouch: function(e) {
+    this.setData({
+      touchedOrderNum: e.currentTarget.dataset.index
+    });
+  },
+  //初始化app.js数据
+  initApp: function() {
+    var app = getApp();
+    app.data.numberOfDiners = -1;
+    app.data.res = "";
+    app.data.table = "";
+    app.data.inited = 0;
+    app.data.menu = [];
+    app.data.menuForNum = [];
+    app.data.typeForNum = [];
+    app.data.orders = [];
+    app.data.totalPrice = [];
+    app.data.tableName = [];
+    app.data.tabTypeName = '';
+    app.data.remark = '';
+    app.data.alreadyOrders = [];
+    app.data.orderSearchId = '';
+    app.data.orderTime = '';
+    app.data.isAdd = false;
+  },
+  //初始化ordersList
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    //清空所有其他的东西
+    this.initApp();
   },
 
   /**

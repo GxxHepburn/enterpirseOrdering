@@ -21,6 +21,7 @@ Page({
 
   //商户付款付款按钮
   pay: function() {
+    let that = this;
     var app = getApp();
      var openId2 = app.data.openid;
      wx.request({
@@ -28,7 +29,7 @@ Page({
        method: 'POST',
        data: {
          searchId: app.data.orderSearchId,
-         total_fee: this.data.totalPrice,
+         total_fee: that.data.totalPrice,
        },
        success: function (resMy) {
         //在这里检查pay的status
@@ -44,7 +45,7 @@ Page({
             url: '../../pages/home/home',
           });
           //清空所有数据。
-          this.initApp();
+          that.initApp();
         } else {
           wx.requestPayment({
             'timeStamp': resMy.data.timeStamp,
@@ -57,7 +58,7 @@ Page({
                 url: '../../pages/home/home',
               });
               //清空所有数据。
-              this.initApp();
+              that.initApp();
             },
             'fail': function(payRes) {
               //修改isPayNow，同时设置payStatus,payTime
