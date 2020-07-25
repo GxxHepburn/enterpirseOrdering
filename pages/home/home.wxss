@@ -14,7 +14,7 @@ page{
   font-size: 26rpx;
 }
 .top view {
-  width: 25%;
+  width: 33%;
   text-align: center;
 }
 .top_hover{

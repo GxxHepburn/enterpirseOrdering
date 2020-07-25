@@ -1,9 +1,8 @@
 <view class="main">
     <view class="top">
         <view class="nowOrder {{touchedOrderNum==1?'top_hover':''}}" bindtap="topTouch" data-index="1">未完成</view>
-        <view class="finishied {{touchedOrderNum==2?'top_hover':''}}" bindtap="topTouch" data-index="2">已完成</view>
-        <view class="returnSome {{touchedOrderNum==3?'top_hover':''}}" bindtap="topTouch" data-index="3">退款</view>
-        <view class="top_all {{touchedOrderNum==4?'top_hover':''}}" bindtap="topTouch" data-index="4">全部</view>
+        <view class="returnSome {{touchedOrderNum==2?'top_hover':''}}" bindtap="topTouch" data-index="2">退款</view>
+        <view class="finishied {{touchedOrderNum==3?'top_hover':''}}" bindtap="topTouch" data-index="3">已完成</view>
     </view>
     <view class="down_wrap">
         <view class="order_wrap" wx:for="{{ordersList}}" wx:key="index">

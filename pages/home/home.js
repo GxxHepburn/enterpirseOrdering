@@ -7,9 +7,8 @@ Page({
   data: {
     ordersList: [],
     nowOrder: [],
-    finishedOrder: [],
-    allOrder: [],
     returnOrder: [],
+    allOrder: [],
 
     touchedOrderNum: 1
   },
@@ -40,6 +39,28 @@ Page({
     app.data.isAdd = false;
   },
   //初始化ordersList
+  initOrdersList: function() {
+    var app = getApp();
+    wx.request({
+      url: app.data.realUrl + "/wechat/loggedIn/home",
+      method: 'POST',
+      data: {
+        openid: app.data.openid
+      },
+      success: function(resMy) {
+        if(resMy.data == "0") {
+          wx.showToast({
+            title: '发生未知错误，请联系管理员',
+            icon: 'none',
+            duration: 3500
+          });
+          return;
+        }
+
+        
+      }
+    });
+  },
 
   /**
    * 生命周期函数--监听页面加载
@@ -47,6 +68,7 @@ Page({
   onLoad: function (options) {
     //清空所有其他的东西
     this.initApp();
+    this.initOrdersList();
   },
 
   /**
