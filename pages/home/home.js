@@ -1,6 +1,6 @@
 // pages/home/home.js
+var startPoint;
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -10,7 +10,19 @@ Page({
     returnOrder: [],
     finishedOrder: [],
 
-    touchedOrderNum: 1
+    touchedOrderNum: 1,
+
+    buttonTop: 400,
+    buttonLeft: 10,
+    windowHeight: '',
+    windowWidth: '',
+
+    startPoint: 0
+  },
+  touchDetail: function(order) {
+    console.log(order);
+    //分类处理，对于未支付的订单，进入订单详情界面
+    //对于其他类型订单，弹出窗体，显示订单详细信息。
   },
   realChangeTime: function (orders) {
     for(var i=0; i<orders.length; i++) {
@@ -150,8 +162,51 @@ Page({
     //清空所有其他的东西
     this.initApp();
     this.initOrdersList();
-  },
 
+    var that =this;
+    wx.getSystemInfo({
+      success: function (res) {
+        // 高度,宽度 单位为px
+        that.setData({
+          windowHeight:  res.windowHeight,
+          windowWidth:  res.windowWidth
+        })
+      }
+    });
+  },
+  //悬浮窗移动
+  buttonStart: function (e) {
+    startPoint = e.touches[0]
+  },
+  buttonEnd: function (e) {
+
+  },
+  buttonMove: function (e) {
+    var endPoint = e.touches[e.touches.length - 1]
+    var translateX = endPoint.clientX - startPoint.clientX
+    var translateY = endPoint.clientY - startPoint.clientY
+    startPoint = endPoint
+    var buttonTop = this.data.buttonTop + translateY
+    var buttonLeft = this.data.buttonLeft + translateX
+    //判断是移动否超出屏幕
+    if (buttonLeft+50 >= this.data.windowWidth){
+      buttonLeft = this.data.windowWidth-50;
+    }
+    if (buttonLeft<=0){
+      buttonLeft=0;
+    }
+    if (buttonTop<=0){
+      buttonTop=0
+    }
+    if (buttonTop + 50 >= this.data.windowHeight){
+      buttonTop = this.data.windowHeight-50;
+    }
+    this.setData({
+      buttonTop: buttonTop,
+      buttonLeft: buttonLeft
+    })
+  },
+  
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

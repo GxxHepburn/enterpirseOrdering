@@ -73,3 +73,29 @@ page{
   border-radius: 15rpx;
   color: #FF5140;
 }
+.hasNull{
+  border-bottom: solid 1rpx#D7D7D7;
+  border-top: solid 1rpx#D7D7D7;
+  margin-top: 25rpx;
+  background-color: #fff;
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+  font-size: 30rpx;
+}
+.orderInfo_hover{
+  color: #fff;
+  background-color: #FF5140;
+}
+.moveButton{
+  width: 100rpx;
+  height:100rpx;
+  border-radius:50%;
+  position:fixed;
+  background:#ff6700;
+  line-height:90rpx;
+  font-size:100rpx;
+  text-align: center;
+  z-index:2000;
+  color:#fff;
+}
