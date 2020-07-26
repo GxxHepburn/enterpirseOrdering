@@ -8,15 +8,74 @@ Page({
     ordersList: [],
     nowOrder: [],
     returnOrder: [],
-    allOrder: [],
+    finishedOrder: [],
 
     touchedOrderNum: 1
   },
+  realChangeTime: function (orders) {
+    for(var i=0; i<orders.length; i++) {
+      var time2 = orders[i].o_OrderingTime;
+      
+      var dateStr = time2.split(" ");
+      var strGMT = dateStr[0]+" "+dateStr[1]+" "+dateStr[2]+" "+dateStr[5]+" "+dateStr[3]+" GMT+0800";
+      var orderTime2 = new Date(Date.parse(strGMT));
+
+      var year = orderTime2.getFullYear();
+      var month = orderTime2.getMonth() + 1;
+      var day = orderTime2.getDate();
+      var hour = orderTime2.getHours();
+      var minute = orderTime2.getMinutes();
+      var second = orderTime2.getSeconds();
+
+      month = month > 10 ? month : "0" + month;
+      day = day > 10 ? day : "0" + day;
+      hour = hour > 10 ? hour : "0" + hour;
+      minute = minute > 10 ? minute : "0" + minute;
+      second = second > 10 ? second : "0" + second;
+
+      orders[i].o_OrderingTime =  '' + year + '-' + month + '-' + day + ' ' + hour + ':' + minute + ':' + second;
+
+      var payStatus = orders[i].o_PayStatue;
+      if(payStatus == 0) {
+        orders[i].o_PayStatue = "未支付";
+      }
+      if(payStatus == 1) {
+        orders[i].o_PayStatue = "已完成";
+      }
+      if(payStatus == 2) {
+        orders[i].o_PayStatue = "退款";
+      }
+      if(payStatus == 3) {
+        orders[i].o_PayStatue = "未完成";
+      }
+    }
+  },
+  changeTime: function (resMy) {
+    this.realChangeTime(resMy.data.nowOrders);
+    this.realChangeTime(resMy.data.finishedOrders);
+    this.realChangeTime(resMy.data.returnOrders);
+  },
   //头部选择时间
   topTouch: function(e) {
+    let that = this;
     this.setData({
       touchedOrderNum: e.currentTarget.dataset.index
     });
+    if(that.data.touchedOrderNum == 1) {
+      that.setData({
+        ordersList: that.data.nowOrder
+      });
+    }
+    if(that.data.touchedOrderNum == 2) {
+      that.setData({
+        ordersList: that.data.returnOrder
+      });
+    }
+    if(that.data.touchedOrderNum == 3) {
+      that.setData({
+        ordersList: that.data.finishedOrder
+      });
+    }
   },
   //初始化app.js数据
   initApp: function() {
@@ -40,12 +99,13 @@ Page({
   },
   //初始化ordersList
   initOrdersList: function() {
+    let that = this;
     var app = getApp();
     wx.request({
       url: app.data.realUrl + "/wechat/loggedIn/home",
       method: 'POST',
       data: {
-        openid: app.data.openid
+        openid: "o5C-Y5KCm_mMGH2nyb8IVkxUAs50"/*app.data.openid*/
       },
       success: function(resMy) {
         if(resMy.data == "0") {
@@ -56,8 +116,29 @@ Page({
           });
           return;
         }
-
-        
+        console.log(resMy);
+        //修改resMy时间格式
+        that.changeTime(resMy);
+        that.setData({
+          nowOrder: resMy.data.nowOrders,
+          returnOrder: resMy.data.returnOrders,
+          finishedOrder: resMy.data.finishedOrders,
+        });
+        if(that.data.touchedOrderNum == 1) {
+          that.setData({
+            ordersList: resMy.data.nowOrders
+          });
+        }
+        if(that.data.touchedOrderNum == 2) {
+          that.setData({
+            ordersList: resMy.data.returnOrders
+          });
+        }
+        if(that.data.touchedOrderNum == 3) {
+          that.setData({
+            ordersList: resMy.data.finishedOrders
+          });
+        }
       }
     });
   },

@@ -12,11 +12,64 @@ page{
   height: 85rpx;
   line-height: 85rpx;
   font-size: 26rpx;
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+}
+.down_wrap{
+  position: absolute;
+  top: 85rpx;
+  width: 100%;
+  z-index: 1;
 }
 .top view {
   width: 33%;
   text-align: center;
 }
 .top_hover{
+  color: #FF5140;
+}
+.order_item_top_wrap, .order_item_down_wrap{
+  display: flex;
+  height: 65rpx;
+  line-height: 65rpx;
+  margin-left: 20rpx;
+}
+.order_wrap{
+  border-bottom: solid 1rpx#D7D7D7;
+  border-top: solid 1rpx#D7D7D7;
+  margin-top: 25rpx;
+  background-color: #fff;
+}
+.order_item_top_wrap {
+  border-bottom: dashed 1rpx #D7D7D7;
+}
+.orderTime{
+  color: #9d9d9d;
+  font-size: 25rpx;
+}
+.orderInfo{
+  position: absolute;
+  right: 30rpx;
+  font-size: 30rpx;
+  color: #9d9d9d;
+}
+.notPay{
+  color: #FF5140;
+}
+.orderTotalNum, .orderTotalPrice{
+  font-size: 28rpx;
+}
+.orderDetail{
+  position: absolute;
+  right: 27rpx;
+  font-size: 28rpx;
+  width: 100rpx;
+  text-align: center;
+  border: solid 1rpx #FF5140;
+  height: 45rpx;
+  line-height: 45rpx;
+  margin-top: 10rpx;
+  border-radius: 15rpx;
   color: #FF5140;
 }
