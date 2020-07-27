@@ -17,12 +17,89 @@ Page({
     windowHeight: '',
     windowWidth: '',
 
-    startPoint: 0
+    startPoint: 0,
+    addTouch: 0
   },
-  touchDetail: function(order) {
-    console.log(order);
+  touchButton: function() {
+    let that = this;
+    this.setData({
+        addTouch: 1,
+      }
+    );
+    //有未支付的订单，先弹窗提示当前订单未支付，是否支付。不支付就退回到home，支付就进入支付界面。
+    if(this.data.nowOrder.length!=0 &&this.data.nowOrder[0].o_PayStatue=="未支付") {
+      wx.showModal({
+        title: '提示',
+        content: '当前存在未支付订单，请先支付当前订单',
+        success: function(res){
+          if(res.confirm) {
+            that.realTouchDetail(that.data.nowOrder[0]);
+          }
+          that.setData({
+            addTouch: 0
+          })
+        }
+      });
+    } else {
+      //弹窗提示请扫描桌面二维码
+      wx.showModal({
+        title: '提示',
+        content: '请扫描桌面二维码开始点餐',
+        success: function(res){
+          if(res.confirm) {
+            //调用扫码程序
+            wx.scanCode({
+              onlyFromCamera: true,
+              success(res) {
+                console.log(res);
+              }
+            });
+          }
+          that.setData({
+            addTouch: 0
+          })
+        }
+      });
+    }
+  },
+  touchDetail: function(e) {
+    var order = e.currentTarget.dataset.order;
+    this.realTouchDetail(order);
+  },
+  realTouchDetail: function(order) {
+    var app = getApp();
     //分类处理，对于未支付的订单，进入订单详情界面
     //对于其他类型订单，弹出窗体，显示订单详细信息。
+    if(order.o_PayStatue=="未支付") {
+      wx.request({
+        url: app.data.realUrl + "/wechat/loggedIn/touchDetail",
+        method: 'POST',
+        data: {
+          openid: app.data.openid,
+          orderID: order.o_ID,
+          tableId: order.o_TID,
+          res: order.o_MID
+        },
+        success: function(resMy) {
+          //重置etail
+          app.data.alreadyOrders = resMy.data.alreadyOrders;
+          app.data.orderSearchId = order.o_UniqSearchID;
+          app.data.orderTime = order.o_OrderingTime;
+          app.data.tableName = resMy.data.tabName;
+          app.data.tabTypeName = resMy.data.tabTypeName;
+          app.data.remark = order.o_Remarks;
+          //重置add
+          app.data.menu = resMy.data.menu.menu;
+          app.data.res = order.o_MID;
+          app.data.table = order.o_TID;
+          wx.reLaunch({
+            url: "../../pages/detail/detail",
+          });
+        }
+      });
+    } else {
+
+    }
   },
   realChangeTime: function (orders) {
     for(var i=0; i<orders.length; i++) {
@@ -128,7 +205,6 @@ Page({
           });
           return;
         }
-        console.log(resMy);
         //修改resMy时间格式
         that.changeTime(resMy);
         that.setData({

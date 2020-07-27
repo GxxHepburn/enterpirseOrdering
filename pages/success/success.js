@@ -134,14 +134,15 @@ Page({
   onHide: function () {
     this.setData({
       return: true
-    })
+    });
+    clearInterval(this.data.interval);
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    clearInterval(this.data.interval);
   },
 
   /**

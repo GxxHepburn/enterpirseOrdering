@@ -99,3 +99,7 @@ page{
   z-index:2000;
   color:#fff;
 }
+.buttonHover{
+  background-color: #D7D7D7;
+  color: #FF5140;
+}

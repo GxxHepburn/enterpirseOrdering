@@ -18,5 +18,6 @@
             </view>
         </view>
     </view>
-    <view class="moveButton" catchtouchmove="buttonMove" catchtouchstart="buttonStart" catchtouchend="buttonEnd" style="top:{{buttonTop}}px;left:{{buttonLeft}}px;">+</view>
+    <view class="moveButton {{addTouch==1?'buttonHover':''}}" catchtouchmove="buttonMove" bindtouchstart="buttonStart" 
+        bindtouchend="buttonEnd" style="top:{{buttonTop}}px;left:{{buttonLeft}}px;" catchtap="touchButton">+</view>
 </view>

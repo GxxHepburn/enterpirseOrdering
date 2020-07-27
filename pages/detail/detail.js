@@ -5,7 +5,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    orderTotal:{number:10, price: 10.1},
     alreadyOrders: [],
     totalPrice: 0,
     orderSearchId: '',
