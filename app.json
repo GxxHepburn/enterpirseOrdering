@@ -8,6 +8,7 @@
     "pages/orderConfirm/orderConfirm",
     "pages/add/add",
     "pages/pay/pay",
+    "pages/notFi/notFi",
     "pages/test/test"
   ],
   "window": {

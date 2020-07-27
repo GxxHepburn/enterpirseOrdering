@@ -97,8 +97,33 @@ Page({
           });
         }
       });
-    } else {
-
+    } else if(order.o_PayStatue=="未完成"||order.o_PayStatue=="已完成") {
+      wx.request({
+        url: app.data.realUrl + "/wechat/loggedIn/touchDetail",
+        method: 'POST',
+        data: {
+          openid: app.data.openid,
+          orderID: order.o_ID,
+          tableId: order.o_TID,
+          res: order.o_MID
+        },
+        success: function(resMy) {
+          //重置etail
+          app.data.alreadyOrders = resMy.data.alreadyOrders;
+          app.data.orderSearchId = order.o_UniqSearchID;
+          app.data.orderTime = order.o_OrderingTime;
+          app.data.tableName = resMy.data.tabName;
+          app.data.tabTypeName = resMy.data.tabTypeName;
+          app.data.remark = order.o_Remarks;
+          //重置add
+          app.data.menu = resMy.data.menu.menu;
+          app.data.res = order.o_MID;
+          app.data.table = order.o_TID;
+          wx.navigateTo({
+            url: '../../pages/notFi/notFi',
+          });
+        }
+      });
     }
   },
   realChangeTime: function (orders) {
