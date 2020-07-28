@@ -26,6 +26,8 @@ App({
     orderSearchId: '',
     orderTime: '',
     isAdd: false,
+    isScan: false,
+    menuReset: false
   },
   
   /**
@@ -94,7 +96,10 @@ App({
    * 当小程序从前台进入后台，会触发 onHide
    */
   onHide: function () {
-    
+    if(this.data.isScan==true) {
+      this.data.isScan=false;
+      this.data.menuReset = true;
+    }
   },
 
   /**

@@ -21,6 +21,7 @@ Page({
     addTouch: 0
   },
   touchButton: function() {
+    var app = getApp();
     let that = this;
     this.setData({
         addTouch: 1,
@@ -50,8 +51,42 @@ Page({
             //调用扫码程序
             wx.scanCode({
               onlyFromCamera: true,
-              success(res) {
-                console.log(res);
+              success(options) {
+                var scene = decodeURIComponent(options.result);
+                //检查是否是合法的连接，不合法就弹窗提示，然后什么也不做
+                wx.request({
+                  url: app.data.realUrl + "/wechat/loggedIn/selectQrCode",
+                  method: 'POST',
+                  data: {
+                    openid: app.data.openid,
+                    QrCode: scene
+                  },
+                  success: function(resQr)  {
+                    if(resQr.data!=1) {
+                      //不合法
+                      wx.showToast({
+                        title: '请扫描正确的点菜二维码',
+                        icon: 'none',
+                        duration: 3500
+                      });
+                    } else {
+                      //合法
+                      var arrPara = scene.split("&");
+                      var arr = [];
+                      for (var i in arrPara) {
+                        arr = arrPara[i].split("=");
+                        if (i == 0) {
+                          app.data.res = arr[1];
+                        } else {
+                          app.data.table = arr[1];
+                        }
+                      }
+                      wx.reLaunch({
+                        url: '../../pages/index/index',
+                      });
+                    }
+                  }
+                });
               }
             });
           }

@@ -779,6 +779,10 @@ Page({
         typeForNum: app.data.typeForNum,
       });
     }
+    if(app.data.menuRest) {
+      this.resetMenuAndTypeFormNum();
+      app.data.menuReset=false;
+    }
     this.countTotalPrice();
   },
 
@@ -797,7 +801,7 @@ Page({
   onUnload: function () {
     
     var app = getApp();
-    if(app.data.menuForNum.length!=0) {
+    if(this.data.menuForNum.length!=0) {
       app.data.menuForNum = this.data.menuForNum;
       app.data.typeForNum = this.data.typeForNum;
     }

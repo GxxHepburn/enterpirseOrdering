@@ -160,8 +160,9 @@ Page({
    */
   onLoad: function (options) {
     var app = getApp();
-    
     if(options.scene) {
+      this.initApp();
+      app.data.isScan = true;
       var scene = decodeURIComponent(options.scene);
       var arrPara = scene.split("&");
       var arr = [];
@@ -173,7 +174,46 @@ Page({
           app.data.table = arr[1];
         }
       }
+    } else {
+      app.data.isScan = false;
     }
+    if(options.q) {
+      this.initApp();
+      app.data.isScan = true;
+      var q = decodeURIComponent(options.q);
+      var arrPara = q.split("&");
+      var arr = [];
+      for (var i in arrPara) {
+        arr = arrPara[i].split("=");
+        if (i == 0) {
+          app.data.res = arr[1];
+        } else {
+          app.data.table = arr[1];
+        }
+      }
+    } else {
+      app.data.isScan = false;
+    }
+  },
+  //初始化app.js数据
+  initApp: function() {
+    var app = getApp();
+    app.data.numberOfDiners = -1;
+    app.data.res = "";
+    app.data.table = "";
+    app.data.inited = 0;
+    app.data.menu = [];
+    app.data.menuForNum = [];
+    app.data.typeForNum = [];
+    app.data.orders = [];
+    app.data.totalPrice = [];
+    app.data.tableName = [];
+    app.data.tabTypeName = '';
+    app.data.remark = '';
+    app.data.alreadyOrders = [];
+    app.data.orderSearchId = '';
+    app.data.orderTime = '';
+    app.data.isAdd = false;
   },
 
   /**
