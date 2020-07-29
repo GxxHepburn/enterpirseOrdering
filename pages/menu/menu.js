@@ -799,11 +799,12 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    
     var app = getApp();
-    if(this.data.menuForNum.length!=0) {
+    if(this.data.menuForNum.length!=0&&app.data.isOrder!=true) {
       app.data.menuForNum = this.data.menuForNum;
       app.data.typeForNum = this.data.typeForNum;
+      
+      app.data.isOrder = false;
     }
   },
 

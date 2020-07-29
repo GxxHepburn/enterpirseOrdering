@@ -1,0 +1,171 @@
+@import "../../styles/fontAwesome.wxss";
+
+.main{
+    background-color: #f6f6f6;
+    position: relative;
+}
+.progress_wrap{
+    display: flex;
+    flex-direction: column;
+    height: 143.75rpx;
+    background-color: #FF5140;
+    position: relative;
+}
+.progress_top_wrap{
+    display: flex;
+    width: 100%;
+    height: 55.83rpx;
+    line-height: 55.83rpx;
+    margin-top: 28.42rpx;
+    margin-bottom: 10rpx;
+}
+.progress_down_wrap{
+    display: flex;
+    width: 100%;
+    color: #ffffff;
+    font-size: 25rpx;
+}
+.progress_wait_img, .progress_confirm_img{
+    height: 55.83rpx;
+    width: 55.83rpx;
+    background-color: #f6f6f6;
+    color: #FF5140;
+    line-height: 55.83rpx;
+    text-align: center;
+    border-radius: 50%;
+}
+.progress_ok_img{
+    height: 55.83rpx;
+    width: 55.83rpx;
+    background-color: #ffffff;
+    color: #FF5140;
+    line-height: 55.83rpx;
+    text-align: center;
+    border-radius: 50%;
+} 
+.progress_confirm_img{
+    margin: 0 auto;
+    background-color: FFA89F;
+}
+.progress_confirm_text{
+    margin: 0 auto;
+}
+.progress_first_line{
+    flex: 2;
+    border: solid 1rpx #ffffff;
+    height: 0;
+    margin-top: 27.91rpx;
+}
+.progress_second_line, .progress_third_line{
+    flex: 1;
+    border: solid 1rpx #ffffff;
+    height: 0;
+    margin-top: 27.91rpx;
+}
+.progress_wait_img{
+    margin-left: 70rpx;
+}
+.progress_ok_img{
+    margin-right: 70rpx;
+}
+.progress_third_line{
+    border: solid 1rpx #ffffff;
+}
+.progress_wait_text{
+    margin-left: 53rpx;
+}
+.progress_ok_text{
+    margin-right: 63rpx;
+    color: #ffffff;
+}
+.order_wrap{
+    margin-top: 43.75rpx;
+    background-color: #ffffff;
+    border-top: solid 1rpx #d9d9d9;
+    border-bottom: solid 1rpx #d9d9d9;
+}
+.order_numer, .order_item, .total{
+    margin-left: 32.29rpx;
+    border-bottom: solid 1rpx #d9d9d9;
+    height: 90.63rpx;
+    line-height: 90.63rpx;
+    position: relative;
+}
+.order_number_label, .order_item_name, .total_label{
+    color: #3c3c3c;
+}
+.order_number_content, .order_item_price, .total_price{
+    position: absolute;
+    right: 32.29rpx;
+    color: #888888;
+}
+.order_item_number, .total_number{
+    position: absolute;
+    right: 200rpx;
+    color: #888888;
+}
+.order_number_content{
+    font-size: 25rpx;
+}
+.top_wrap{
+    margin-bottom: 90.7rpx;
+}
+.cart_wrap{
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 90.7rpx;
+    background-color: #444444;
+}
+.info_wrap{
+    margin-top: 43.75rpx;
+    background-color: white;
+    border-top: solid 1rpx #d9d9d9;
+    border-bottom: solid 1rpx #d9d9d9;
+}
+.time_wrap, .table_wrap, .pay_wrap, .state_wrap{
+    margin-left: 32.29rpx;
+    border-bottom: solid 1rpx #d9d9d9;
+    height: 90.63rpx;
+    line-height: 90.63rpx;
+    position: relative;
+}
+.remark_wrap{
+    margin-left: 32.29rpx;
+    height: 90.63rpx;
+    line-height: 90.63rpx;
+    position: relative;
+    overflow: scroll;
+}
+.time_label, .table_label, .pay_label, .state_label, .remark_label{
+    position: absolute;
+    left: 0;
+    color: #3c3c3c;
+}
+.time, .table, .pay, .state, .remark{
+    position: absolute;
+    right: 32.29rpx;
+    color: #888888;
+}
+.remark{
+    max-width: 500rpx;
+}
+.cart_property_before{
+    color: #7a7a7a;
+    font-size: 25rpx;
+}
+.cart_content_foodItem_property, .cart_content_foodItem_spec{
+    font-size: 25rpx;
+    color: #7a7a7a;
+}
+.cart_pay_hover{
+    background-color: #eeeeee;
+    color: #FF5140;
+}
+.cart_add_hover{
+    background-color: #eeeeee;
+    color: #FF8041;
+}

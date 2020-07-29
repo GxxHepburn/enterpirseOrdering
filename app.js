@@ -27,7 +27,8 @@ App({
     orderTime: '',
     isAdd: false,
     isScan: false,
-    menuReset: false
+    menuReset: false,
+    isOrder: false
   },
   
   /**

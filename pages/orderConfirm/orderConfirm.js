@@ -65,6 +65,7 @@ Page({
           }
           app.data.totalPrice=0;
           app.data.menuForNum=[];
+          app.data.isOrder = true;
           console.log("orderConfirm.js: ");
           console.log(app.data.menuForNum);
           //跳转到下单成功界面

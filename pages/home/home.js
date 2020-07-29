@@ -154,9 +154,15 @@ Page({
           app.data.menu = resMy.data.menu.menu;
           app.data.res = order.o_MID;
           app.data.table = order.o_TID;
-          wx.navigateTo({
-            url: '../../pages/notFi/notFi',
-          });
+          if(order.o_PayStatue=="未完成") {
+            wx.navigateTo({
+              url: '../../pages/notFi/notFi',
+            });
+          } else {
+            wx.navigateTo({
+              url: '../../pages/Fi/Fi',
+            });
+          }
         }
       });
     }

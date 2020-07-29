@@ -9,6 +9,7 @@
     "pages/add/add",
     "pages/pay/pay",
     "pages/notFi/notFi",
+    "pages/Fi/Fi",
     "pages/test/test"
   ],
   "window": {
