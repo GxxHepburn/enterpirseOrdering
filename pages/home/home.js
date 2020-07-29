@@ -260,7 +260,7 @@ Page({
       url: app.data.realUrl + "/wechat/loggedIn/home",
       method: 'POST',
       data: {
-        openid: "o5C-Y5KCm_mMGH2nyb8IVkxUAs50"/*app.data.openid*/
+        openid: app.data.openid
       },
       success: function(resMy) {
         if(resMy.data == "0") {
@@ -302,10 +302,9 @@ Page({
    */
   onLoad: function (options) {
     //清空所有其他的东西
+    var app = getApp();
     this.initApp();
-    this.initOrdersList();
-
-    var that =this;
+    let that = this;
     wx.getSystemInfo({
       success: function (res) {
         // 高度,宽度 单位为px
@@ -313,6 +312,27 @@ Page({
           windowHeight:  res.windowHeight,
           windowWidth:  res.windowWidth
         })
+      }
+    });
+    wx.login({
+      success (res) {
+        if (res.code) {
+          //发起网络请求
+          wx.request({
+            url: app.data.realUrl + "/wechat/login",
+            method: 'POST',
+            data: {
+              code: res.code
+            },
+            success(resMy) {
+              //登陆成功
+              if (resMy.statusCode == 200) {
+                app.data.openid = resMy.data;
+                that.initOrdersList();
+              }
+            }
+          })
+        }
       }
     });
   },
