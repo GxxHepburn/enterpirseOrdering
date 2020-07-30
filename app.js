@@ -4,7 +4,7 @@ App({
    * 全局变量
    */
   data:{
-    realUrl: "http://www.donghuastar.com",
+    realUrl: "https://www.donghuastar.com",
     loadStatus: false,
     openid: "",
     numberOfDiners: -1,
@@ -84,6 +84,9 @@ App({
    */
   onLaunch: function () {
     this.loadByTxServer();
+    wx.setEnableDebug({
+      enableDebug: true
+    });
   },
 
   /**

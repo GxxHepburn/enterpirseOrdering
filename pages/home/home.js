@@ -381,6 +381,10 @@ Page({
    */
   onShow: function () {
 
+    //清空所有其他的东西
+    var app = getApp();
+    this.initApp();
+    let that = this;
   },
 
   /**
