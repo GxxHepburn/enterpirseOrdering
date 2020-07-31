@@ -56,34 +56,34 @@ App({
    * 抽出登陆方法
    */
   loadByTxServer: function () {
-    let that = this;
-    wx.login({
-      success (res) {
-        if (res.code) {
-          //发起网络请求
-          wx.request({
-            url: that.data.realUrl + "/wechat/login",
-            method: 'POST',
-            data: {
-              code: res.code
-            },
-            success(resMy) {
-              //登陆成功
-              if (resMy.statusCode == 200) {
-                that.data.loadStatus = true;
-                that.data.openid = resMy.data;
-              }
-            }
-          })
-        }
-      }
-    })
+    // let that = this;
+    // wx.login({
+    //   success (res) {
+    //     if (res.code) {
+    //       //发起网络请求
+    //       wx.request({
+    //         url: that.data.realUrl + "/wechat/login",
+    //         method: 'POST',
+    //         data: {
+    //           code: res.code
+    //         },
+    //         success(resMy) {
+    //           //登陆成功
+    //           if (resMy.statusCode == 200) {
+    //             that.data.loadStatus = true;
+    //             that.data.openid = resMy.data;
+    //           }
+    //         }
+    //       })
+    //     }
+    //   }
+    // })
   },
   /**
    * 当小程序初始化完成时，会触发 onLaunch（全局只触发一次）
    */
   onLaunch: function () {
-    this.loadByTxServer();
+    // this.loadByTxServer();
     wx.setEnableDebug({
       enableDebug: true
     });

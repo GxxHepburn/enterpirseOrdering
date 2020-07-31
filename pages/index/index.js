@@ -160,40 +160,61 @@ Page({
    */
   onLoad: function (options) {
     var app = getApp();
-    if(options.scene) {
-      this.initApp();
-      app.data.isScan = true;
-      var scene = decodeURIComponent(options.scene);
-      var arrPara = scene.split("&");
-      var arr = [];
-      for (var i in arrPara) {
-        arr = arrPara[i].split("=");
-        if (i == 0) {
-          app.data.res = arr[1];
-        } else {
-          app.data.table = arr[1];
+    let that = this;
+    wx.login({
+      success(res) {
+        if(res.code) {
+          wx.request({
+            url: app.data.realUrl + "/wechat/login",
+            method: 'POST',
+            data: {
+              code: res.code
+            },
+            success(resMy) {
+              if(resMy.statusCode == 200) {
+                app.data.loadStatus = true;
+                app.data.openid = resMy.data;
+
+                if(options.scene) {
+                  that.initApp();
+                  app.data.isScan = true;
+                  var scene = decodeURIComponent(options.scene);
+                  var arrPara = scene.split("&");
+                  var arr = [];
+                  for (var i in arrPara) {
+                    arr = arrPara[i].split("=");
+                    if (i == 0) {
+                      app.data.res = arr[1];
+                    } else {
+                      app.data.table = arr[1];
+                    }
+                  }
+                } else {
+                  app.data.isScan = false;
+                }
+                if(options.q) {
+                  that.initApp();
+                  app.data.isScan = true;
+                  var q = decodeURIComponent(options.q);
+                  var arrPara = q.split("&");
+                  var arr = [];
+                  for (var i in arrPara) {
+                    arr = arrPara[i].split("=");
+                    if (i == 0) {
+                      app.data.res = arr[1];
+                    } else {
+                      app.data.table = arr[1];
+                    }
+                  }
+                } else {
+                  app.data.isScan = false;
+                }
+              }
+            }
+          });
         }
       }
-    } else {
-      app.data.isScan = false;
-    }
-    if(options.q) {
-      this.initApp();
-      app.data.isScan = true;
-      var q = decodeURIComponent(options.q);
-      var arrPara = q.split("&");
-      var arr = [];
-      for (var i in arrPara) {
-        arr = arrPara[i].split("=");
-        if (i == 0) {
-          app.data.res = arr[1];
-        } else {
-          app.data.table = arr[1];
-        }
-      }
-    } else {
-      app.data.isScan = false;
-    }
+    });
   },
   //初始化app.js数据
   initApp: function() {
