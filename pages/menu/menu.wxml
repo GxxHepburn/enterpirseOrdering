@@ -8,7 +8,7 @@
                 <view class="location_text">{{mer.m_Address}}</view>
             </view>
         </view>
-        <view class="mer_info fa fa-phone" bindtap="touchPhone"></view>
+        <view class="mer_info fa fa-phone" bindtap="touchPhone" hover-class="mer_info_hover"></view>
     </view>
     <view class="menu_wrap">
         <view class="menu_item_wrap">

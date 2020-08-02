@@ -29,6 +29,17 @@ Page({
     orders: [],
     mer: {}
   },
+  //shopSign_phone按钮
+  touchPhone: function() {
+    wx.makePhoneCall({
+      phoneNumber: this.data.mer.m_Phone,
+      success: (result)=>{
+        
+      },
+      fail: ()=>{},
+      complete: ()=>{}
+    });
+  },
   //选好了按钮
   touchConfirm: function() {
     //总价为0不能下单
