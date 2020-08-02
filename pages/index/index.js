@@ -209,6 +209,18 @@ Page({
                 } else {
                   app.data.isScan = false;
                 }
+                //获得商家信息
+                wx.request({
+                  url: app.data.realUrl + "/wechat/loggedIn/getMer",
+                  method: 'POST',
+                  data: {
+                    openid: app.data.openid,
+                    mid: app.data.res
+                  },
+                  success: function(resMer) {
+                    app.data.mer = resMer.data;
+                  }
+                });
               }
             }
           });

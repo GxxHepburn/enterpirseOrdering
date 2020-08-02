@@ -27,6 +27,7 @@ Page({
     cartModalStatus: false,
 
     orders: [],
+    mer: {}
   },
   //选好了按钮
   touchConfirm: function() {
@@ -726,7 +727,8 @@ Page({
   onLoad: function (options) {
     var app = getApp();
     this.setData({
-      menu: app.data.menu
+      menu: app.data.menu,
+      mer: app.data.mer
     });
 
     //初始化每个右侧菜单类距离顶部位置

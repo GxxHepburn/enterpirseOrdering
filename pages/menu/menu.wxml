@@ -1,4 +1,15 @@
 <view class="main">
+    <view class="shop_sign_wrap">
+        <image class="mer_img" mode="scaleToFill" src="{{mer.m_img}}"></image>
+        <view class="shopName_location_wrap">
+            <view class="shopName">{{mer.m_Name}}</view>
+            <view class="location_wrap">
+                <view class="location_logo fa fa-map-marker"></view>
+                <view class="location_text">{{mer.m_Address}}</view>
+            </view>
+        </view>
+        <view class="mer_info fa fa-phone" bindtap="touchPhone"></view>
+    </view>
     <view class="menu_wrap">
         <view class="menu_item_wrap">
                 <view wx:for="{{menu}}" wx:key="index" class="menu_item {{(menuInto==index&&scrollInto==-1)||(scrollInto==index&&menuInto==-1)||(menuInto==index&&scrollInto==index)?'menuItemSelected':''}}" catchtap="touchType" data-index="{{index}}">

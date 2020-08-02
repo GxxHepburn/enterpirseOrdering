@@ -1,3 +1,5 @@
+@import "../../styles/fontAwesome.wxss";
+
 page{
     height: 100%;
 }
@@ -583,4 +585,51 @@ page{
 }
 .resetHover{
     color: #FF5140;
+}
+
+.shop_sign_wrap{
+    display: flex;
+    flex-direction: row;
+    border-bottom: solid 1rpx #eeeeee;
+    padding-left: 30rpx;
+    padding-top: 25rpx;
+    padding-bottom: 25rpx;
+    background-color: #FF5140;
+    color: #fff;
+    position: relative;
+}
+.mer_img{
+    width: 100rpx;
+    height: 100rpx;
+    border-left: solid 1rpx #eeeeee;
+    border-radius: 15rpx;
+}
+.shopName_location_wrap{
+    margin-left: 30rpx;
+    position: relative;
+    width: 500rpx;
+}
+.shopName{
+    font-size: 40rpx;
+    font-weight: bold;
+    overflow: hidden;
+}
+.location_text{
+    overflow: hidden;
+    margin-left: 10rpx;
+}
+.location_wrap{
+    font-size: 25rpx;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+}
+.location_logo{
+    position: relative;
+    top: 5rpx;
+}
+.mer_info{
+    position: absolute;
+    bottom: 25rpx;
+    right: 50rpx;
 }
