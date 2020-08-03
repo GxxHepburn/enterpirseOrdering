@@ -18,8 +18,8 @@
                 </view>
         </view>
         <scroll-view class="menu_item_food_wrap" scroll-y="{{true}}" scroll-into-view="menu{{menuInto}}" 
-            scroll-with-animation="{{true}}"  bindscroll="scrollToUpper" data-id="menu{{index}}">
-            <view class="menu_type" wx:for="{{menu}}" wx:for-item="outItem" wx:for-index="outIndex" wx:key="index" id="menu{{outIndex}}">
+            scroll-with-animation="{{true}}"  bindscroll="scrollToUpper">
+            <view class="menu_type" wx:for="{{menu}}" wx:for-item="outItem" wx:for-index="outIndex" wx:key="outIndex" id="menu{{outIndex}}">
                 <view class="menu_title">
                     {{outItem.name}}
                 </view>
@@ -65,7 +65,7 @@
                     <!--弹出框 加菜  -->
                     <view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">
                         <view class="modal_name">{{touchFood.name}}</view>
-                        <view  wx:for="{{touchFood.property}}" wx:for-item="inItem" wx:for-index="inIndex" wx:key="index">
+                        <view  wx:for="{{touchFood.property}}" wx:for-item="inItem" wx:for-index="inIndex" wx:key="inIndex">
                             <view  class="modal_prop_name">{{inItem.name}}</view>
                             <view class="modal_prop_values">
                                 <view class="modal_prop_value {{modalFood.property[inIndex]==0?'modal_prop_value_hover':''}}" 
@@ -93,7 +93,7 @@
                         <view  class="modal_prop_name" wx:if="{{touchFood.specs[0]}}">规格</view>
                         <view class="modal_prop_values"  wx:if="{{touchFood.specs[0]}}">
                             <text  class="modal_prop_value {{modalFood.specs==inIndex?'modal_prop_value_hover':''}}" wx:for="{{touchFood.specs}}" 
-                                wx:for-item="inItem" wx:for-index="inIndex" wx:key="index" data-index="{{inIndex}}" bindtap="clickModalSpec" 
+                                wx:for-item="inItem" wx:for-index="inIndex" wx:key="inIndex" data-index="{{inIndex}}" bindtap="clickModalSpec" 
                                 wx:if="{{inItem.name!=null}}">{{inItem.name}}</text>
                         </view>
                         <view class="modal_change_wrap">
@@ -120,7 +120,7 @@
                     <view animation="{{reduceAnimationData}}" class="commodity_attr_box" wx:if="{{showReduceModalStatus}}">
                         <view class="modal_name">{{touchFood.name}}</view>
                         <view class="reduce_modal_foods_wrap_wrap">
-                            <view wx:for="{{exceptOneFoods}}" wx:key="index" class="reduce_modal_foods_wrap" wx:for-item="inItem" wx:for-index="inIndex">
+                            <view wx:for="{{exceptOneFoods}}" wx:key="inIndex" class="reduce_modal_foods_wrap" wx:for-item="inItem" wx:for-index="inIndex">
                                 <view class="reduce_modal_food">
                                     <view class="reduce_modal_food_value" wx:if="{{inItem.property[0]}}">{{inItem.property[0]}}</view>
                                     <view class="reduce_modal_food_value" wx:if="{{inItem.property[1]}}">{{inItem.property[1]}}</view>
