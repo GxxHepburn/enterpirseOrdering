@@ -59,6 +59,7 @@
                 <label class="total_price">￥{{returnTotalPrice}}</label>
             </view>
         </view>
+        
         <view class="info_wrap">
             <view class="time_wrap">
                 <label class="time_label">点单时间</label>
