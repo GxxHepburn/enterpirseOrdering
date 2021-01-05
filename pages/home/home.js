@@ -134,7 +134,7 @@ Page({
           });
         }
       });
-    } else if(order.o_PayStatue=="未完成"||order.o_PayStatue=="已完成") {
+    } else {
       wx.request({
         url: app.data.realUrl + "/wechat/loggedIn/touchDetail",
         method: 'POST',
@@ -162,9 +162,13 @@ Page({
             wx.navigateTo({
               url: '../../pages/notFi/notFi',
             });
-          } else {
+          } else if(order.o_PayStatue=="已完成") {
             wx.navigateTo({
               url: '../../pages/Fi/Fi',
+            });
+          } else {
+            wx.navigateTo({
+              url: '../../pages/return/return',
             });
           }
         }

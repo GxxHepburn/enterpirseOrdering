@@ -9,6 +9,7 @@
     "pages/add/add",
     "pages/notFi/notFi",
     "pages/Fi/Fi",
+    "pages/return/return",
     "pages/test/test"
   ],
   "window": {

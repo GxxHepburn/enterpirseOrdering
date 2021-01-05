@@ -1,0 +1,80 @@
+<view class="main">
+    <view class="top_wrap">
+        <view class="progress_wrap">
+            <view class="progress_top_wrap">
+                <text class="progress_wait_img fa fa-check"></text>
+                <text class="progress_first_line"></text>
+                <text class="progress_confirm_img fa fa-check"></text>
+                <view class="progress_second_line"></view>
+                <view class="progress_third_line"></view>
+                <text class="progress_ok_img fa fa-check"></text>
+            </view>
+            <view class="progress_down_wrap">
+                <text class="progress_wait_text">等待处理</text>
+                <text class="progress_confirm_text">已支付</text>
+                <text class="progress_ok_text">已退款</text>
+            </view>
+        </view>
+        <view class="order_wrap">
+            <view class="order_numer">
+                <label class="order_number_label">订单号</label>
+                <label class="order_number_content">{{orderSearchId}}</label>
+            </view>
+            <view class="order_item" wx:for="{{alreadyOrders}}" wx:key="index">
+                <label class="order_item_name">{{item.name}}</label>
+                <label class="order_item_number">×{{item.num}}</label>
+                <label wx:if="{{item.property[0]||item.specs!=''}}" class="cart_property_before">(</label>
+                <text class="cart_content_foodItem_property" wx:for="{{item.property}}" 
+                    wx:for-item="inItem" wx:key="inIndex" wx:for-index="inIndex"
+                    decode="{{true}}" space="{{true}}">{{inItem}}<text wx:if="{{inItem!=''&&(inIndex!=item.property.length-1||item.specs!='')&&item.property[item.property.length-1]!=''}}" decode="{{true}}" space="{{true}}">&ensp;</text>
+                </text>
+                <label class="cart_content_foodItem_spec">{{item.specs}}</label>
+                <label wx:if="{{item.property[0]||item.specs!=''}}" class="cart_property_before">)</label>
+                <label class="order_item_price">￥{{item.price*item.num}}</label>
+            </view>
+            <view class="total">
+                <label class="total_label">合计</label>
+                <label class="total_price">￥{{totalPrice}}</label>
+            </view>
+        </view>
+
+        <view class="order_wrap"  wx:if="{{hasReturn == 1}}">
+            <view class="order_numer">
+                <label class="order_number_label">退点商品</label>
+            </view>
+            <view class="order_item" wx:if="{{item.num - item.realNum > 0}}"  wx:for="{{alreadyOrders}}" wx:key="index">
+                <label class="order_item_name">{{item.name}}</label>
+                <label class="order_item_number">×{{item.num - item.realNum}}</label>
+                <label wx:if="{{item.property[0]||item.specs!=''}}" class="cart_property_before">(</label>
+                <text class="cart_content_foodItem_property" wx:for="{{item.property}}" 
+                    wx:for-item="inItem" wx:key="inIndex" wx:for-index="inIndex"
+                    decode="{{true}}" space="{{true}}">{{inItem}}<text wx:if="{{inItem!=''&&(inIndex!=item.property.length-1||item.specs!='')&&item.property[item.property.length-1]!=''}}" decode="{{true}}" space="{{true}}">&ensp;</text>
+                </text>
+                <label class="cart_content_foodItem_spec">{{item.specs}}</label>
+                <label wx:if="{{item.property[0]||item.specs!=''}}" class="cart_property_before">)</label>
+                <label class="order_item_price">￥{{item.price*(item.num - item.realNum)}}</label>
+            </view>
+            <view class="total">
+                <label class="total_label">合计</label>
+                <label class="total_price">￥{{returnTotalPrice}}</label>
+            </view>
+        </view>
+
+        <view class="info_wrap">
+            <view class="time_wrap">
+                <label class="time_label">点单时间</label>
+                <label class="time">{{orderTime}}</label>
+            </view>
+            <view class="table_wrap">
+                <label class="table_label">桌台</label>
+                <label class="table">{{tabTypeName}}-{{tableName}}</label>
+            </view>
+            <view class="remark_wrap">
+                <label class="remark_label">备注</label>
+                <label class="remark">
+                    {{remark}}
+                </label>
+            </view>
+        </view>
+    </view>
+</view>
