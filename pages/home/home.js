@@ -116,6 +116,8 @@ Page({
           res: order.o_MID
         },
         success: function(resMy) {
+          app.data.returnTotalPrice = resMy.data.returnTotalPrice;
+          app.data.hasReturn = resMy.data.hasReturn;
           //重置etail
           app.data.alreadyOrders = resMy.data.alreadyOrders;
           app.data.orderSearchId = order.o_UniqSearchID;

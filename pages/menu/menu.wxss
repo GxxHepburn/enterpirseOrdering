@@ -602,7 +602,7 @@ page{
     width: 100rpx;
     height: 100rpx;
     border-left: solid 1rpx #eeeeee;
-    border-radius: 15rpx;
+    border-radius: 15rpx; 
 }
 .shopName_location_wrap{
     margin-left: 30rpx;

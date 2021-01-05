@@ -1,6 +1,6 @@
 <view class="main">
     <view class="shop_sign_wrap">
-        <image class="mer_img" mode="scaleToFill" src="{{mer.m_img}}"></image>
+        <image class="mer_img" mode="scaleToFill" src="{{mer.m_img}}"/>
         <view class="shopName_location_wrap">
             <view class="shopName">{{mer.m_Name}}</view>
             <view class="location_wrap">

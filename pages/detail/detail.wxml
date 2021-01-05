@@ -37,6 +37,28 @@
                 <label class="total_price">￥{{totalPrice}}</label>
             </view>
         </view>
+
+        <view class="order_wrap" wx:if="{{hasReturn == 1}}">
+            <view class="order_numer">
+                <label class="order_number_label">退点商品</label>
+            </view>
+            <view class="order_item" wx:if="{{item.num - item.realNum > 0}}" wx:for="{{alreadyOrders}}" wx:key="index">
+                <label class="order_item_name">{{item.name}}</label>
+                <label class="order_item_number">×{{item.num - item.realNum}}</label>
+                <label wx:if="{{item.property[0]||item.specs!=''}}" class="cart_property_before">(</label>
+                <text class="cart_content_foodItem_property" wx:for="{{item.property}}" 
+                    wx:for-item="inItem" wx:key="inIndex" wx:for-index="inIndex"
+                    decode="{{true}}" space="{{true}}">{{inItem}}<text wx:if="{{inIndex!=item.property.length-1||item.specs!=''}}" decode="{{true}}" space="{{true}}">&ensp;</text>
+                </text>
+                <label class="cart_content_foodItem_spec">{{item.specs}}</label>
+                <label wx:if="{{item.property[0]||item.specs!=''}}" class="cart_property_before">)</label>
+                <label class="order_item_price">￥{{item.price*(item.num - item.realNum)}}</label>
+            </view>
+            <view class="total">
+                <label class="total_label">合计</label>
+                <label class="total_price">￥{{returnTotalPrice}}</label>
+            </view>
+        </view>
         <view class="info_wrap">
             <view class="time_wrap">
                 <label class="time_label">点单时间</label>
@@ -66,7 +88,7 @@
         <text class="icon_before">*</text>
         <text class="icon">服</text>
         <text class="price" selectable="false" space="false" decode="false">
-            ￥{{totalPrice}}
+            ￥{{totalPrice -returnTotalPrice}}
             <!-- 要做保留小数处理 -->
         </text>
         <view class="cart_add" hover-class="cart_add_hover" bindtap="touchAdd">

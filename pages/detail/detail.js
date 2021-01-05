@@ -7,6 +7,10 @@ Page({
   data: {
     alreadyOrders: [],
     totalPrice: 0,
+    
+    returnTotalPrice: 0,
+    hasReturn: 0,
+
     orderSearchId: '',
     orderTime: '',
     tableName: '',
@@ -180,7 +184,10 @@ Page({
       orderTime: app.data.orderTime,
       tableName: app.data.tableName,
       tabTypeName: app.data.tabTypeName,
-      remark: app.data.remark
+      remark: app.data.remark,
+
+      returnTotalPrice: app.data.returnTotalPrice,
+      hasReturn: app.data.hasReturn,
     });
     this.countTotalPrice();
   },

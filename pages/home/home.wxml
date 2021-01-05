@@ -5,7 +5,7 @@
         <view class="finishied {{touchedOrderNum==3?'top_hover':''}}" bindtap="topTouch" data-index="3">已完成</view>
     </view>
     <view class="down_wrap">
-        <view class="hasNull" wx:if="{{ordersList.length==0}}">退款订单是空的，空空如也~</view>
+        <view class="hasNull" wx:if="{{ordersList.length==0}}">订单列表是空的，空空如也~</view>
         <view class="order_wrap" wx:for="{{ordersList}}" wx:key="index">
             <view class="order_item_top_wrap">
                 <view class="orderTime">下单时间：{{item.o_OrderingTime}}</view>

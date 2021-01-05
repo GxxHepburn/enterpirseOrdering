@@ -18,6 +18,9 @@ App({
     orders: [],
     totalPrice: 0,
 
+    returnTotalPrice: 0,
+    hasReturn: 0,
+
     tableName: '',
     tabTypeName: '',
     remark: '',
