@@ -304,7 +304,20 @@ Page({
       }
     });
   },
-
+  /**
+   * 循环提示框 
+   */
+  UserBanTips: function () {
+    var that = this
+    wx.showModal({
+      title: '提示',
+      content: '您无法在本餐厅用餐，请联系餐厅服务人员！',
+      showCancel: false,
+      success: function (repeatRes){
+        that.UserBanTips()
+      }
+    });
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -335,6 +348,10 @@ Page({
             success(resMy) {
               //登陆成功
               if (resMy.statusCode == 200) {
+                if (resMy.data == "0") {
+                  that.UserBanTips()
+                }
+                
                 app.data.openid = resMy.data;
                 that.initOrdersList();
               }

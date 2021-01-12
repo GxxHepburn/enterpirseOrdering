@@ -62,6 +62,10 @@ Page({
             },
             success(resMy) {
               if (resMy.statusCode == 200) {
+                if (resMy.data == "0") {
+                  that.UserBanTips()
+                }
+
                 app.data.loadStatus = true;
                 app.data.openid = resMy.data;
               } else {
@@ -156,6 +160,20 @@ Page({
   },
 
   /**
+   * 循环提示框 
+   */
+  UserBanTips: function () {
+    var that = this
+    wx.showModal({
+      title: '提示',
+      content: '您无法在本餐厅用餐，请联系餐厅服务人员！',
+      showCancel: false,
+      success: function (repeatRes){
+        that.UserBanTips()
+      }
+    });
+  },
+  /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
@@ -172,6 +190,10 @@ Page({
             },
             success(resMy) {
               if(resMy.statusCode == 200) {
+                if (resMy.data == "0") {
+                  that.UserBanTips()
+                }
+
                 app.data.loadStatus = true;
                 app.data.openid = resMy.data;
 
