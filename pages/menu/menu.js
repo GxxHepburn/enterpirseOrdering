@@ -741,7 +741,6 @@ Page({
       menu: app.data.menu,
       mer: app.data.mer
     });
-
     //初始化每个右侧菜单类距离顶部位置
     var top2 = new Array();
     for(var i =0; i <this.data.menu.length; i++) {

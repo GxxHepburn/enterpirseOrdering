@@ -12,7 +12,7 @@
     </view>
     <view class="menu_wrap">
         <view class="menu_item_wrap">
-                <view wx:for="{{menu}}" wx:key="index" class="menu_item {{(menuInto==index&&scrollInto==-1)||(scrollInto==index&&menuInto==-1)||(menuInto==index&&scrollInto==index)?'menuItemSelected':''}}" catchtap="touchType" data-index="{{index}}">
+                <view wx:if="{{item.foods.length>0}}" wx:for="{{menu}}" wx:key="index" class="menu_item {{(menuInto==index&&scrollInto==-1)||(scrollInto==index&&menuInto==-1)||(menuInto==index&&scrollInto==index)?'menuItemSelected':''}}" catchtap="touchType" data-index="{{index}}">
                     {{item.name}}
                     <text class="menu_item_number {{typeForNum[index]>0?'showNumber':''}}">{{typeForNum[index]}}</text>
                 </view>

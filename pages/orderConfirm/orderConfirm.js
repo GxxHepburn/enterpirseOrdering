@@ -37,13 +37,20 @@ Page({
         totalPrice: this.data.totalPrice,
         mid: app.data.res,
         tid: app.data.table,
-        remark: this.data.remark
+        remark: this.data.remark,
+        numberOfDiners: app.data.numberOfDiners
       },
       success(resMy) {
         if(resMy.data==0) {
           //错误,报错，提示联系管理员
           wx.showToast({
             title: '未知错误，请联系管理员',
+            icon: 'none',
+            duration: 3500
+          });
+        } else if (resMy.data.meta != undefined && resMy.data.meta.status == 410) {
+          wx.showToast({
+            title: resMy.data.data.waringMsg,
             icon: 'none',
             duration: 3500
           });
@@ -66,8 +73,6 @@ Page({
           app.data.totalPrice=0;
           app.data.menuForNum=[];
           app.data.isOrder = true;
-          console.log("orderConfirm.js: ");
-          console.log(app.data.menuForNum);
           //跳转到下单成功界面
           wx.reLaunch({
             url: '../../pages/success/success'

@@ -40,6 +40,12 @@ Page({
             icon: 'none',
             duration: 3500
           });
+        } else if (resMy.data.meta != undefined && resMy.data.meta.status == 410) {
+          wx.showToast({
+            title: resMy.data.data.waringMsg,
+            icon: 'none',
+            duration: 3500
+          })
         } else {
           app.data.menu = resMy.data.menu;
           for(var i=0; i<that.data.orders.length; i++) {
