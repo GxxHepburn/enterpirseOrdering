@@ -10,6 +10,9 @@ Page({
     returnOrder: [],
     finishedOrder: [],
 
+    orderLimit: 0,
+    orderOk: false,
+
     touchedOrderNum: 1,
 
     buttonTop: 400,
@@ -218,8 +221,14 @@ Page({
     this.realChangeTime(resMy.data.finishedOrders);
     this.realChangeTime(resMy.data.returnOrders);
   },
-  //头部选择时间
+  //头部选择事件
   topTouch: function(e) {
+    // 回到顶部
+    wx.pageScrollTo({
+      scrollTop: 0
+    })
+    this.data.orderLimit = 0
+    this.data.orderOk = false
     let that = this;
     this.setData({
       touchedOrderNum: e.currentTarget.dataset.index
@@ -435,7 +444,56 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
+    var that = this
+    var app = getApp()
+    var orderLimitInner = this.data.orderLimit
+    var orderOkInner = this.data.orderOk
+    if (orderOkInner) {
+      wx.showToast({
+        title: '没有更多订单了',
+        icon: 'none',
+        duration: 1000
+      });
+      return
+    }
 
+
+    wx.request({
+      url: app.data.realUrl + "/wechat/loggedIn/onReachBottom",
+      method: 'POST',
+      data: {
+        openid: app.data.openid,
+        touchedOrderNum: this.data.touchedOrderNum,
+        orderLimit: orderLimitInner
+      },
+      success: function(res) {
+        if (res.statusCode == 200) {
+          if (res.data.meta.status == 200) {
+            var ordersFormList = res.data.data.ordersFormList
+            that.realChangeTime(ordersFormList);
+            that.setData({
+              ordersList: that.data.ordersList.concat(ordersFormList),
+              orderLimit: orderLimitInner + 1
+            })
+          } else {
+            wx.showToast({
+              title: '没有更多订单了',
+              icon: 'none',
+              duration: 1000
+            });
+            that.setData({
+              orderOk: true
+            })
+          }
+
+        } else {
+          wx.showModal({
+            title: '提示',
+            content: '发生未知错误，请联系管理员'
+          });
+        }
+      }
+    })
   },
 
   /**
