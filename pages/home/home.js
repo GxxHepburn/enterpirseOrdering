@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    topNum: 0,
+    scrollTop: 0,
 
     ordersList: [],
     nowOrder: [],
@@ -226,7 +226,7 @@ Page({
   //头部选择事件
   topTouch: function(e) {
     this.setData({
-      topNum: this.data.topNum
+      scrollTop: 0
     })
 
     this.data.orderLimit = 0
@@ -333,8 +333,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    //清空所有其他的东西
     var app = getApp();
+    // 初始化scroll-view高度
+    var obj = wx.createSelectorQuery();
+    obj.selectAll('.top').boundingClientRect(function(rect) {
+      let height = wx.getSystemInfoSync().windowHeight - rect[0].height
+      that.setData({
+        height: height
+      })
+    })
+    obj.exec()
+    //清空所有其他的东西
     this.initApp();
     let that = this;
     wx.getSystemInfo({
@@ -458,8 +467,6 @@ Page({
       });
       return
     }
-    console.log(orderOkInner)
-    console.log(orderLimitInner)
 
     wx.request({
       url: app.data.realUrl + "/wechat/loggedIn/onReachBottom",

@@ -4,7 +4,7 @@
         <view class="returnSome {{touchedOrderNum==2?'top_hover':''}}" bindtap="topTouch" data-index="2">退款</view>
         <view class="finishied {{touchedOrderNum==3?'top_hover':''}}" bindtap="topTouch" data-index="3">已完成</view>
     </view>
-    <scroll-view scroll-with-animation="true" class="down_wrap" scroll-top='{{ topNum }}'>
+    <scroll-view class="down_wrap" scroll-y="true" scroll-top='{{scrollTop}}' style="height:{{height}}px" bindscrolltolower="onReachBottom">
         <view class="hasNull" wx:if="{{ordersList.length==0}}">订单列表是空的，空空如也~</view>
         <view class="order_wrap" wx:for="{{ordersList}}" wx:key="index">
             <view class="order_item_top_wrap">
