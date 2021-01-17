@@ -5,6 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    topNum: 0,
+
     ordersList: [],
     nowOrder: [],
     returnOrder: [],
@@ -223,10 +225,10 @@ Page({
   },
   //头部选择事件
   topTouch: function(e) {
-    // 回到顶部
-    wx.pageScrollTo({
-      scrollTop: 0
+    this.setData({
+      topNum: this.data.topNum
     })
+
     this.data.orderLimit = 0
     this.data.orderOk = false
     let that = this;
@@ -456,14 +458,15 @@ Page({
       });
       return
     }
-
+    console.log(orderOkInner)
+    console.log(orderLimitInner)
 
     wx.request({
       url: app.data.realUrl + "/wechat/loggedIn/onReachBottom",
       method: 'POST',
       data: {
         openid: app.data.openid,
-        touchedOrderNum: this.data.touchedOrderNum,
+        touchedOrderNum: that.data.touchedOrderNum,
         orderLimit: orderLimitInner
       },
       success: function(res) {
