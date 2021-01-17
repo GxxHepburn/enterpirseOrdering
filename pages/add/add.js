@@ -40,7 +40,7 @@ Page({
             icon: 'none',
             duration: 3500
           });
-        } else if (resMy.data.meta != undefined && resMy.data.meta.status == 410) {
+        } else if (resMy.data.meta != undefined && (resMy.data.meta.status == 410 || resMy.data.meta.status == 420)) {
           wx.showToast({
             title: resMy.data.data.waringMsg,
             icon: 'none',
