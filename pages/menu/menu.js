@@ -741,17 +741,19 @@ Page({
       menu: app.data.menu,
       mer: app.data.mer
     });
-    //初始化每个右侧菜单类距离顶部位置
-    var top2 = new Array();
-    for(var i =0; i <this.data.menu.length; i++) {
-      wx.createSelectorQuery().select('#menu' + i).boundingClientRect(function (rect) {
-        var isTop = Number(rect.top);
-        top2.push(isTop);
-      }).exec();
-    }
-    this.setData({
-      top: top2
-    });
+    // 将这部分转移到渲染后执行，因为为渲染完成之前执行，会导致null问题
+    // //初始化每个右侧菜单类距离顶部位置
+    // var top2 = new Array();
+    // for(var i =0; i <this.data.menu.length; i++) {
+    //   wx.createSelectorQuery().select('#menu' + i).boundingClientRect(function (rect) {
+    //     console.log(rect)
+    //     var isTop = Number(rect.top);
+    //     top2.push(isTop);
+    //   }).exec();
+    // }
+    // this.setData({
+    //   top: top2
+    // });
     //先判断app中是否已经有订单详情
     if(app.data.menuForNum.length==0) {
       //初始化点菜数组和菜单类总点菜数目数组
@@ -770,7 +772,17 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    //初始化每个右侧菜单类距离顶部位置
+    var top2 = new Array();
+    for(var i =0; i <this.data.menu.length; i++) {
+      wx.createSelectorQuery().select('#menu' + i).boundingClientRect(function (rect) {
+        var isTop = Number(rect.top);
+        top2.push(isTop);
+      }).exec();
+    }
+    this.setData({
+      top: top2
+    });
   },
 
   /**

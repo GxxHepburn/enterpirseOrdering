@@ -18,8 +18,6 @@ Page({
   touchConfirm: function() {
     var app = getApp();
     let that = this;
-    console.log("add.js_totalNum: " + this.data.totalNum);
-    console.log("add.js_totalPrice: " + this.data.totalPrice);
     wx.request({
       url: app.data.realUrl + "/wechat/loggedIn/add",
       method: 'POST',
@@ -291,7 +289,6 @@ Page({
       alreadyOrders: app.data.alreadyOrders,
       menu: app.data.menu
     });
-    console.log("add.js_orders: " + app.data.orders);
     this.countTotalPrice();
     this.countTotalNum();
     this.countAlreadyTotalPrice();
