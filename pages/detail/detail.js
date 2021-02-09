@@ -60,6 +60,11 @@ Page({
               wx.reLaunch({
                 url: '../../pages/home/home',
               });
+              // 发送支付提交信号
+              wx.request({
+                url: app.data.realUrl + "/wxpay/clientPay/" + app.data.orderSearchId,
+                method: 'POST',
+              });
               //清空所有数据。
               that.initApp();
             },
