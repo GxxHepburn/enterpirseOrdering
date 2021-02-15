@@ -5,7 +5,8 @@ Page({
    */
   data: {
     touch: -1,
-    openid: ''
+    openid: '',
+    showLoading: false
   },
 
   /**
@@ -21,71 +22,6 @@ Page({
   },
 
   /**
-   * 错误弹窗
-   */
-  failLoadModal: function(that) {
-    var app = getApp();
-    wx.showModal({
-      title: '登陆',
-      content: '登陆出错，请重试',
-      success: function (repeatRes){
-        if(repeatRes.confirm) {
-          that.loadByTxServer();
-        } else {
-          //虽然违背用户意愿（取消登陆）但是仍然强制登陆，因为不登陆系统就没办法正常运行
-          app.loadByTxServer();
-          wx.showToast({
-            title: '选择就餐人数后，点击"开始点菜"按钮继续',
-            icon: 'none',
-            duration: 3500
-          });
-        }
-      }
-    });
-  },
-
-  /**
-   * 登陆方法
-   */
-  loadByTxServer: function (){
-    let that = this;
-    var app = getApp();
-    wx.login({
-      success(res) {
-        if (res.code) {
-          wx.request({
-            timeout: 5000,
-            url: app.data.realUrl + "/wechat/login",
-            method: 'POST',
-            data: {
-              code: res.code
-            },
-            success(resMy) {
-              if (resMy.statusCode == 200) {
-                if (resMy.data == "0") {
-                  that.UserBanTips()
-                }
-
-                app.data.loadStatus = true;
-                app.data.openid = resMy.data;
-              } else {
-                that.failLoadModal(that);
-              }
-            },
-            fail() {
-              that.failLoadModal(that);
-            }
-          })
-        } else {
-          that.failLoadModal(that);
-        }
-      },
-      fail() {
-        that.failLoadModal(that);
-      }
-    })
-  },
-  /**
    * 加载菜单
    */
   startOrdering: function(event) {
@@ -100,7 +36,6 @@ Page({
       });
       return;
     }
-
     if(app.data.inited == 1) {
       wx.navigateTo({
         url: '../../pages/menu/menu' 
@@ -108,32 +43,12 @@ Page({
       return;
     }
     var OPENID = app.data.openid;
-    if(OPENID == "0" || OPENID == "") {
-      //登陆失败，要重新登陆
-      wx.showModal({
-        title: '登陆',
-        content: '登陆出错，请重试',
-        success: function (repeatRes){
-          if(repeatRes.confirm) {
-            that.loadByTxServer();
-          } else {
-            //虽然违背用户意愿（取消登陆）但是仍然强制登陆，因为不登陆系统就没办法正常运行
-            app.loadByTxServer();
-            wx.showToast({
-              title: '选择就餐人数后，点击"开始点菜"按钮继续',
-              icon: 'none',
-              duration: 3500
-            })
-          }
-        }
-      });
-    } else {
-      //根据OPENID初始化菜单
-      //调用初始化函数,参数包括openid,商家代码
-      //先检查是否已经初始化过了，如果初始化过了，就直接进入界面，否则调用初始化方法
-      that.initMenu(OPENID, app.data.res);
-      app.data.inited = 1;
-    }
+    
+    //根据OPENID初始化菜单
+    //调用初始化函数,参数包括openid,商家代码
+    //先检查是否已经初始化过了，如果初始化过了，就直接进入界面，否则调用初始化方法
+    that.initMenu(OPENID, app.data.res);
+    app.data.inited = 1;
   },
   /**
    * 初始化菜单函数->发送请求
@@ -177,6 +92,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setData({
+      showLoading: true
+    })
     var app = getApp();
     let that = this;
     wx.login({
@@ -244,6 +162,9 @@ Page({
                   }
                 });
               }
+              that.setData({
+                showLoading: false
+              })
             }
           });
         }

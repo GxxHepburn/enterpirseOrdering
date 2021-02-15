@@ -1,4 +1,7 @@
 <view class="main">
+  <view >
+    <loading wx:if="{{showLoading}}">登陆中</loading>
+  </view>
   <!-- 上部 -->
   <view class="choose_wrap">
     <!-- 提示 -->
