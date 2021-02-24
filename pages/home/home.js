@@ -25,6 +25,17 @@ Page({
     startPoint: 0,
     addTouch: 0
   },
+  //shopSign_phone按钮
+  touchPhone: function(event) {
+    wx.makePhoneCall({
+      phoneNumber: event.currentTarget.dataset.p,
+      success: (result)=>{
+        
+      },
+      fail: ()=>{},
+      complete: ()=>{}
+    });
+  },
   touchButton: function() {
     var app = getApp();
     let that = this;

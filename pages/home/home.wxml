@@ -8,6 +8,17 @@
         <view class="hasNull" wx:if="{{ordersList.length==0}}">订单列表是空的，空空如也~</view>
         <view class="order_wrap" wx:for="{{ordersList}}" wx:key="index">
             <view class="order_item_top_wrap">
+                <view class="orderTime">餐厅：{{item.m_Name}}</view>
+            </view>
+            <view class="order_item_top_wrap">
+                <view class="orderTime" bindtap="touchPhone" data-p="{{item.m_Phone}}">联系电话：
+                    <text class="m_PhoneTe">{{item.m_Phone}}</text>
+                </view>
+            </view>
+            <view class="order_item_top_wrap">
+                <view class="orderTime">餐厅地址：{{item.m_Address}}</view>
+            </view>
+            <view class="order_item_top_wrap">
                 <view class="orderTime">下单时间：{{item.o_OrderingTime}}</view>
                 <view class="orderInfo {{item.o_PayStatue=='未支付'?'notPay':''}}">{{item.o_PayStatue}}</view>
             </view>
