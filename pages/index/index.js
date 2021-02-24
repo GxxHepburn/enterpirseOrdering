@@ -155,10 +155,24 @@ Page({
                   method: 'POST',
                   data: {
                     openid: app.data.openid,
-                    mid: app.data.res
+                    mid: app.data.res,
+                    tabId: app.data.table
                   },
                   success: function(resMer) {
-                    app.data.mer = resMer.data;
+                    if (resMer.data == "0") {
+                      wx.showModal({
+                        title: '提示',
+                        content: '不存在的餐桌号，请重新扫码!',
+                        showCancel: false,
+                        success (res) {
+                          wx.navigateTo({
+                            url: '../../pages/home/home' 
+                          });
+                        }
+                      })
+                    } else {
+                      app.data.mer = resMer.data;
+                    }
                   }
                 });
               }
