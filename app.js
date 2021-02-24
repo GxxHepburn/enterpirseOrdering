@@ -35,27 +35,6 @@ App({
     mer: {}
   },
   
-  /**
-   * 抽出modal方法
-   */
-  failLoadModal: function (that) {
-    wx.showModal({
-      title: '登陆',
-      content: '登陆出错，请重试',
-      success: function (repeatRes){
-        if(repeatRes.confirm) {
-          that.loadByTxServer();
-        } else {
-          //虽然违背用户意愿（取消登陆）但是仍然强制登陆，因为不登陆系统就没办法正常运行
-          wx.showToast({
-            title: '选择就餐人数后，点击"开始点菜"按钮继续',
-            icon: 'none',
-            duration: 3500
-          })
-        }
-      }
-    });
-  },
   
  
   /**
