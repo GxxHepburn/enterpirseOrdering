@@ -25,7 +25,13 @@
                     <view wx:if="{{item.property[0]||item.specs!=''}}" class="cart_property_before">)</view>
                     <view class="cart_modal_change_wrap">
                         <view class="cart_modal_price_one_wrap">
-                            <text class="cart_modal_price_one">￥{{item.price*item.num}}</text>
+                            <wxs module="price_one_wxs">
+                                var getprice_one = function (item1) {
+                                    return item1.toFixed(2)
+                                }
+                                module.exports.getprice_one = getprice_one
+                            </wxs>
+                            <text class="cart_modal_price_one">￥{{price_one_wxs.getprice_one(item.price*item.num)}}</text>
                         </view>
                         <view hover-class="reduceHover" class="cart_modal_reduce" bindtap="cartReduce" data-cartTouchFood="{{item}}">
                             -
@@ -43,7 +49,7 @@
                 <text class="total_label">已点菜清单</text>
                 <text class="total_number"> 共{{alreadyTotleNum}}份 </text>
                 <text class="total_small">总计</text>
-                <text class="total_price"> ￥{{alreadyTotalPrice}}</text>
+                <text class="total_price"> ￥{{price_one_wxs.getprice_one(alreadyTotalPrice)}}</text>
             </view>
             <view class="order_item" wx:for="{{alreadyOrders}}" wx:key="index">
                 <label class="order_item_name">{{item.name}}</label>
@@ -55,7 +61,7 @@
                 </text>
                 <label class="cart_content_foodItem_spec">{{item.specs}}</label>
                 <label wx:if="{{item.property[0]||item.specs!=''}}" class="cart_property_before">)</label>
-                <label class="order_item_price">￥{{item.price*item.num}}</label>
+                <label class="order_item_price">￥{{price_one_wxs.getprice_one(item.price*item.num)}}</label>
             </view>
         </view>
     </view>
