@@ -43,6 +43,7 @@
                                 <text class="price_one">￥{{item.price}}</text>
                                 <text class="price_numberal_measure"> /{{item.unit}}</text>
                             </view>
+                            <!-- 占位 -->
                             <view class="rebate">
                                 <text class="price_last_reason">原价</text>
                                 <text class="price_last">￥133.00</text>

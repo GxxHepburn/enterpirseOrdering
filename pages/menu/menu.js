@@ -316,7 +316,7 @@ Page({
       }
     }
     this.setData({
-      totalPrice: totalPrice2
+      totalPrice: totalPrice2.toFixed(2)
     });
   },
   //减菜对话框，加按钮点击事件
