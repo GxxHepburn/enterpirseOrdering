@@ -45,7 +45,7 @@
             </view>
             <view class="content_wrap">
                 <view class="cart_content_zero" wx:if="{{totalPrice==0}}">购物车空空如也</view>
-                <view class="cart_content_foodItem" wx:for="{{orders}}" wx:key="index">
+                <view class="cart_content_foodItem" wx:for="{{orders}}" wx:key="id">
                     <view class="cart_content_foodItem_name">{{item.name}}</view>
                     <view wx:if="{{item.property[0]||item.specs!=''}}" class="cart_property_before">(</view>
                     <text class="cart_content_foodItem_property" wx:for="{{item.property}}" 
@@ -56,7 +56,13 @@
                     <view wx:if="{{item.property[0]||item.specs!=''}}" class="cart_property_before">)</view>
                     <view class="cart_modal_change_wrap">
                         <view class="cart_modal_price_one_wrap">
-                            <text class="cart_modal_price_one">￥{{item.price*item.num}}</text>
+                            <wxs module="price_one_wxs">
+                                var getprice_one = function (item1) {
+                                    return item1.toFixed(2)
+                                }
+                                module.exports.getprice_one = getprice_one
+                            </wxs>
+                            <text class="cart_modal_price_one">￥{{price_one_wxs.getprice_one(item.price*item.num)}}</text>
                         </view>
                         <view hover-class="reduceHover" class="cart_modal_reduce" bindtap="cartReduce" data-cartTouchFood="{{item}}">
                             -

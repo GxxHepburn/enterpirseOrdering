@@ -272,7 +272,7 @@ Page({
       }
     }
     this.setData({
-      totalPrice: totalPrice2
+      totalPrice: totalPrice2.toFixed(2)
     });
   },
   //计算总数量

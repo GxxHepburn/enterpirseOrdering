@@ -40,7 +40,13 @@
                         <text class="saleNumber"> 销量{{item.salesVolume}}</text>
                         <view class="food_change_wrap">
                             <view class="price_wrap">
-                                <text class="price_one">￥{{item.price}}</text>
+                                <wxs module="price_one_wxs">
+                                    var getprice_one = function (item1) {
+                                        return item1.toFixed(2)
+                                    }
+                                    module.exports.getprice_one = getprice_one
+                                </wxs>
+                                <text class="price_one">￥{{price_one_wxs.getprice_one(item.price)}}</text>
                                 <text class="price_numberal_measure"> /{{item.unit}}</text>
                             </view>
                             <!-- 占位 -->
@@ -99,7 +105,13 @@
                         </view>
                         <view class="modal_change_wrap">
                             <view class="modal_price_wrap">
-                                <text class="modal_price_one">￥{{touchFood.specs[0]==null?touchFood.price:touchFood.price+touchFood.specs[modalFood.specs].value}}</text>
+                                <wxs module="modal_price_one_wxs">
+                                    var getModal_price_one = function (item1, item2, item3) {
+                                        return (item1 == null?item2:item2+item3).toFixed(2)
+                                    }
+                                    module.exports.getModal_price_one = getModal_price_one
+                                </wxs>
+                                <text class="modal_price_one">￥{{modal_price_one_wxs.getModal_price_one(touchFood.specs[0], touchFood.price, touchFood.specs[modalFood.specs].value)}}</text>
                                 <text class="modal_numberal_measure"> /{{touchFood.unit}}</text>
                             </view>
                             <view hover-class="reduceHover" class="modal_reduce" bindtap="touchModalReduce">
@@ -129,7 +141,7 @@
                                 </view>
                                 <view class="reduce_modal_change_wrap">
                                     <view class="reduce_modal_price_one_wrap">
-                                        <text class="reduce_modal_price_one">￥{{inItem.price}}</text>
+                                        <text class="reduce_modal_price_one">￥{{price_one_wxs.getprice_one(item.price)}}</text>
                                         <text class="reduce_modal_numberal_measure"> /{{touchFood.unit}}</text>
                                     </view>
                                     <view hover-class="reduceHover" class="reduce_modal_reduce" bindtap="reduceTouchModalReduce" data-index="{{inIndex}}">
@@ -187,7 +199,7 @@
                 <view wx:if="{{item.property[0]||item.specs!=''}}" class="cart_property_before">)</view>
                 <view class="cart_modal_change_wrap">
                     <view class="cart_modal_price_one_wrap">
-                        <text class="cart_modal_price_one">￥{{item.price*item.num}}</text>
+                        <text class="cart_modal_price_one">￥{{price_one_wxs.getprice_one(item.price*item.num)}}</text>
                     </view>
                     <view hover-class="reduceHover" class="cart_modal_reduce" bindtap="cartReduce" data-cartTouchFood="{{item}}">
                         -
