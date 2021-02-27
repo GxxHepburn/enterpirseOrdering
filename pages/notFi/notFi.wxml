@@ -30,7 +30,13 @@
                 </text>
                 <label class="cart_content_foodItem_spec">{{item.specs}}</label>
                 <label wx:if="{{item.property[0]||item.specs!=''}}" class="cart_property_before">)</label>
-                <label class="order_item_price">￥{{item.price*item.num}}</label>
+                <wxs module="price_one_wxs">
+                    var getprice_one = function (item1) {
+                        return item1.toFixed(2)
+                    }
+                    module.exports.getprice_one = getprice_one
+                </wxs>
+                <label class="order_item_price">￥{{price_one_wxs.getprice_one(item.price*item.num)}}</label>
             </view>
             <view class="total">
                 <label class="total_label">合计</label>
@@ -38,7 +44,7 @@
             </view>
         </view>
 
-        <view class="order_wrap"  wx:if="{{hasReturn == 1}}">
+        <!-- <view class="order_wrap"  wx:if="{{hasReturn == 1}}">
             <view class="order_numer">
                 <label class="order_number_label">退点商品</label>
             </view>
@@ -58,7 +64,7 @@
                 <label class="total_label">合计</label>
                 <label class="total_price">￥{{returnTotalPrice}}</label>
             </view>
-        </view>
+        </view> -->
 
         <view class="info_wrap">
             <view class="time_wrap">
