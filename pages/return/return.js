@@ -28,7 +28,7 @@ Page({
       totalPrice2 += this.data.alreadyOrders[i].num * this.data.alreadyOrders[i].price;
     }
     this.setData({
-      totalPrice: totalPrice2.toFixed(1)
+      totalPrice: totalPrice2.toFixed(2)
     });
   },
   /**
