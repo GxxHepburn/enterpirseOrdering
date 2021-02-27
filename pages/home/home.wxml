@@ -24,7 +24,13 @@
             </view>
             <view class="order_item_down_wrap">
                 <view class="orderTotalNum">共{{item.o_TotleNum}}份菜品</view>
-                <text class="orderTotalPrice" decode="{{true}}" space="{{true}}">&ensp;总计：￥{{item.o_TotlePrice}}</text>
+                <wxs module="price_one_wxs">
+                    var getprice_one = function (item1) {
+                        return item1.toFixed(2)
+                    }
+                    module.exports.getprice_one = getprice_one
+                </wxs>
+                <text class="orderTotalPrice" decode="{{true}}" space="{{true}}">&ensp;总计：￥{{price_one_wxs.getprice_one(item.o_TotlePrice)}}</text>
                 <view class="orderDetail" bindtap="touchDetail" data-order="{{item}}" hover-class="orderInfo_hover">详情</view>
             </view>
         </view>
