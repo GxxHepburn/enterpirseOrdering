@@ -44,7 +44,7 @@
             </view>
         </view>
 
-        <view class="order_wrap" wx:if="{{hasReturn == 1}}">
+        <!-- <view class="order_wrap" wx:if="{{hasReturn == 1}}">
             <view class="order_numer">
                 <label class="order_number_label">退点商品</label>
             </view>
@@ -64,7 +64,7 @@
                 <label class="total_label">合计</label>
                 <label class="total_price">￥{{returnTotalPrice}}</label>
             </view>
-        </view>
+        </view> -->
         
         <view class="info_wrap">
             <view class="time_wrap">
@@ -95,7 +95,7 @@
         <text class="icon_before">*</text>
         <text class="icon">服</text>
         <text class="price" selectable="false" space="false" decode="false">
-            ￥{{totalPrice -returnTotalPrice}}
+            ￥{{price_one_wxs.getprice_one(totalPrice -returnTotalPrice)}}
             <!-- 要做保留小数处理 -->
         </text>
         <view class="cart_add" hover-class="cart_add_hover" bindtap="touchAdd">
