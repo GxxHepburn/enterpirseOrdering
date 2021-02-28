@@ -62,7 +62,7 @@
                                 }
                                 module.exports.getprice_one = getprice_one
                             </wxs>
-                            <text class="cart_modal_price_one">￥{{price_one_wxs.getprice_one(item.price*item.num)}}</text>
+                            <text class="cart_modal_price_one">￥{{price_one_wxs.getprice_one(item.price)}}</text>
                         </view>
                         <view hover-class="reduceHover" class="cart_modal_reduce" bindtap="cartReduce" data-cartTouchFood="{{item}}">
                             -

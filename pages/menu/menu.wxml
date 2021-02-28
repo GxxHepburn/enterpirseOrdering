@@ -141,7 +141,7 @@
                                 </view>
                                 <view class="reduce_modal_change_wrap">
                                     <view class="reduce_modal_price_one_wrap">
-                                        <text class="reduce_modal_price_one">￥{{price_one_wxs.getprice_one(item.price)}}</text>
+                                        <text class="reduce_modal_price_one">￥{{price_one_wxs.getprice_one(inItem.price)}}</text>
                                         <text class="reduce_modal_numberal_measure"> /{{touchFood.unit}}</text>
                                     </view>
                                     <view hover-class="reduceHover" class="reduce_modal_reduce" bindtap="reduceTouchModalReduce" data-index="{{inIndex}}">
