@@ -36,7 +36,7 @@
                     }
                     module.exports.getprice_one = getprice_one
                 </wxs>
-                <label class="order_item_price">￥{{price_one_wxs.getprice_one(item.price*item.num)}}</label>
+                <label class="order_item_price">￥{{price_one_wxs.getprice_one(item.price)}}</label>
             </view>
             <view class="total">
                 <label class="total_label">合计</label>
