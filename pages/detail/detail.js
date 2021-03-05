@@ -91,10 +91,8 @@ Page({
           'signType': resMy.data.signType,
           'paySign': resMy.data.paySign,
           'success': function(payRes) {
-            console.log('success: ' + payRes.errMsg);
           },
           'fail': function(payRes) {
-            console.log('fail: ' + payRes.errMsg);
           }
         });
       }
@@ -105,8 +103,6 @@ Page({
   realServicePay: function() {
      var app = getApp();
      var openId2 = app.data.openid;
-     console.log("serviceOpenID: ");
-     console.log(openId2);
      wx.request({
        url: app.data.realUrl + "/wxpay/pay/" + openId2,
        method: 'POST',
@@ -115,7 +111,6 @@ Page({
          total_fee: this.data.totalPrice,
        },
        success: function (resMy) {
-         console.log(resMy);
          wx.requestPayment({
            'timeStamp': resMy.data.timeStamp,
            'nonceStr': resMy.data.nonceStr,
@@ -123,10 +118,8 @@ Page({
            'signType': resMy.data.signType,
            'paySign': resMy.data.paySign,
            'success': function(payRes) {
-             console.log('success: ' + payRes.errMsg);
            },
            'fail': function(payRes) {
-             console.log('fail: ' + payRes.errMsg);
            }
          });
        }

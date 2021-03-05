@@ -35,7 +35,6 @@ Page({
     this.setData({
       modalFood: this.data.modalFood
     });
-    console.log(this.data.modalFood.property[0]);
   },
 
   /**
