@@ -76,7 +76,7 @@ page{
 .menu_item_wrap{
     background-color: #F6F6F6;
     overflow-y: auto;
-    margin-bottom: 90.7rpx;
+    padding-bottom: 260rpx;
 }
 .menu_item{
     text-align: center;
@@ -117,7 +117,7 @@ page{
 .menu_item_food_wrap{
     overflow-y: scroll;
     flex: 1;
-    margin-bottom: 90.75rpx;
+    padding-bottom: 250rpx;
 }
 ::-webkit-scrollbar{
     width: 0;
