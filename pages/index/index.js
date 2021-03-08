@@ -110,6 +110,7 @@ Page({
               if(resMy.statusCode == 200) {
                 if (resMy.data == "0") {
                   that.UserBanTips()
+                  return
                 }
 
                 app.data.loadStatus = true;
