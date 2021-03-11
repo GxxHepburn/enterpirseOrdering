@@ -520,11 +520,15 @@ page{
     /* line-height: 100rpx; */
     font-size: 25rpx;
     position: relative;
-    padding-top: 20rpx;
+    padding-top: 10rpx;
     padding-bottom: 20rpx;
 }
 .cart_content_foodItem_left_wrap {
     display: flex;
+}
+.cart_content_foodItem_name {
+    font-weight: bold;
+    padding-bottom: 10rpx;
 }
 .cart_content_foodItem_property, .cart_content_foodItem_spec{
     font-size: 25rpx;
