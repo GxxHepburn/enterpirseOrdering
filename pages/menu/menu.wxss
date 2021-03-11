@@ -137,8 +137,7 @@ page{
     display: flex;
     flex-direction: row;
     height: 187.9rpx;
-    /* border-bottom: solid 3rpx #eeeeee; */
-    width: 100%;
+    /* width: 100%; */
     padding-top: 20.2rpx;
     padding-left: 25.8rpx;
 }
@@ -154,16 +153,17 @@ page{
     padding-top: 5rpx;
 }
 .menu_item_food_name{
-    font-size: 31.3rpx;
-    line-height: 56.3rpx;
-    color: #7a7a7a;
+    font-size: 27rpx;
+    font-weight: bold;
+    line-height: 40rpx;
+    color: #000;
     margin-left: 25rpx;
     margin-top: 2rpx;
     margin-right: 15.5rpx;
 }
 .tag{
-    font-size: 31.3rpx;
-    line-height: 56.3rpx;
+    font-size: 27rpx;
+    line-height: 40rpx;
     background-color: #F34B40;
     color: #ffffff;
     padding-left: 15rpx;
@@ -181,12 +181,12 @@ page{
     color: #7a7a7a;
 }
 .price_one{
-    font-size: 31.3rpx;
+    font-size: 25rpx;
     margin-left: 32rpx;
     color: #B8726A;
 }
 .price_numberal_measure{
-    font-size: 24.3rpx;
+    font-size: 22rpx;
 }
 .rebate{
     margin-left: 10rpx;
