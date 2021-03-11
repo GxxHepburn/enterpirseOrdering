@@ -190,16 +190,18 @@
             <view class="cart_content_zero" wx:if="{{totalPrice==0}}">购物车空空如也</view>
             <view class="cart_content_foodItem" wx:for="{{orders}}" wx:key="index">
                 <view class="cart_content_foodItem_name">{{item.name}}</view>
-                <view wx:if="{{item.property[0]||item.specs!=''}}" class="cart_property_before">(</view>
-                <text class="cart_content_foodItem_property" wx:for="{{item.property}}" 
-                    wx:for-item="inItem" wx:key="inIndex" wx:for-index="inIndex"
-                    decode="{{true}}" space="{{true}}">{{inItem}}<text wx:if="{{inIndex!=item.property.length-1||item.specs!=''}}" decode="{{true}}" space="{{true}}">&ensp;</text>
-                </text>
-                <view class="cart_content_foodItem_spec">{{item.specs}}</view>
-                <view wx:if="{{item.property[0]||item.specs!=''}}" class="cart_property_before">)</view>
+                <view class="cart_content_foodItem_left_wrap">
+                    <view wx:if="{{item.property[0]||item.specs!=''}}" class="cart_property_before">(</view>
+                    <text class="cart_content_foodItem_property" wx:for="{{item.property}}" 
+                        wx:for-item="inItem" wx:key="inIndex" wx:for-index="inIndex"
+                        decode="{{true}}" space="{{true}}">{{inItem}}<text wx:if="{{inIndex!=item.property.length-1||item.specs!=''}}" decode="{{true}}" space="{{true}}">&ensp;</text>
+                    </text>
+                    <view class="cart_content_foodItem_spec">{{item.specs}}</view>
+                    <view wx:if="{{item.property[0]||item.specs!=''}}" class="cart_property_before">)</view>
+                </view>
                 <view class="cart_modal_change_wrap">
                     <view class="cart_modal_price_one_wrap">
-                        <text class="cart_modal_price_one">￥{{price_one_wxs.getprice_one(item.price*item.num)}}</text>
+                        <text class="cart_modal_price_one">￥{{price_one_wxs.getprice_one(item.price)}}</text>
                     </view>
                     <view hover-class="reduceHover" class="cart_modal_reduce" bindtap="cartReduce" data-cartTouchFood="{{item}}">
                         -

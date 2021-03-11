@@ -513,14 +513,17 @@ page{
     font-size: 35rpx;
 }
 .cart_content_foodItem{
-    display: flex;
+    /* display: flex; */
     margin-left: 30rpx;
     border-bottom: solid 1rpx #eeeeee;
-    height: 100rpx;
-    line-height: 100rpx;
-    font-size: 30rpx;
+    /* height: 100rpx; */
+    /* line-height: 100rpx; */
+    font-size: 25rpx;
+    position: relative;
+    padding-top: 20rpx;
+    padding-bottom: 20rpx;
 }
-.cart_modal_change_wrap{
+.cart_content_foodItem_left_wrap {
     display: flex;
 }
 .cart_content_foodItem_property, .cart_content_foodItem_spec{
@@ -532,39 +535,43 @@ page{
     font-size: 25rpx;
 }
 .cart_modal_change_wrap{
+    /* line-height: 100rpx; */
+    display: flex;
     right: 0;
-    width: 550%;
+    /* width: 550%; */
     position: absolute;
     text-align: center;
 }
 .cart_modal_price_one{
     position: absolute;
-    right: 250rpx;
-    font-size: 40rpx;
+    right: 180rpx;
+    bottom: 0rpx;
+    font-size: 25rpx;
     color: #FF5140;
 }
 .cart_modal_reduce{
     position: absolute;
-    right: 185rpx;
+    right: 135rpx;
+    bottom: -20rpx;
     font-size: 60rpx;
     font-weight: bold;
     color: #FF5140;
-    line-height: 90rpx;
 }
 .cart_modal_number{
     position: absolute;
-    right: 95rpx;
-    font-size: 40rpx;
+    right: 55rpx;
+    bottom: 0rpx;
+    font-size: 25rpx;
     text-align: center;
     width: 80rpx;
 }
 .cart_modal_plus{
     position: absolute;
-    right: 45rpx;
+    right: 15rpx;
     font-size: 60rpx;
+    bottom: -20rpx;
     font-weight: bold;
     color: #FF5140;
-    line-height: 90rpx;
 }
 
 
