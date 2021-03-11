@@ -279,14 +279,18 @@ page{
     border-top: solid 1rpx #eeeeee;
 }
 .cart_content_foodItem{
-    /* display: flex; */
     margin-left: 30rpx;
     border-top: solid 1rpx #eeeeee;
-    /* height: 100rpx; */
-    line-height: 50rpx;
-    font-size: 30rpx;
-    padding-top: 20rpx;
+    font-size: 25rpx;
+    padding-top: 10rpx;
     position: relative;
+    padding-bottom: 20rpx;
+}
+.cart_content_foodItem_left_wrap {
+    display: flex;
+}
+.cart_content_foodItem_name {
+    font-weight: bold;
     padding-bottom: 10rpx;
 }
 .cart_content_foodItem_property, .cart_content_foodItem_spec{
@@ -297,49 +301,49 @@ page{
     color: #7a7a7a;
     font-size: 25rpx;
 }
-/* .cart_modal_change_wrap{
+.cart_modal_change_wrap{
     display: flex;
     right: 0;
-    width: 550%;
     position: absolute;
     text-align: center;
-} */
-/* .cart_modal_price_one{
+}
+.cart_modal_price_one{
     position: absolute;
-    right: 250rpx;
-    font-size: 40rpx;
+    right: 180rpx;
+    font-size: 25rpx;
     color: #FF5140;
-} */
-/* .cart_modal_reduce{
+    bottom: 0rpx;
+}
+.cart_modal_reduce{
     position: absolute;
-    right: 185rpx;
+    right: 135rpx;
     font-size: 60rpx;
     font-weight: bold;
     color: #FF5140;
-    line-height: 90rpx;
-} */
+    bottom: -20rpx;
+}
 .cart_modal_number{
     position: absolute;
-    right: 20rpx;
-    font-size: 30rpx;
+    right: 55rpx;
+    bottom: 0rpx;
+    font-size: 25rpx;
     text-align: center;
     width: 80rpx;
-    bottom: 5rpx;
 }
-/* .cart_modal_plus{
+.cart_modal_plus{
     position: absolute;
-    right: 45rpx;
+    right: 15rpx;
     font-size: 60rpx;
+    bottom: -20rpx;
     font-weight: bold;
     color: #FF5140;
-    line-height: 90rpx;
-} */
-/* .plusHover{
+}
+.plusHover{
     color: #B8726A;
 }
 .reduceHover{
     color: #B8726A;
-} */
+}
 .confirm-hover{
     background-color: #eeeeee;
     color: #FF5140;

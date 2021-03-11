@@ -545,10 +545,8 @@ page{
     font-size: 25rpx;
 }
 .cart_modal_change_wrap{
-    /* line-height: 100rpx; */
     display: flex;
     right: 0;
-    /* width: 550%; */
     position: absolute;
     text-align: center;
 }
