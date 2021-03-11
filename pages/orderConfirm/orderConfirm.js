@@ -27,6 +27,15 @@ Page({
       //更新menu（销量,库存）---------------------------------要不要在下单service中返回menu
     var app = getApp();
     let that = this;
+    // 先检查订单数目，订单总价为0，不能下单
+    if(this.data.totalPrice==0) {
+      wx.showToast({
+        title: '请选择商品',
+        icon: 'none',
+        duration: 2000
+      });
+      return;
+    }
     wx.request({
       url: app.data.realUrl + "/wechat/loggedIn/order",
       method: 'POST',
