@@ -165,90 +165,90 @@ Page({
     });
   },
   //购物车 加菜
-  cartPlus: function(item) {
-    var cartTouchFood2 = item.currentTarget.dataset.carttouchfood;
-    var outIndex = cartTouchFood2.outIndex;
-    var index = cartTouchFood2.index;
-    var inIndex = cartTouchFood2.inIndex;
-    var app = getApp();
-    //先判断是否超库存，如果超了就弹窗提示，如果没超就根据是否有属性规格，分类处理、
-    if(this.data.menuForNum[outIndex][index][0].num==app.data.menu[outIndex].foods[index].stock) {
-      wx.showToast({
-        title: '超出库存',
-        icon: 'none',
-        duration: 800
-      });
-    } else {
-      if(this.hasProOrSpec(outIndex, index)) {
-        this.data.menuForNum[outIndex][index][inIndex].num +=1;
-      }
-      this.data.menuForNum[outIndex][index][0].num +=1;
-      this.data.totalNum +=1;
-    }
-    this.setData({
-      menuForNum: this.data.menuForNum,
-      totalNum: this.data.totalNum
-    });
+  // cartPlus: function(item) {
+  //   var cartTouchFood2 = item.currentTarget.dataset.carttouchfood;
+  //   var outIndex = cartTouchFood2.outIndex;
+  //   var index = cartTouchFood2.index;
+  //   var inIndex = cartTouchFood2.inIndex;
+  //   var app = getApp();
+  //   //先判断是否超库存，如果超了就弹窗提示，如果没超就根据是否有属性规格，分类处理、
+  //   if(this.data.menuForNum[outIndex][index][0].num==app.data.menu[outIndex].foods[index].stock) {
+  //     wx.showToast({
+  //       title: '超出库存',
+  //       icon: 'none',
+  //       duration: 800
+  //     });
+  //   } else {
+  //     if(this.hasProOrSpec(outIndex, index)) {
+  //       this.data.menuForNum[outIndex][index][inIndex].num +=1;
+  //     }
+  //     this.data.menuForNum[outIndex][index][0].num +=1;
+  //     this.data.totalNum +=1;
+  //   }
+  //   this.setData({
+  //     menuForNum: this.data.menuForNum,
+  //     totalNum: this.data.totalNum
+  //   });
 
     
-    this.createOrders();
-    this.countTotalPrice();
+  //   this.createOrders();
+  //   this.countTotalPrice();
 
-    //修改app中内容
-    app.data.menuForNum = this.data.menuForNum;
-    app.data.orders = this.data.orders;
-    app.data.totalPrice = this.data.totalPrice;
-    var typeNum = 0;
-    for(var i=0; i<this.data.menuForNum[outIndex].length; i++) {
-      typeNum+=this.data.menuForNum[outIndex][i][0].num;
-    }
-    app.data.typeForNum[outIndex] = typeNum;
-  },
+  //   //修改app中内容
+  //   app.data.menuForNum = this.data.menuForNum;
+  //   app.data.orders = this.data.orders;
+  //   app.data.totalPrice = this.data.totalPrice;
+  //   var typeNum = 0;
+  //   for(var i=0; i<this.data.menuForNum[outIndex].length; i++) {
+  //     typeNum+=this.data.menuForNum[outIndex][i][0].num;
+  //   }
+  //   app.data.typeForNum[outIndex] = typeNum;
+  // },
   //购车减菜
-  cartReduce: function(item) {
-    var cartTouchFood2 = item.currentTarget.dataset.carttouchfood;
-    var outIndex = cartTouchFood2.outIndex;
-    var index = cartTouchFood2.index;
-    var inIndex = cartTouchFood2.inIndex;
-    var app = getApp();
-    //先判断数目是否为0
-    if(cartTouchFood2.num==0) {
-      wx.showToast({
-        title: '菜品不能低于0',
-        icon: 'none',
-        duration: 800
-      });
-    } else {
-      if(this.hasProOrSpec(outIndex, index)) {
-        this.data.menuForNum[outIndex][index][inIndex].num -=1;
-      }
-      this.data.menuForNum[outIndex][index][0].num -=1;
-      this.data.totalNum -=1;
-    }
-    //清理num为0的food
-    for(var i=1; i<this.data.menuForNum[outIndex][index].length; i++) {
-      if(this.data.menuForNum[outIndex][index][i].num == 0) {
-        this.data.menuForNum[outIndex][index].splice(i, 1);
-      }
-    }
+  // cartReduce: function(item) {
+  //   var cartTouchFood2 = item.currentTarget.dataset.carttouchfood;
+  //   var outIndex = cartTouchFood2.outIndex;
+  //   var index = cartTouchFood2.index;
+  //   var inIndex = cartTouchFood2.inIndex;
+  //   var app = getApp();
+  //   //先判断数目是否为0
+  //   if(cartTouchFood2.num==0) {
+  //     wx.showToast({
+  //       title: '菜品不能低于0',
+  //       icon: 'none',
+  //       duration: 800
+  //     });
+  //   } else {
+  //     if(this.hasProOrSpec(outIndex, index)) {
+  //       this.data.menuForNum[outIndex][index][inIndex].num -=1;
+  //     }
+  //     this.data.menuForNum[outIndex][index][0].num -=1;
+  //     this.data.totalNum -=1;
+  //   }
+  //   //清理num为0的food
+  //   for(var i=1; i<this.data.menuForNum[outIndex][index].length; i++) {
+  //     if(this.data.menuForNum[outIndex][index][i].num == 0) {
+  //       this.data.menuForNum[outIndex][index].splice(i, 1);
+  //     }
+  //   }
 
-    this.setData({
-      menuForNum: this.data.menuForNum,
-      totalNum: this.data.totalNum
-    });
-    this.createOrders();
-    this.countTotalPrice();
+  //   this.setData({
+  //     menuForNum: this.data.menuForNum,
+  //     totalNum: this.data.totalNum
+  //   });
+  //   this.createOrders();
+  //   this.countTotalPrice();
 
-    //修改app中内容
-    app.data.menuForNum = this.data.menuForNum;
-    app.data.orders = this.data.orders;
-    app.data.totalPrice = this.data.totalPrice;
-    var typeNum = 0;
-    for(var i=0; i<this.data.menuForNum[outIndex].length; i++) {
-      typeNum+=this.data.menuForNum[outIndex][i][0].num;
-    }
-    app.data.typeForNum[outIndex] = typeNum;
-  },
+  //   //修改app中内容
+  //   app.data.menuForNum = this.data.menuForNum;
+  //   app.data.orders = this.data.orders;
+  //   app.data.totalPrice = this.data.totalPrice;
+  //   var typeNum = 0;
+  //   for(var i=0; i<this.data.menuForNum[outIndex].length; i++) {
+  //     typeNum+=this.data.menuForNum[outIndex][i][0].num;
+  //   }
+  //   app.data.typeForNum[outIndex] = typeNum;
+  // },
   /**
    * 根据outIndex、index判断菜品是否有属性和规格
    */
