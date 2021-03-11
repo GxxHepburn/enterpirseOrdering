@@ -68,9 +68,9 @@
                     </view>
 
                     <!--屏幕背景变暗的背景  -->
-                    <view class="commodity_screen" bindtap="hideModal" wx:if="{{showModalStatus}}"></view>
+                    <view class="commodity_screen" bindtap="hideModal" wx:if="{{showModalStatus&&(popOutIndex==outIndex)&&(popIndex==index)}}"></view>
                     <!--弹出框 加菜  -->
-                    <view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">
+                    <view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus&&(popOutIndex==outIndex)&&(popIndex==index)}}">
                         <view class="modal_name">{{touchFood.name}}</view>
                         <view  wx:for="{{touchFood.property}}" wx:for-item="inItem" wx:for-index="inIndex" wx:key="inIndex">
                             <view  class="modal_prop_name">{{inItem.name}}</view>
@@ -128,9 +128,9 @@
                         </view>
                     </view>
                     <!--屏幕背景变暗的背景 减菜  -->
-                    <view class="commodity_screen" bindtap="reduceHideModal" wx:if="{{showReduceModalStatus}}"></view>
+                    <view class="commodity_screen" bindtap="reduceHideModal" wx:if="{{showReduceModalStatus&&(popOutIndex==outIndex)&&(popIndex==index)}}"></view>
                     <!--弹出框 减菜 -->
-                    <view animation="{{reduceAnimationData}}" class="commodity_attr_box" wx:if="{{showReduceModalStatus}}">
+                    <view animation="{{reduceAnimationData}}" class="commodity_attr_box" wx:if="{{showReduceModalStatus&&(popOutIndex==outIndex)&&(popIndex==index)}}">
                         <view class="modal_name">{{touchFood.name}}</view>
                         <view class="reduce_modal_foods_wrap_wrap">
                             <view wx:for="{{exceptOneFoods}}" wx:key="inIndex" class="reduce_modal_foods_wrap" wx:for-item="inItem" wx:for-index="inIndex">

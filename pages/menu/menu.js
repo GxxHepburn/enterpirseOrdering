@@ -27,7 +27,10 @@ Page({
     cartModalStatus: false,
 
     orders: [],
-    mer: {}
+    mer: {},
+
+    popOutIndex: 0,
+    popIndex: 0
   },
   //shopSign_phone按钮
   touchPhone: function() {
@@ -590,7 +593,9 @@ Page({
     this.setData({
       touchFood: this.data.menu[outIndex].foods[index],
       outIndex: outIndex,
-      index: index
+      index: index,
+      popOutIndex: outIndex,
+      popIndex: index
     });
     //修改菜单
     if(this.data.menuForNum[outIndex][index][0].num == this.data.menu[outIndex].foods[index].stock) {
@@ -645,7 +650,9 @@ Page({
     this.setData({
       touchFood: this.data.menu[outIndex].foods[index],
       outIndex: outIndex,
-      index: index
+      index: index,
+      popOutIndex: outIndex,
+      popIndex: index
     });
     //修改菜单
     if(this.data.menuForNum[outIndex][index][0].num != 0) {
