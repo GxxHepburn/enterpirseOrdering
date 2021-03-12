@@ -94,7 +94,7 @@
     border-bottom: solid 1rpx #d9d9d9;
     position: relative;
     padding-top: 15rpx;
-    padding-bottom: 15rpx;
+    padding-bottom: 50rpx;
     position: relative;
 }
 .order_number_label, .order_item_name, .total_label{
@@ -111,16 +111,19 @@
     color: #888888;
 }
 .order_item_price {
-    bottom: 5rpx;
+    bottom: 15rpx;
 }
 .order_item_left_wrap {
     display: flex;
+}
+.modal_change_wrap{
+    text-align: center;
 }
 .order_item_number{
     position: absolute;
     right: 200rpx;
     color: #888888;
-    bottom: 5rpx;
+    bottom: 15rpx;
 }
 .order_number_content{
     font-size: 25rpx;
