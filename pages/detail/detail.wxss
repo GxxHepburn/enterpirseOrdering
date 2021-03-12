@@ -173,6 +173,9 @@
 }
 .remark{
     max-width: 500rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 .cart_pay{
     position: fixed;
