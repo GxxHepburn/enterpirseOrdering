@@ -118,7 +118,21 @@ Page({
     this.realTouchDetail(order);
   },
   realTouchDetail: function(order) {
+    
     var app = getApp();
+
+    // 更新商家信息mer
+    var mer = {
+      m_Address: order.m_Address,
+      m_BeginTime: order.m_BeginTime,
+      m_EndTime: order.m_EndTime,
+      m_ID: order.m_ID,
+      m_Name: order.m_Name,
+      m_Phone: order.m_Phone,
+      m_img: order.m_img
+    }
+    app.data.mer = mer
+
     //分类处理，对于未支付的订单，进入订单详情界面
     //对于其他类型订单，弹出窗体，显示订单详细信息。
     if(order.o_PayStatue=="未支付") {
