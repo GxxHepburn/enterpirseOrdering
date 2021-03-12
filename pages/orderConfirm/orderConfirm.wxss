@@ -284,7 +284,7 @@ page{
     font-size: 25rpx;
     padding-top: 10rpx;
     position: relative;
-    padding-bottom: 20rpx;
+    padding-bottom: 60rpx;
 }
 .cart_content_foodItem_left_wrap {
     display: flex;
@@ -302,9 +302,9 @@ page{
     font-size: 25rpx;
 }
 .cart_modal_change_wrap{
-    display: flex;
-    right: 0;
-    position: absolute;
+    /* display: flex; */
+    /* right: 0; */
+    /* position: absolute; */
     text-align: center;
 }
 .cart_modal_price_one{
@@ -312,7 +312,7 @@ page{
     right: 180rpx;
     font-size: 25rpx;
     color: #FF5140;
-    bottom: 0rpx;
+    bottom: 20rpx;
 }
 .cart_modal_reduce{
     position: absolute;
@@ -320,12 +320,12 @@ page{
     font-size: 60rpx;
     font-weight: bold;
     color: #FF5140;
-    bottom: -20rpx;
+    bottom: 0rpx;
 }
 .cart_modal_number{
     position: absolute;
     right: 55rpx;
-    bottom: 0rpx;
+    bottom: 20rpx;
     font-size: 25rpx;
     text-align: center;
     width: 80rpx;
@@ -334,7 +334,7 @@ page{
     position: absolute;
     right: 15rpx;
     font-size: 60rpx;
-    bottom: -20rpx;
+    bottom: 0rpx;
     font-weight: bold;
     color: #FF5140;
 }
