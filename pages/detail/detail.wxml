@@ -21,50 +21,32 @@
                 <label class="order_number_content">{{orderSearchId}}</label>
             </view>
             <view class="order_item" wx:for="{{alreadyOrders}}" wx:key="index">
-                <label class="order_item_name">{{item.name}}</label>
-                <label class="order_item_number">×{{item.num}}</label>
-                <label wx:if="{{item.property[0]||item.specs!=''}}" class="cart_property_before">(</label>
-                <text class="cart_content_foodItem_property" wx:for="{{item.property}}" 
-                    wx:for-item="inItem" wx:key="inIndex" wx:for-index="inIndex"
-                    decode="{{true}}" space="{{true}}">{{inItem}}<text wx:if="{{inIndex!=item.property.length-1||item.specs!=''}}" decode="{{true}}" space="{{true}}">&ensp;</text>
-                </text>
-                <label class="cart_content_foodItem_spec">{{item.specs}}</label>
-                <label wx:if="{{item.property[0]||item.specs!=''}}" class="cart_property_before">)</label>
+                <view class="order_item_name">{{item.name}}</view>
+                <view class="order_item_left_wrap">
+                    <view wx:if="{{item.property[0]||item.specs!=''}}" class="cart_property_before">(</view>
+                    <text class="cart_content_foodItem_property" wx:for="{{item.property}}" 
+                        wx:for-item="inItem" wx:key="inIndex" wx:for-index="inIndex"
+                        decode="{{true}}" space="{{true}}">{{inItem}}<text wx:if="{{inIndex!=item.property.length-1||item.specs!=''}}" decode="{{true}}" space="{{true}}">&ensp;</text>
+                    </text>
+                    <view class="cart_content_foodItem_spec">{{item.specs}}</view>
+                    <view wx:if="{{item.property[0]||item.specs!=''}}" class="cart_property_before">)</view>
+                </view>
                 <wxs module="price_one_wxs">
                     var getprice_one = function (item1) {
                         return item1.toFixed(2)
                     }
                     module.exports.getprice_one = getprice_one
                 </wxs>
-                <label class="order_item_price">￥{{price_one_wxs.getprice_one(item.price)}}</label>
+                <view class="">
+                    <view class="order_item_number">×{{item.num}}</view>
+                    <view class="order_item_price">￥{{price_one_wxs.getprice_one(item.price)}}</view>
+                </view>
             </view>
             <view class="total">
                 <label class="total_label">合计</label>
                 <label class="total_price">￥{{totalPrice}}</label>
             </view>
         </view>
-
-        <!-- <view class="order_wrap" wx:if="{{hasReturn == 1}}">
-            <view class="order_numer">
-                <label class="order_number_label">退点商品</label>
-            </view>
-            <view class="order_item" wx:if="{{item.num - item.realNum > 0}}" wx:for="{{alreadyOrders}}" wx:key="index">
-                <label class="order_item_name">{{item.name}}</label>
-                <label class="order_item_number">×{{item.num - item.realNum}}</label>
-                <label wx:if="{{item.property[0]||item.specs!=''}}" class="cart_property_before">(</label>
-                <text class="cart_content_foodItem_property" wx:for="{{item.property}}" 
-                    wx:for-item="inItem" wx:key="inIndex" wx:for-index="inIndex"
-                    decode="{{true}}" space="{{true}}">{{inItem}}<text wx:if="{{inIndex!=item.property.length-1||item.specs!=''}}" decode="{{true}}" space="{{true}}">&ensp;</text>
-                </text>
-                <label class="cart_content_foodItem_spec">{{item.specs}}</label>
-                <label wx:if="{{item.property[0]||item.specs!=''}}" class="cart_property_before">)</label>
-                <label class="order_item_price">￥{{price_one_wxs.getprice_one(item.price*(item.num - item.realNum))}}</label>
-            </view>
-            <view class="total">
-                <label class="total_label">合计</label>
-                <label class="total_price">￥{{returnTotalPrice}}</label>
-            </view>
-        </view> -->
         
         <view class="info_wrap">
             <view class="time_wrap">
