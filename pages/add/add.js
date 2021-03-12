@@ -18,6 +18,15 @@ Page({
   touchConfirm: function() {
     var app = getApp();
     let that = this;
+    // 先检查订单数目，订单总价为0，不能下单
+    if(this.data.totalPrice==0) {
+      wx.showToast({
+        title: '请选择商品',
+        icon: 'none',
+        duration: 2000
+      });
+      return;
+    }
     wx.request({
       url: app.data.realUrl + "/wechat/loggedIn/add",
       method: 'POST',
