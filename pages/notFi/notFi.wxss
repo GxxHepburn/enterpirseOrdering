@@ -175,6 +175,9 @@
 }
 .remark{
     max-width: 500rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 .cart_property_before{
     color: #7a7a7a;
