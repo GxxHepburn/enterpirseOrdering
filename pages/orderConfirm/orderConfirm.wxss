@@ -302,9 +302,6 @@ page{
     font-size: 25rpx;
 }
 .cart_modal_change_wrap{
-    /* display: flex; */
-    /* right: 0; */
-    /* position: absolute; */
     text-align: center;
 }
 .cart_modal_price_one{

@@ -109,15 +109,19 @@ page{
     border-top: solid 1rpx #eeeeee;
 }
 .cart_content_foodItem{
-    display: flex;
     margin-left: 30rpx;
     border-top: solid 1rpx #eeeeee;
-    height: 100rpx;
-    line-height: 100rpx;
-    font-size: 30rpx;
+    font-size: 25rpx;
+    padding-top: 10rpx;
+    position: relative;
+    padding-bottom: 60rpx;
 }
-.cart_modal_change_wrap{
+.cart_content_foodItem_left_wrap {
     display: flex;
+}
+.cart_content_foodItem_name {
+    font-weight: bold;
+    padding-bottom: 10rpx;
 }
 .cart_content_foodItem_property, .cart_content_foodItem_spec{
     font-size: 25rpx;
@@ -128,39 +132,38 @@ page{
     font-size: 25rpx;
 }
 .cart_modal_change_wrap{
-    right: 0;
-    width: 550%;
-    position: absolute;
     text-align: center;
 }
 .cart_modal_price_one{
     position: absolute;
-    right: 250rpx;
-    font-size: 40rpx;
+    right: 180rpx;
+    font-size: 25rpx;
     color: #FF5140;
+    bottom: 20rpx;
 }
 .cart_modal_reduce{
     position: absolute;
-    right: 185rpx;
+    right: 135rpx;
     font-size: 60rpx;
     font-weight: bold;
     color: #FF5140;
-    line-height: 90rpx;
+    bottom: 0rpx;
 }
 .cart_modal_number{
     position: absolute;
-    right: 95rpx;
-    font-size: 40rpx;
+    right: 55rpx;
+    bottom: 20rpx;
+    font-size: 25rpx;
     text-align: center;
     width: 80rpx;
 }
 .cart_modal_plus{
     position: absolute;
-    right: 45rpx;
+    right: 15rpx;
     font-size: 60rpx;
+    bottom: 0rpx;
     font-weight: bold;
     color: #FF5140;
-    line-height: 90rpx;
 }
 .plusHover{
     color: #B8726A;
@@ -193,22 +196,43 @@ page{
     border-top: solid 1rpx #d9d9d9;
     border-bottom: solid 1rpx #d9d9d9;
 }
-.order_item, .total {
+.total {
     margin-left: 32.29rpx;
     border-bottom: solid 1rpx #d9d9d9;
     height: 90.63rpx;
     line-height: 90.63rpx;
     position: relative;
 }
+.order_item{
+    margin-left: 32.29rpx;
+    border-bottom: solid 1rpx #d9d9d9;
+    position: relative;
+    padding-top: 15rpx;
+    padding-bottom: 50rpx;
+    position: relative;
+}
+.order_item_name{
+    font-size: 30rpx;
+    padding-bottom: 10rpx;
+    font-weight: bold;
+}
 .order_item_price{
     position: absolute;
     right: 32.29rpx;
     color: #888888;
+    bottom: 15rpx;
+}
+.order_item_left_wrap {
+    display: flex;
+}
+.modal_change_wrap{
+    text-align: center;
 }
 .order_item_number{
     position: absolute;
     right: 200rpx;
     color: #888888;
+    bottom: 15rpx;
 }
 .total_label{
     font-size: 30rpx;
