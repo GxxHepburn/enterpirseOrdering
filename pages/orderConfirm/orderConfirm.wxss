@@ -126,6 +126,9 @@ page{
 .remark_content{
     line-height: 93.75rpx;
     height: 93.75rpx;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    width: 500rpx;
 }
 .total{
     height: 93.75rpx;
