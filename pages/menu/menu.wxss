@@ -203,7 +203,7 @@ page{
 }
 .plus{
     position: relative;
-    right: 40rpx;
+    right: -100rpx;
     bottom: 5rpx;
     font-size: 50.8rpx;
     font-weight: bold;
@@ -218,7 +218,7 @@ page{
 
 .reduce{
     position: relative;
-    right: 70rpx;
+    right: -70rpx;
     bottom: 5rpx;
     font-size: 50.8rpx;
     font-weight: bold;
@@ -233,7 +233,7 @@ page{
 .number{
     font-size: 26.3rpx;
     position: relative;
-    right: 55rpx;
+    right: -85rpx;
     bottom: -5rpx;
 }
 
