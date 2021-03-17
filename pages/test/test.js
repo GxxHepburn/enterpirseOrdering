@@ -5,36 +5,12 @@ Page({
    * 页面的初始数据
    */
   data: {
-    modalFood: {}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var modalFood2 = {};
-        modalFood2 = {
-          "id": 1,
-          "price": 1,
-          "num": 0,
-          "property": [],
-          "specs": -1
-        };
-        for(var i=0; i< 1;i++){
-          modalFood2.property.push(-1);
-        }
-
-        this.setData({
-          modalFood: modalFood2
-        });
-  },
-
-  clickModalProp: function(e) {
-    // console.log(e);
-    this.data.modalFood.property[0] = e.currentTarget.dataset.index;
-    this.setData({
-      modalFood: this.data.modalFood
-    });
   },
 
   /**

@@ -1,36 +1,3 @@
 <view class="commodity_attr_box" >
-    <view class="modal_name">铁板鱿鱼</view>
-    <view>
-        <view  class="modal_prop_name">辣度</view>
-        <view class="modal_prop_values">
-            <view class="modal_prop_value {{modalFood.property[0]==0?'modal_prop_value_hover':''}}" data-index="{{0}}" bindtap="clickModalProp">微辣中辣</view>
-            <view class="modal_prop_value {{modalFood.property[0]==1?'modal_prop_value_hover':''}}" data-index="{{1}}" bindtap="clickModalProp">中辣</view>
-            <view class="modal_prop_value {{modalFood.property[0]==2?'modal_prop_value_hover':''}}" data-index="{{2}}" bindtap="clickModalProp">重辣</view>
-            <view class="modal_prop_value {{modalFood.property[0]==3?'modal_prop_value_hover':''}}" 
-                data-index="{{3}}" bindtap="clickModalProp" wx:if="{{touchFood.property[0].valueFour==''}}"></view>
-        </view>
-    </view>
-    <view class="modal_prop_name">规格</view>
-    <view class="modal_prop_values">
-        <text class="modal_prop_value">小份</text>
-        <text class="modal_prop_value">中份</text>
-        <text class="modal_prop_value">大份</text>
-    </view>
-    <view class="modal_change_wrap">
-        <view class="modal_price_wrap">
-            <text class="modal_price_one">￥20</text>
-            <text class="modal_numberal_measure"> /盘</text>
-        </view>
-        <view class="modal_reduce">
-            -
-        </view>
-        <text class="modal_number">0</text>
-        <view class="modal_plus">
-            +
-        </view>
-    </view>
-    <view class="noAndOk_wrap">
-        <view class="no">取消</view>
-        <view class="ok">确定</view>
-    </view>
+    您当前排队号码为1号，请耐心等待叫号~
 </view>

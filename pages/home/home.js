@@ -69,6 +69,16 @@ Page({
               onlyFromCamera: true,
               success(options) {
                 var scene = decodeURIComponent(options.result);
+                // --------------------------------------------非业务代码--------------------------------------------------
+                // 判断是不是特殊二维码，如果是，则跳转到特定页面，如果不是就继续
+                if (scene === 'http://www.donghuastar.com/wechat/scan?lineup') {
+                  // 跳转到排队号界面
+                  wx.reLaunch({
+                    url: '../../pages/test/test',
+                  });
+                  return
+                }
+                // --------------------------------------------非业务代码--------------------------------------------------
                 //检查是否是合法的连接，不合法就弹窗提示，然后什么也不做
                 wx.request({
                   url: app.data.realUrl + "/wechat/loggedIn/selectQrCode",

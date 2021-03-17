@@ -88,16 +88,17 @@ page{
   background-color: #FF5140;
 }
 .moveButton{
-  width: 100rpx;
-  height:100rpx;
+  width: 80rpx;
+  height:80rpx;
   border-radius:50%;
   position:fixed;
   background:#ff6700;
-  line-height:90rpx;
-  font-size:100rpx;
+  line-height:80rpx;
+  font-weight: bold;
   text-align: center;
   z-index:2000;
   color:#fff;
+  box-sizing: border-box;
 }
 .buttonHover{
   background-color: #D7D7D7;
