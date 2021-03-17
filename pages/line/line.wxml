@@ -1,0 +1,29 @@
+<view class="content-wrap">
+    <view class="title-content-wrap">
+        <icon class="info-icon" type="info" color="#333"></icon>
+        <view class="title-info">公告：请不要重复扫码取号!</view>
+    </view>
+    <view class="top-content-wrap">
+        <view class="nowTime">{{nowTime}}</view>
+        <view class="nowNo">
+            <view class="nowNo_label">当前叫号:</view>
+            <view class="nowNo_value">{{no}}</view>
+        </view>
+        <view class="nowNo">
+            <view class="nowNo_label">还剩下:</view>
+            <view class="nowNo_value">0号</view>
+        </view>
+        <view class="lastNo">
+            <view class="nowNo_label">预计需要:</view>
+            <view class="nowNo_value">0分钟</view>
+        </view>
+    </view>
+    <view class="tips">
+        请你注意显示屏，短信或微信服务通知的提示
+    </view>
+    <view>
+        <button class="btn" type="primary" bindtap="onTap">
+            领取号码牌
+        </button>
+    </view>
+</view>

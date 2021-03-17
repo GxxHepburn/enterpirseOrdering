@@ -10,7 +10,7 @@
     "pages/notFi/notFi",
     "pages/Fi/Fi",
     "pages/return/return",
-    "pages/test/test"
+    "pages/line/line"
   ],
   "window": {
     "navigationBarBackgroundColor": "#EDEDED",

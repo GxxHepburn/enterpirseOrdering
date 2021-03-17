@@ -32,8 +32,8 @@
           "scene": 1011
         },
         {
-          "name": "pages/test/test",
-          "pathName": "pages/test/test",
+          "name": "pages/line/line",
+          "pathName": "pages/line/line",
           "query": "",
           "scene": 1000
         }

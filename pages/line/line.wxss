@@ -1,0 +1,75 @@
+page{
+  height: 100%;
+}
+.content-wrap {
+  height: 100%;
+  background-color: #eee;
+  padding-left: 3%;
+  padding-right: 3%;
+}
+.title-content-wrap {
+  background-color: #fff;
+  margin-bottom: 30rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  font-size: 30rpx;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+  border-bottom-left-radius: 15rpx;
+  border-bottom-right-radius: 15rpx;
+}
+.title-info {
+  display: inline-block;
+  margin-left: 20rpx;
+  font-weight: 600;
+}
+.info-icon {
+  display: inline-block;
+  position: relative;
+  top: 10rpx;
+}
+.top-content-wrap {
+  background-color: #fff;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+  height: 400rpx;
+  font-size: 30rpx;
+}
+.nowTime {
+  height: 100rpx;
+  line-height: 100rpx;
+  border-bottom: 1rpx solid #ddd;
+  font-weight: bold;
+}
+.nowNo {
+  display: flex;
+  position: relative;
+  border-bottom: 1rpx solid #ddd;
+}
+.lastNo {
+  display: flex;
+  position: relative;
+}
+.nowNo_label {
+  font-size: 30rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+}
+.nowNo_value {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  background-color: #8FC740;
+  width: 100rpx;
+  text-align: center;
+  color: #fff;
+  transform: translate(0, -50%);
+  height: 50rpx;
+  vertical-align: middle;
+}
+.tips {
+  font-size: 25rpx;
+  text-align: center;
+  margin-top: 40rpx;
+  margin-bottom: 60rpx;
+}
