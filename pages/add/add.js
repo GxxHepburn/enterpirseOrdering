@@ -30,6 +30,9 @@ Page({
     wx.request({
       url: app.data.realUrl + "/wechat/loggedIn/add",
       method: 'POST',
+      header: {
+        'mid': app.data.res
+      },
       data: {
         openid: app.data.openid,
         orders: this.data.orders,
@@ -40,6 +43,15 @@ Page({
         orderSearchId: app.data.orderSearchId
       },
       success(resMy) {
+        // 先检查商家是否正常营业，如果是，则ok，如果不是，则弹窗提示，同时return
+        if (resMy.statusCode == 403) {
+          wx.showToast({
+            title: '对不起，商家已歇业休息，无法加菜',
+            icon: 'none',
+            duration: 3500
+          });
+          return
+        }
         if(resMy.data==0) {
           //错误,报错，提示联系管理员
           wx.showToast({
