@@ -16,7 +16,8 @@ Page({
     menuForNum: [],
 
     orders: [],
-    remark: ''
+    remark: '',
+    mer: {}
   },
   //下单-下单后要更新menu（销量）
   touchConfirm: function() {
@@ -377,7 +378,8 @@ Page({
       numberOfDiners: app.data.numberOfDiners,
       menuForNum: app.data.menuForNum,
       orders: app.data.orders,
-      remark: app.data.remark
+      remark: app.data.remark,
+      mer: app.data.mer
     });
     this.countTotalPrice();
     this.countTotalNum();

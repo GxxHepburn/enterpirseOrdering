@@ -86,7 +86,7 @@
             <!-- 要做保留小数处理 -->
         </text>
         <view class="confirm" hover-class="confirm-hover" bindtap="touchConfirm">
-            下单
+            {{mer.m_IsOrderWithPay == 1 ? '支付下单':'下单'}}
         </view>
     </view>
 </view>
