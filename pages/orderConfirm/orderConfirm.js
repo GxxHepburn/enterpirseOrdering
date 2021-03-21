@@ -77,6 +77,13 @@ Page({
             duration: 3500
           });
         } else {
+          app.data.orderSearchId = resMy.data.orderSearchId;
+
+          // 判断要不要先支付，如果要先支付，则弹窗支付，然后跳转home，否则走下面分支
+          if (that.data.mer.m_IsOrderWithPay === 1) {
+            that.pay()
+            return
+          }
           
           var orderTime2 = new Date();
           var year = orderTime2.getFullYear();
@@ -93,7 +100,6 @@ Page({
           second = second >= 10 ? second : "0" + second;
 
           app.data.menu = resMy.data.menu;
-          app.data.orderSearchId = resMy.data.orderSearchId;
           app.data.orderTime = '' + year + '-' + month + '-' + day + ' ' + hour + ':' + minute + ':' + second;
           for(var i=0; i<that.data.orders.length; i++) {
             app.data.alreadyOrders.push(that.data.orders[i]);
@@ -108,6 +114,82 @@ Page({
         }
       }
     });
+  },
+  // 商户付款方法
+  pay: function () {
+    let that = this;
+    var app = getApp();
+    var openId2 = app.data.openid;
+    wx.request({
+      url: app.data.realUrl + "/wxpay/pay/" + openId2,
+      method: 'POST',
+      data: {
+        searchId: app.data.orderSearchId,
+        total_fee: that.data.totalPrice,
+      },
+      success: function (resMy) {
+      //在这里检查pay的status
+      var data = resMy.data;
+      if(data == 1) {
+        wx.showModal({
+          title: '提示',
+          content: '订单已经完结，请重新扫码下单',
+          showCancel: false,
+        });
+        //relunch到home界面，
+        wx.reLaunch({
+          url: '../../pages/home/home',
+        });
+        //清空所有数据。
+        that.initApp();
+      } else {
+        wx.requestPayment({
+          'timeStamp': resMy.data.timeStamp,
+          'nonceStr': resMy.data.nonceStr,
+          'package': resMy.data.package,
+          'signType': resMy.data.signType,
+          'paySign': resMy.data.paySign,
+          'success': function(payRes) {
+            wx.reLaunch({
+              url: '../../pages/home/home',
+            });
+            //清空所有数据。
+            that.initApp();
+          },
+          'fail': function(payRes) {
+            //修改isPayNow，同时设置payStatus,payTime
+            wx.request({
+              url: app.data.realUrl + "/wxpay/fail/" + app.data.orderSearchId,
+              method: 'POST',
+            });
+          }
+        });
+      }
+      },
+      fail: function (resFail) {
+        console.log(resFail)
+      }
+    });
+  },
+  //初始化app.js数据
+  initApp: function() {
+    var app = getApp();
+    app.data.numberOfDiners = -1;
+    app.data.res = "";
+    app.data.table = "";
+    app.data.inited = 0;
+    app.data.menu = [];
+    app.data.menuForNum = [];
+    app.data.typeForNum = [];
+    app.data.orders = [];
+    app.data.totalPrice = [];
+    app.data.tableName = [];
+    app.data.tabTypeName = '';
+    app.data.remark = '';
+    app.data.alreadyOrders = [];
+    app.data.orderSearchId = '';
+    app.data.orderTime = '';
+    app.data.isAdd = false;
   },
   //获取备注
   getInputValue: function(e) {

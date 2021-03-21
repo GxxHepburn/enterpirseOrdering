@@ -26,54 +26,54 @@ Page({
   pay: function() {
     let that = this;
     var app = getApp();
-     var openId2 = app.data.openid;
-     wx.request({
-       url: app.data.realUrl + "/wxpay/pay/" + openId2,
-       method: 'POST',
-       data: {
-         searchId: app.data.orderSearchId,
-         total_fee: that.data.totalPrice,
-       },
-       success: function (resMy) {
-        //在这里检查pay的status
-        var data = resMy.data;
-        if(data == 1) {
-          wx.showModal({
-            title: '提示',
-            content: '订单已经完结，请重新扫码下单',
-            showCancel: false,
-          });
-          //relunch到home界面，
-          wx.reLaunch({
-            url: '../../pages/home/home',
-          });
-          //清空所有数据。
-          that.initApp();
-        } else {
-          wx.requestPayment({
-            'timeStamp': resMy.data.timeStamp,
-            'nonceStr': resMy.data.nonceStr,
-            'package': resMy.data.package,
-            'signType': resMy.data.signType,
-            'paySign': resMy.data.paySign,
-            'success': function(payRes) {
-              wx.reLaunch({
-                url: '../../pages/home/home',
-              });
-              //清空所有数据。
-              that.initApp();
-            },
-            'fail': function(payRes) {
-              //修改isPayNow，同时设置payStatus,payTime
-              wx.request({
-                url: app.data.realUrl + "/wxpay/fail/" + app.data.orderSearchId,
-                method: 'POST',
-              });
-            }
-          });
-        }
-       }
-     });
+    var openId2 = app.data.openid;
+    wx.request({
+      url: app.data.realUrl + "/wxpay/pay/" + openId2,
+      method: 'POST',
+      data: {
+        searchId: app.data.orderSearchId,
+        total_fee: that.data.totalPrice,
+      },
+      success: function (resMy) {
+      //在这里检查pay的status
+      var data = resMy.data;
+      if(data == 1) {
+        wx.showModal({
+          title: '提示',
+          content: '订单已经完结，请重新扫码下单',
+          showCancel: false,
+        });
+        //relunch到home界面，
+        wx.reLaunch({
+          url: '../../pages/home/home',
+        });
+        //清空所有数据。
+        that.initApp();
+      } else {
+        wx.requestPayment({
+          'timeStamp': resMy.data.timeStamp,
+          'nonceStr': resMy.data.nonceStr,
+          'package': resMy.data.package,
+          'signType': resMy.data.signType,
+          'paySign': resMy.data.paySign,
+          'success': function(payRes) {
+            wx.reLaunch({
+              url: '../../pages/home/home',
+            });
+            //清空所有数据。
+            that.initApp();
+          },
+          'fail': function(payRes) {
+            //修改isPayNow，同时设置payStatus,payTime
+            wx.request({
+              url: app.data.realUrl + "/wxpay/fail/" + app.data.orderSearchId,
+              method: 'POST',
+            });
+          }
+        });
+      }
+      }
+    });
   },
 
   //普通商户支付
