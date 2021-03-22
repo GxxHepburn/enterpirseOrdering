@@ -81,6 +81,12 @@ Page({
             icon: 'none',
             duration: 3500
           });
+        } else if (resMy.data==1) {
+          wx.showToast({
+            title: '系统中已存在当前订单，请前往我的订单中查看',
+            icon: 'none',
+            duration: 3500
+          });
         } else if (resMy.data.meta != undefined && resMy.data.meta.status == 410) {
           wx.showToast({
             title: resMy.data.data.waringMsg,
