@@ -18,7 +18,8 @@
                 </view>
         </view>
         <scroll-view class="menu_item_food_wrap" scroll-y="{{true}}" scroll-into-view="menu{{menuInto}}" 
-            scroll-with-animation="{{true}}"  bindscroll="scrollToUpper">
+            scroll-with-animation="{{true}}"  bindscroll="scrollToUpper"
+            style="z-index:{{scrollZIndex}};">
             <view class="menu_type" wx:for="{{menu}}" wx:for-item="outItem" wx:for-index="outIndex" wx:key="outIndex" id="menu{{outIndex}}">
                 <view class="menu_title" wx:if="{{outItem.foods.length>0}}">
                     {{outItem.name}}
@@ -49,12 +50,6 @@
                                 <text class="price_one">￥{{price_one_wxs.getprice_one(item.price)}}</text>
                                 <text class="price_numberal_measure"> /{{item.unit}}</text>
                             </view>
-                            <!-- 占位 -->
-                            <!-- <view class="rebate">
-                                <text class="price_last_reason">原价</text>
-                                <text class="price_last">￥133.00</text>
-                                <view class="line"></view>
-                            </view> -->
                             <view hover-class="reduceHover" class="reduce" bindtap="touchReduce"
                                 data-outIndex="{{outIndex}}" data-index="{{index}}">
                                 -
