@@ -407,7 +407,7 @@ Page({
     this.animation = animation
     animation.translateY(500).step()
     this.setData({
-      scrollZIndex: 9999,
+      scrollZIndex: 5000,
       reduceAnimationData: animation.export(),
       showReduceModalStatus: true
     })
@@ -545,7 +545,7 @@ Page({
     this.animation = animation
     animation.translateY(500).step()
     this.setData({
-      scrollZIndex: 9999,
+      scrollZIndex: 5000,
       animationData: animation.export(),
       showModalStatus: true
     })

@@ -10,7 +10,7 @@
         </view>
         <view class="mer_info fa fa-phone" bindtap="touchPhone" hover-class="mer_info_hover"></view>
     </view>
-    <view class="menu_wrap">
+    <view class="menu_wrap" style="z-index:{{scrollZIndex}};">
         <view class="menu_item_wrap">
                 <view wx:if="{{item.foods.length>0}}" wx:for="{{menu}}" wx:key="index" class="menu_item {{(menuInto==index&&scrollInto==-1)||(scrollInto==index&&menuInto==-1)||(menuInto==index&&scrollInto==index)?'menuItemSelected':''}}" catchtap="touchType" data-index="{{index}}">
                     {{item.name}}
