@@ -17,7 +17,8 @@ Page({
 
     orders: [],
     remark: '',
-    mer: {}
+    mer: {},
+    touchConfirmDisabled: false
   },
   //下单-下单后要更新menu（销量）
   touchConfirm: function() {
@@ -37,6 +38,16 @@ Page({
       });
       return;
     }
+    // 检查是不是重复下单
+    if (this.data.touchConfirmDisabled == true) {
+      wx.showToast({
+        title: '正在拼命为您下单，请不要重复下单...',
+        icon: 'none',
+        duration: 5000
+      })
+      return
+    }
+    this.data.touchConfirmDisabled = true
     wx.request({
       url: app.data.realUrl + "/wechat/loggedIn/order",
       method: 'POST',
@@ -162,6 +173,8 @@ Page({
               url: app.data.realUrl + "/wxpay/fail/" + app.data.orderSearchId,
               method: 'POST',
             });
+            // 只有这一种情况，需要放开按钮点击
+            that.data.touchConfirmDisabled = false
           }
         });
       }

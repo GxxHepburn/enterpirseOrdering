@@ -12,7 +12,8 @@ Page({
     menu: [],
 
     alreadyOrders: [],
-    alreadyTotalPrice: 0
+    alreadyTotalPrice: 0,
+    touchConfirmDisabled: false
   },
   //下单
   touchConfirm: function() {
@@ -27,6 +28,17 @@ Page({
       });
       return;
     }
+
+    // 检查是不是重复下单
+    if (this.data.touchConfirmDisabled == true) {
+      wx.showToast({
+        title: '正在拼命为您下单，请不要重复下单...',
+        icon: 'none',
+        duration: 5000
+      })
+      return
+    }
+    this.data.touchConfirmDisabled = true
     wx.request({
       url: app.data.realUrl + "/wechat/loggedIn/add",
       method: 'POST',
