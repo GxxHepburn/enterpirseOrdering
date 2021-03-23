@@ -30,9 +30,7 @@ Page({
     mer: {},
 
     popOutIndex: 0,
-    popIndex: 0,
-
-    scrollZIndex: 2000
+    popIndex: 0
   },
   //shopSign_phone按钮
   touchPhone: function() {
@@ -407,7 +405,6 @@ Page({
     this.animation = animation
     animation.translateY(500).step()
     this.setData({
-      scrollZIndex: 5000,
       reduceAnimationData: animation.export(),
       showReduceModalStatus: true
     })
@@ -429,7 +426,6 @@ Page({
     this.animation = animation;
     animation.translateY(300).step()
     this.setData({
-      scrollZIndex: 2000,
       reduceAnimationData: animation.export(),
     });
     setTimeout(function () {
@@ -545,7 +541,6 @@ Page({
     this.animation = animation
     animation.translateY(500).step()
     this.setData({
-      scrollZIndex: 5000,
       animationData: animation.export(),
       showModalStatus: true
     })
@@ -567,7 +562,6 @@ Page({
     this.animation = animation;
     animation.translateY(300).step()
     this.setData({
-      scrollZIndex: 2000,
       animationData: animation.export(),
     });
     setTimeout(function () {
