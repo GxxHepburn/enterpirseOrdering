@@ -290,7 +290,7 @@ Page({
       delay: 0
     });
     this.animation = animation;
-    animation.translateY(300).step()
+    animation.translateY(500).step()
     this.setData({
       cartAnimationData: animation.export(),
     });
@@ -424,7 +424,7 @@ Page({
       delay: 0
     });
     this.animation = animation;
-    animation.translateY(300).step()
+    animation.translateY(500).step()
     this.setData({
       reduceAnimationData: animation.export(),
     });
@@ -560,7 +560,7 @@ Page({
       delay: 0
     });
     this.animation = animation;
-    animation.translateY(300).step()
+    animation.translateY(500).step()
     this.setData({
       animationData: animation.export(),
     });
