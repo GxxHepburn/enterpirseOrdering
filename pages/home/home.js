@@ -23,7 +23,10 @@ Page({
     windowWidth: '',
 
     startPoint: 0,
-    addTouch: 0
+    addTouch: 0,
+
+    // 在onShow方法中，根据是不是扫二维码，触发，来决定是否执行onShow内方法
+    isQr: false
   },
   //shopSign_phone按钮
   touchPhone: function(event) {
@@ -64,6 +67,8 @@ Page({
         content: '请扫描桌面二维码开始点餐',
         success: function(res){
           if(res.confirm) {
+            // 将isQr设置为true
+            that.data.isQr = true
             //调用扫码程序
             wx.scanCode({
               onlyFromCamera: true,
@@ -461,8 +466,10 @@ Page({
    */
   onShow: function () {
 
-    //清空所有其他的东西
-    this.initApp();
+    if (!this.data.isQr) {
+      this.initApp();
+    }
+    this.data.isQr = false
   },
 
   /**

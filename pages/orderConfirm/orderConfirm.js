@@ -494,6 +494,19 @@ Page({
         },
         method: 'POST',
         success(resMy) {
+          if (resMy.data == "0") {
+            wx.showModal({
+              title: '提示',
+              content: '获取必要信息失败!',
+              showCancel: false,
+              success (res) {
+                wx.navigateTo({
+                  url: '../../pages/home/home' 
+                });
+              }
+            })
+            return
+          }
           var tableName2 = resMy.data.tableName;
           var tabTypeName2 = resMy.data.tabTypeName;
           that.setData({

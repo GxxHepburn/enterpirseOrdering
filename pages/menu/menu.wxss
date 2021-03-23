@@ -60,7 +60,7 @@ page{
     flex-direction: row;
     height: 100%;
     margin-bottom: 90.7rpx;
-    position: relative;
+    position: absolute;
     /* overflow-y: scroll;
     z-index: 500; */
 }

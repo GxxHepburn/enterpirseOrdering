@@ -65,6 +65,18 @@ Page({
       method: 'POST',
       responseType: "",
       success(resMy) {
+        if (resMy.data == "0") {
+          wx.showModal({
+            title: '提示',
+            content: '获取必要信息失败',
+            showCancel: false,
+            success (res) {
+              wx.navigateTo({
+                url: '../../pages/home/home' 
+              });
+            }
+          })
+        }
         //初始化
         app.data.menu = resMy.data.menu;
         wx.navigateTo({
@@ -164,6 +176,17 @@ Page({
                       wx.showModal({
                         title: '提示',
                         content: '不存在的餐桌号，请重新扫码!',
+                        showCancel: false,
+                        success (res) {
+                          wx.navigateTo({
+                            url: '../../pages/home/home' 
+                          });
+                        }
+                      })
+                    } else if (resMer.data == "-1") {
+                      wx.showModal({
+                        title: '提示',
+                        content: '获取餐厅信息失败，请重试',
                         showCancel: false,
                         success (res) {
                           wx.navigateTo({
