@@ -62,6 +62,7 @@ Page({
             icon: 'none',
             duration: 3500
           });
+          that.data.touchConfirmDisabled = false
           return
         }
         if(resMy.data==0) {
@@ -71,12 +72,14 @@ Page({
             icon: 'none',
             duration: 3500
           });
+          that.data.touchConfirmDisabled = false
         } else if (resMy.data.meta != undefined && (resMy.data.meta.status == 410 || resMy.data.meta.status == 420)) {
           wx.showToast({
             title: resMy.data.data.waringMsg,
             icon: 'none',
             duration: 3500
           })
+          that.data.touchConfirmDisabled = false
         } else {
           app.data.menu = resMy.data.menu;
           for(var i=0; i<that.data.orders.length; i++) {
