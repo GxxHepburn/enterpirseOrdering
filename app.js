@@ -38,7 +38,7 @@ App({
     globalShareInfo: {
       title: '点菜宝-扫码点餐',
       path: '/pages/home/home',
-      imageUrl: 'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3060423780,1743935160&fm=26&gp=0.jpg'
+      imageUrl: 'https://www.donghuastar.com/static/other-img/wechatglobalShare.jpg'
     }
   },
   
