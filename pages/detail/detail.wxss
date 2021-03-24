@@ -129,7 +129,7 @@
     font-size: 25rpx;
 }
 .top_wrap{
-    margin-bottom: 90.7rpx;
+    padding-bottom: 90.7rpx;
 }
 .cart_wrap{
     position: fixed;
