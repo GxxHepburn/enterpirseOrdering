@@ -32,7 +32,14 @@ App({
     isScan: false,
     menuReset: false,
     isOrder: false,
-    mer: {}
+    mer: {},
+
+    // 全局转发信息
+    globalShareInfo: {
+      title: '点菜宝-扫码点餐',
+      path: '/pages/home/home',
+      imageUrl: 'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3060423780,1743935160&fm=26&gp=0.jpg'
+    }
   },
   
   

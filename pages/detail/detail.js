@@ -20,8 +20,6 @@ Page({
     payStatus: '未支付',
     remark: ''
   },
-  
-
   //商户付款付款按钮
   pay: function() {
     let that = this;
@@ -231,6 +229,7 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    var app = getApp();
+    return app.data.globalShareInfo
   }
 })

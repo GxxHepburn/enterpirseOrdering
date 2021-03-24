@@ -8,7 +8,6 @@ Page({
     openid: '',
     showLoading: false
   },
-
   /**
    * 选择人数按钮bind函数
    */
@@ -279,6 +278,7 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    var app = getApp();
+    return app.data.globalShareInfo
   }
 })
