@@ -4,7 +4,10 @@ App({
    * 全局变量
    */
   data:{
-    realUrl: "https://www.donghuastar.com",
+    // realUrl: "https://www.donghuastar.com",
+    realUrl: "http://localhost",
+
+    
     loadStatus: false,
     openid: "",
     numberOfDiners: -1,
