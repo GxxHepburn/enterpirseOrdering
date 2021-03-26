@@ -92,10 +92,21 @@ Page({
     var that = this
     wx.showModal({
       title: '提示',
-      content: '您无法在本餐厅用餐，请联系餐厅服务人员！',
+      content: '您无法通过本应用用餐，请联系餐厅服务人员! ',
       showCancel: false,
       success: function (repeatRes){
         that.UserBanTips()
+      }
+    });
+  },
+  MerBanTips: function () {
+    var that = this
+    wx.showModal({
+      title: '提示',
+      content: '餐厅已下架，请联系餐厅服务人员！',
+      showCancel: false,
+      success: function (repeatRes){
+        that.MerBanTips()
       }
     });
   },
@@ -171,6 +182,9 @@ Page({
                     tabId: app.data.table
                   },
                   success: function(resMer) {
+                    if (resMer.data == -2) {
+                      that.MerBanTips()
+                    }
                     if (resMer.data == "0") {
                       wx.showModal({
                         title: '提示',

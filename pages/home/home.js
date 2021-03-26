@@ -362,7 +362,7 @@ Page({
     var that = this
     wx.showModal({
       title: '提示',
-      content: '您无法在本餐厅用餐，请联系餐厅服务人员！',
+      content: '您无法通过本应用用餐，请联系餐厅服务人员! ',
       showCancel: false,
       success: function (repeatRes){
         that.UserBanTips()
@@ -410,6 +410,7 @@ Page({
               if (resMy.statusCode == 200) {
                 if (resMy.data == "0") {
                   that.UserBanTips()
+                  return
                 }
                 
                 app.data.openid = resMy.data;
